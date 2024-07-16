@@ -2,32 +2,153 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
   }
 }
 
+html,
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.debug,
+.debug * {
+  box-shadow: 0 0 0 1px red !important;
+}
+
+body::-webkit-scrollbar {
+  width: 8px;
+  height: 10px;
+  border-radius: 10px;
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #0057a4;
+  border-radius: 10px;
+}
+
+.outline_button {
+  @apply focus:outline-none border border-[#0057A4] text-black font-medium rounded-full active:scale-90 transition text-sm md:px-10 px-3 md:py-3 py-2;
+}
+
+.disable_button {
+  @apply focus:outline-none uppercase bg-[#E6E6E6] text-black font-medium rounded-full active:scale-90 transition text-sm px-8 py-3;
+}
+
+.label_text {
+  @apply text-[0.75rem] font-medium text-neutral-400;
+}
+
+.input_field {
+  @apply border focus:border-[#0057A4] disabled:bg-neutral-100 w-full text-[0.8rem] outline-none md:p-2 p-1 rounded-[4px];
+}
+.input_field.icon {
+  @apply ps-7;
+}
+
+.title:after,
+.heading:after {
+  background: #0057a4;
+  content: "";
+  display: block;
+  height: 3px;
+  width: 60px;
+  margin-top: 7px;
+}
+
+.footer:after {
+  background: none repeat scroll 0 0 transparent;
+  content: "";
+  display: block;
+  height: 2px;
+  background: #0057a4;
+  transition: width 0.2s ease 0s, left 0.2s ease 0s;
+  width: 0;
+}
+
+.footer:hover:after {
+  width: 100%;
+  left: 0;
+}
+/* Swiper Slider */
+body .swiper {
+  padding-bottom: 3rem !important;
+}
+
+/* Success SVG animation */
+.checkSVG svg .path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 0;
+}
+
+.checkSVG svg .circle {
+  -webkit-animation: dash 0.9s ease-in-out;
+  animation: dash 0.9s ease-in-out;
+}
+
+.checkSVG svg .line {
+  stroke-dashoffset: 1000;
+  -webkit-animation: dash 0.9s 0.35s ease-in-out forwards;
+  animation: dash 0.9s 0.35s ease-in-out forwards;
+}
+
+.checkSVG svg .check {
+  stroke-dashoffset: -100;
+  -webkit-animation: dash-check 0.9s 0.35s ease-in-out forwards;
+  animation: dash-check 0.9s 0.35s ease-in-out forwards;
+}
+
+@-webkit-keyframes dash {
+  0% {
+    stroke-dashoffset: 1000;
   }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@-webkit-keyframes dash-check {
+  0% {
+    stroke-dashoffset: -100;
+  }
+
+  100% {
+    stroke-dashoffset: 900;
+  }
+}
+
+@keyframes dash-check {
+  0% {
+    stroke-dashoffset: -100;
+  }
+
+  100% {
+    stroke-dashoffset: 900;
+  }
+}
+
+.invalid + label {
+  color: red;
 }
