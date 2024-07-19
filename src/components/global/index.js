@@ -137,7 +137,7 @@ const Header = () => {
                                 Services
                             </li>
                         </Link>
-                        <Link href="/">
+                        <Link href="/industries">
                             <li className="cursor-pointer text-[16px] capitalize inline-block footer">
                                 Industries
                             </li>

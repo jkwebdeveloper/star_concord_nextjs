@@ -8,6 +8,7 @@ import { FaRegCircleCheck } from 'react-icons/fa6';
 
 const AboutUs = () => {
     const [selectedTab, setSelectedTab] = useState('mission');
+    const [membershipTab, setmembershipTab] = useState('fmc');
 
     return (
         <div className="container w-full mx-auto lg:space-y-20 space-y-7">
@@ -173,6 +174,272 @@ const AboutUs = () => {
                             </p>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            {/* Accreditations */}
+            <div className="px-10 space-y-8">
+                <p className="text-5xl font-bold">
+                    Accreditations / Alliances / Memberships
+                </p>
+                <div className="flex items-start w-full gap-20 text-left">
+                    <button
+                        className={`text-lg font-semibold ${
+                            membershipTab === 'fmc'
+                                ? 'text-black border-b-2 text-left border-primary_color'
+                                : 'border-b-2 text-left text-[#6C6C6C] border-[#C4C4C4]'
+                        }`}
+                        onClick={() => setmembershipTab('fmc')}
+                    >
+                        Accreditation with FMC (USA)
+                    </button>
+                    <button
+                        className={`text-lg font-semibold ${
+                            membershipTab === 'mto'
+                                ? 'text-black text-left border-b-2 border-primary_color'
+                                : 'border-b-2 text-left text-[#6C6C6C] border-[#C4C4C4]'
+                        }`}
+                        onClick={() => setmembershipTab('mto')}
+                    >
+                        MTO
+                    </button>
+                    <button
+                        className={`text-lg font-semibold ${
+                            membershipTab === 'iata'
+                                ? 'text-black text-left border-b-2 border-primary_color'
+                                : 'border-b-2 text-left text-[#6C6C6C] border-[#C4C4C4]'
+                        }`}
+                        onClick={() => setmembershipTab('iata')}
+                    >
+                        Accreditation with IATA
+                    </button>
+                </div>
+                <div className="space-y-4">
+                    <div className="grid items-start w-full grid-cols-2 text-left xl:gap-40 md:gap-20">
+                        {membershipTab === 'fmc' && (
+                            <>
+                                <div className="space-y-8">
+                                    <p className="text-[#1B1B1B]">
+                                        We guarantee strict compliance to all
+                                        procedures before, during and after
+                                        journey.
+                                    </p>
+                                    <ul className="pl-5 font-semibold text-[#1B1B1B] space-y-2 list-disc">
+                                        <li>
+                                            Standard operating procedures for
+                                            vehicle maintenance
+                                        </li>
+                                        <li>Journey management plan</li>
+                                        <li>
+                                            Standard operating procedures for
+                                            loading
+                                        </li>
+                                    </ul>
+                                    <Button variant="primary">
+                                        View details
+                                    </Button>
+                                </div>
+                                <div className="">
+                                    <Image
+                                        src={'/static/images/banner.png'}
+                                        alt="unsplash"
+                                        loading="lazy"
+                                        width={600}
+                                        height={600}
+                                        className="object-cover w-full rounded-xl"
+                                    />
+                                </div>
+                            </>
+                        )}
+                        {membershipTab === 'mto' && (
+                            <>
+                                <div className="space-y-8">
+                                    <p className="text-[#1B1B1B]">
+                                        Lorem ipsum dolor sit amet consectetur
+                                        adipisicing elit. Soluta adipisci omnis
+                                        amet, quam eum deserunt at maxime
+                                        aspernatur voluptas officiis?
+                                    </p>
+                                    <ul className="pl-5 font-semibold text-[#1B1B1B] space-y-2 list-disc">
+                                        <li>
+                                            Standard operating procedures for
+                                            vehicle maintenance
+                                        </li>
+                                        <li>Journey management plan</li>
+                                        <li>
+                                            Standard operating procedures for
+                                            loading
+                                        </li>
+                                    </ul>
+                                    <Button variant="primary">
+                                        View details
+                                    </Button>
+                                </div>
+                                <div className="">
+                                    <Image
+                                        src={'/static/images/banner.png'}
+                                        alt="unsplash"
+                                        loading="lazy"
+                                        width={600}
+                                        height={600}
+                                        className="object-cover w-full rounded-xl"
+                                    />
+                                </div>
+                            </>
+                        )}
+                        {membershipTab === 'iata' && (
+                            <>
+                                <div className="space-y-8">
+                                    <p className="text-[#1B1B1B]">
+                                        We guarantee strict compliance to all
+                                        procedures before, during and after
+                                        journey.
+                                    </p>
+                                    <ul className="pl-5 font-semibold text-[#1B1B1B] space-y-2 list-disc">
+                                        <li>
+                                            Standard operating procedures for
+                                            vehicle maintenance
+                                        </li>
+                                        <li>Journey management plan</li>
+                                        <li>
+                                            Standard operating procedures for
+                                            loading
+                                        </li>
+                                    </ul>
+                                    <Button variant="primary">
+                                        View details
+                                    </Button>
+                                </div>
+                                <div className="">
+                                    <Image
+                                        src={'/static/images/banner.png'}
+                                        alt="unsplash"
+                                        loading="lazy"
+                                        width={600}
+                                        height={600}
+                                        className="object-cover w-full rounded-xl"
+                                    />
+                                </div>
+                            </>
+                        )}
+                    </div>
+                </div>
+            </div>
+
+            {/* Our USPS */}
+            <div className="grid items-start justify-center gap-5 px-10 lg:grid-cols-2 xl:gap-40 md:gap-20">
+                <div className="space-y-3">
+                    <p className="text-4xl font-bold">Our USPS</p>
+                    <p className="text-[#6C6C6C]">
+                        Provides high quality, comprehensive transportation
+                        services and always understand client's requirements.{' '}
+                    </p>
+                </div>
+                <div className="grid items-start gap-5 lg:grid-cols-2">
+                    <div className="p-5 space-y-4 bg-white rounded-md shadow-lg">
+                        <Image
+                            src={'/static/images/abouticon1.png'}
+                            alt="unsplash"
+                            loading="lazy"
+                            width={50}
+                            height={50}
+                            className=""
+                        />
+                        <p className="text-[#1B1B1B] text-xl font-semibold">
+                            Economical Pricing
+                        </p>
+                        <p className="text-[#1B1B1B]">
+                            Sea freight transportation is offered from home to
+                            abroad and vice versa.
+                        </p>
+                    </div>
+                    <div className="p-5 space-y-4 bg-white rounded-md shadow-lg">
+                        <Image
+                            src={'/static/images/abouticon1.png'}
+                            alt="unsplash"
+                            loading="lazy"
+                            width={50}
+                            height={50}
+                            className=""
+                        />
+                        <p className="text-[#1B1B1B] text-xl font-semibold">
+                            Economical Pricing
+                        </p>
+                        <p className="text-[#1B1B1B]">
+                            Sea freight transportation is offered from home to
+                            abroad and vice versa.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div className="grid items-start gap-5 px-10 lg:grid-cols-4 md:grid-cols-2">
+                <div className="p-5 space-y-4 bg-white rounded-md shadow-lg">
+                    <Image
+                        src={'/static/images/abouticon1.png'}
+                        alt="unsplash"
+                        loading="lazy"
+                        width={50}
+                        height={50}
+                        className=""
+                    />
+                    <p className="text-[#1B1B1B] text-xl font-semibold">
+                        Economical Pricing
+                    </p>
+                    <p className="text-[#1B1B1B]">
+                        Sea freight transportation is offered from home to
+                        abroad and vice versa.
+                    </p>
+                </div>
+                <div className="p-5 space-y-4 bg-white rounded-md shadow-lg">
+                    <Image
+                        src={'/static/images/abouticon1.png'}
+                        alt="unsplash"
+                        loading="lazy"
+                        width={50}
+                        height={50}
+                        className=""
+                    />
+                    <p className="text-[#1B1B1B] text-xl font-semibold">
+                        Economical Pricing
+                    </p>
+                    <p className="text-[#1B1B1B]">
+                        Sea freight transportation is offered from home to
+                        abroad and vice versa.
+                    </p>
+                </div>
+                <div className="p-5 space-y-4 bg-white rounded-md shadow-lg">
+                    <Image
+                        src={'/static/images/abouticon1.png'}
+                        alt="unsplash"
+                        loading="lazy"
+                        width={50}
+                        height={50}
+                        className=""
+                    />
+                    <p className="text-[#1B1B1B] text-xl font-semibold">
+                        Economical Pricing
+                    </p>
+                    <p className="text-[#1B1B1B]">
+                        Sea freight transportation is offered from home to
+                        abroad and vice versa.
+                    </p>
+                </div>
+                <div className="p-5 space-y-4 bg-white rounded-md shadow-lg">
+                    <Image
+                        src={'/static/images/abouticon1.png'}
+                        alt="unsplash"
+                        loading="lazy"
+                        width={50}
+                        height={50}
+                        className=""
+                    />
+                    <p className="text-[#1B1B1B] text-xl font-semibold">
+                        Economical Pricing
+                    </p>
+                    <p className="text-[#1B1B1B]">
+                        Sea freight transportation is offered from home to
+                        abroad and vice versa.
+                    </p>
                 </div>
             </div>
         </div>
