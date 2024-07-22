@@ -1,74 +1,107 @@
 import Image from 'next/image';
 import React from 'react';
 import { Button } from '../ui/button';
+import { ImLocation2 } from 'react-icons/im';
+import { FaTwitter } from 'react-icons/fa';
+import { FaLinkedinIn } from 'react-icons/fa';
+import { FaInstagram } from 'react-icons/fa';
+import { FaFacebookF } from 'react-icons/fa6';
 
 const Footer = () => {
     return (
-        <div className="container w-full">
-            <div className="relative grid items-start gap-0 lg:grid-cols-2">
-                {/* <div>
-                    <Image
-                        src={'/static/images/footer.png'}
-                        alt="logo"
-                        loading="lazy"
-                        width={550}
-                        height={550}
-                        className="relative w-full"
-                    />
-                    <p className="absolute flex items-center justify-center">
-                        Find Our Office at your location
-                    </p>
-                </div>
-                <div>
-                    <Image
-                        src={'/static/images/footer.png'}
-                        alt="logo"
-                        loading="lazy"
-                        width={550}
-                        height={550}
-                        className="relative w-full"
-                    />
-                    <p className="absolute flex items-center justify-center">
-                        Find Our Office at your location
-                    </p>
-                </div>
-
-                <div className="relative text-white">
-                    <Image
-                        src={'/static/images/footer.png'}
-                        alt="logo"
-                        loading="lazy"
-                        width={550}
-                        height={550}
-                        className="relative w-full"
-                    />
-                    <div className="absolute grid items-start gap-0 text-black lg:grid-cols-2">
-                        <div className="pl-10">
-                            <p>Quick Links</p>
-                            <ul>
-                                <li>About Us</li>
-                                <li>Services</li>
-                                <li>Industries</li>
-                                <li>Contact Us</li>
-                                <li>Blog</li>
-                                <li>Article</li>
-                            </ul>
+        <>
+            <div
+                className="w-full "
+                style={{
+                    backgroundImage: `url('/static/images/Footer-bg.jpg')`,
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: 'cover',
+                    objectFit: 'cover',
+                    loading: 'lazy',
+                    // width: "100%",
+                    height: '',
+                }}
+            >
+                <div className="container py-20 mx-auto text-white">
+                    <div className="grid items-start justify-center grid-cols-1 gap-5 px-10 lg:grid-cols-2">
+                        <div className="space-y-4">
+                            <ImLocation2 className="text-2xl text-white lg:text-5xl" />
+                            <p className="w-full text-xl font-bold capitalize lg:text-4xl lg:w-1/2">
+                                Find Our Office at your location
+                            </p>
+                            <Button className="border-[1px] active:scale-90 transition border-primary bg-background shadow-sm hover:bg-black hover:text-white">
+                                Find Booking Office
+                            </Button>
                         </div>
-                        <div className="pl-10">
-                            <p>Services</p>
-                            <ul>
-                                <li>LCL Consolidators In Singapore</li>
-                                <li>Sea Freight</li>
-                                <li>Air Freight</li>
-                                <li>3PL Services</li>
-                                <li>Project Cargo Handling</li>
-                                <li>Warehousing</li>
-                            </ul>
+                        <div className="grid items-start justify-center grid-cols-1 gap-5 lg:grid-cols-2">
+                            <div className="space-y-6">
+                                <p className="text-lg font-bold">Quick Links</p>
+                                <div className="space-y-2">
+                                    <p>About us</p>
+                                    <p>Services</p>
+                                    <p>Industries</p>
+                                    <p>Contact Us</p>
+                                    <p>Blog</p>
+                                    <p>Article</p>
+                                </div>
+                            </div>
+                            <div className="space-y-6">
+                                <p className="text-lg font-bold">Services</p>
+                                <div className="space-y-2">
+                                    <p>LCL Consolidators in Singapore</p>
+                                    <p>Sea Freight</p>
+                                    <p>Air Freight</p>
+                                    <p>3PL Services</p>
+                                    <p>Project Cargo Handling</p>
+                                    <p>Warehousing</p>
+                                </div>
+                            </div>
+                            <hr className="w-full h-0.5 border-t-0 bg-[#c5c5c5] dark:bg-white/10" />
+                        </div>
+                        <div></div>
+                        <div className="flex items-center gap-10">
+                            <Image
+                                src={'/static/images/image 2.png'}
+                                alt="unsplash"
+                                loading="lazy"
+                                width={100}
+                                height={100}
+                                className="object-cover"
+                            />
+                            <Image
+                                src={'/static/images/image 3.png'}
+                                alt="unsplash"
+                                loading="lazy"
+                                width={100}
+                                height={100}
+                                className="object-cover"
+                            />
+                            <Image
+                                src={'/static/images/image 4.png'}
+                                alt="unsplash"
+                                loading="lazy"
+                                width={100}
+                                height={100}
+                                className="object-cover"
+                            />
                         </div>
                     </div>
-                </div> */}
+                </div>
             </div>
-        </div>
+            <div className="container px-10 py-4 mx-auto text-white">
+                <div className="flex flex-col items-center justify-between space-y-4 lg:flex-row">
+                    <p className="text-sm text-primary_color">
+                        © 2024, Star Concord PTE LTD, All Rights Reserved
+                    </p>
+                    <div className="flex items-center gap-5">
+                        <FaTwitter className="text-[#6C6C6C] cursor-pointer  hover:rounded-full p-3  text-5xl hover:bg-primary_color hover:text-white" />
+                        <FaLinkedinIn className="text-[#6C6C6C] cursor-pointer  hover:rounded-full p-3  text-5xl hover:bg-primary_color hover:text-white" />
+                        <FaInstagram className="text-[#6C6C6C] cursor-pointer  hover:rounded-full p-3  text-5xl hover:bg-primary_color hover:text-white" />
+                        <FaFacebookF className="text-[#6C6C6C] cursor-pointer  hover:rounded-full p-3  text-5xl hover:bg-primary_color hover:text-white" />
+                    </div>
+                </div>
+            </div>
+        </>
     );
 };
 

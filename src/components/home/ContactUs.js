@@ -10,8 +10,10 @@ const GetInTouchSection = () => {
     return (
         <div className="container w-full mx-auto">
             <div className="grid items-center gap-5 lg:grid-cols-2 xl:gap-40 md:gap-20">
-                <div className="space-y-8">
-                    <p className="text-4xl font-bold">Get in touch with us</p>
+                <div className="space-y-5 lg:space-y-8">
+                    <p className="text-base font-bold lg:text-4xl">
+                        Get in touch with us
+                    </p>
                     <p className="text-[#6C6C6C] text-sm">
                         Contact us on direct, by phone or fill out the form to
                         receive a free consultation from our enthusiastic staff.
@@ -43,6 +45,7 @@ const GetInTouchSection = () => {
                 </div>
                 <div className="w-full rounded-2xl bg-[#F7F9FB] p-4 space-y-8">
                     <div className="flex items-center gap-3">
+                        <RiMailSendLine className="text-2xl text-primary_color" />
                         <p className="text-xl font-bold">Send us message</p>
                     </div>
                     <div class="flex flex-col gap-6">

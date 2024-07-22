@@ -31,66 +31,77 @@ const Header = () => {
         >
             {/* mobile header start */}
             <div
-                className={`lg:hidden bg-white  text-black absolute top-0 -left-1 z-20 min-h-screen max-h-screen min-w-[80%] ${
+                className={`lg:hidden bg-white space-y-5  text-black absolute top-0 -left-1 z-20 min-h-screen max-h-screen min-w-[80%] ${
                     openSidebar ? 'translate-x-0' : '-translate-x-full'
                 } transition duration-300 ease-linear`}
             >
-                <AiOutlineClose
-                    className="m-5 ml-auto text-2xl text-black cursor-pointer"
-                    onClick={() => setOpenSidebar(false)}
-                />
-                <div className="items-center text-center">
-                    <ul className="pt-3 leading-10">
+                <div className="flex items-center justify-between p-5">
+                    <div>
+                        <Image
+                            src={'/static/images/logo.png'}
+                            alt="logo"
+                            loading="lazy"
+                            width={150}
+                            height={150}
+                        />
+                    </div>
+                    <div>
+                        <AiOutlineClose
+                            className="ml-auto text-2xl cursor-pointer"
+                            onClick={() => setOpenSidebar(false)}
+                        />
+                    </div>
+                </div>
+
+                <div className="px-20 space-y-6 text-left">
+                    <ul className="space-y-5">
                         <Link href="/">
-                            <Image
-                                src={'/static/images/logo.png'}
-                                alt="logo"
-                                loading="lazy"
-                                width={150}
-                                height={150}
-                            />
-                        </Link>
-                        <Link href="/application">
-                            <li className="cursor-pointer capitalize inline-block footer text-[16px]">
-                                applications
+                            <li className="cursor-pointer text-[16px] capitalize footer">
+                                Home
                             </li>
                         </Link>
-                        <Link href="/software">
-                            <li className="cursor-pointer capitalize inline-block footer text-[16px]">
-                                software
-                            </li>
-                        </Link>
-                        <Link href="/">
-                            <li className="cursor-pointer capitalize inline-block footer text-[16px]">
-                                smells
-                            </li>
-                        </Link>
-                        <Link href="/">
-                            <li className="cursor-pointer capitalize inline-block footer text-[16px]">
-                                products
+                        <Link href="/about-us">
+                            <li className="cursor-pointer text-[16px] capitalize footer">
+                                About us
                             </li>
                         </Link>
                         <Link href="/">
-                            <li className="cursor-pointer capitalize inline-block footer text-[16px]">
-                                blog
+                            <li className="cursor-pointer text-[16px] capitalize footer">
+                                Services
                             </li>
                         </Link>
                         <Link href="/">
-                            <li className="cursor-pointer capitalize inline-block footer text-[16px]">
+                            <li className="cursor-pointer text-[16px] capitalize footer">
+                                Industries
+                            </li>
+                        </Link>
+                        <Link href="/">
+                            <li className="cursor-pointer text-[16px] capitalize footer">
+                                Article
+                            </li>
+                        </Link>
+                        <Link href="/">
+                            <li className="cursor-pointer text-[16px] capitalize footer">
+                                Blog
+                            </li>
+                        </Link>
+                        <Link href="/contact-us">
+                            <li className="cursor-pointer text-[16px] capitalize inline-block footer">
                                 contact
                             </li>
                         </Link>
-                        <Link href="/">
-                            <li className="cursor-pointer capitalize inline-block footer text-[16px]">
-                                language
-                            </li>
-                        </Link>
-                        <Link href="/">
-                            <li className="cursor-pointer capitalize inline-block footer text-[16px]">
-                                <FaCartShopping />
-                            </li>
-                        </Link>
                     </ul>
+                    <div className="flex items-center gap-3 text-center">
+                        <Button
+                            variant="disable"
+                            className="hover:text-primary_color"
+                        >
+                            Login
+                        </Button>
+                        <Button variant="primary" className="">
+                            Signup
+                        </Button>
+                    </div>
                 </div>
             </div>
             {openSidebar && (
@@ -137,7 +148,7 @@ const Header = () => {
                                 Services
                             </li>
                         </Link>
-                        <Link href="/industries">
+                        <Link href="/">
                             <li className="cursor-pointer text-[16px] capitalize inline-block footer">
                                 Industries
                             </li>
@@ -152,13 +163,13 @@ const Header = () => {
                                 Blog
                             </li>
                         </Link>
-                        <Link href="/">
+                        <Link href="/contact-us">
                             <li className="cursor-pointer text-[16px] capitalize inline-block footer">
                                 contact
                             </li>
                         </Link>
                     </ul>
-                    <div className="flex gap-3 text-center">
+                    <div className="hidden gap-3 text-center lg:flex">
                         <Button
                             variant="disable"
                             className="hover:text-primary_color"

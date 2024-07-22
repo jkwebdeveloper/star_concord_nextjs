@@ -18,7 +18,7 @@ const AboutUs = () => {
                 page="About us"
             />
             {/* About company Sevtion */}
-            <div className="grid items-start justify-center gap-5 px-10 lg:grid-cols-2 xl:gap-40 md:gap-20">
+            <div className="grid items-start justify-center gap-5 px-3 lg:px-10 lg:grid-cols-2 xl:gap-40 md:gap-20">
                 <div className="w-full text-[#1B1B1B] space-y-20">
                     <div className="space-y-10">
                         <div className="space-y-4">
@@ -126,7 +126,7 @@ const AboutUs = () => {
             </div>
 
             {/* Why us */}
-            <div className="grid items-start justify-center gap-5 px-10 lg:grid-cols-2 xl:gap-40 md:gap-20">
+            <div className="grid items-start justify-center gap-5 px-3 lg:px-10 lg:grid-cols-2 xl:gap-40 md:gap-20">
                 <Image
                     src={'/static/images/aboutpage.png'}
                     alt="unsplash"
@@ -137,7 +137,7 @@ const AboutUs = () => {
                 />
                 <div className="space-y-8">
                     <p className="text-[#1B1B1B] font-semibold">Why Us</p>
-                    <p className="text-4xl font-bold">
+                    <p className="text-xl font-bold lg:text-4xl">
                         Stay on budget <br /> with our transport
                     </p>
                     <hr className="w-1/5 h-0.5 border-t-0 bg-primary_color dark:bg-white/10" />
@@ -146,7 +146,7 @@ const AboutUs = () => {
                         typesetting industry. Lorem Ipsum has been the
                         industry's standard dummy text ever since the 1500s,
                     </p>
-                    <div className="flex items-center gap-10">
+                    <div className="flex-col items-center gap-10 space-y-5 lg:space-y-0 lg:flex-row">
                         <div className="flex items-center gap-3">
                             <FaRegCircleCheck className="text-xl text-primary_color" />
                             <p className="text-xl font-semibold">
@@ -160,7 +160,7 @@ const AboutUs = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="flex items-center gap-10">
+                    <div className="flex-col items-center gap-10 space-y-5 lg:flex-row lg:space-y-0">
                         <div className="flex items-center gap-3">
                             <FaRegCircleCheck className="text-xl text-primary_color" />
                             <p className="text-xl font-semibold">
@@ -178,11 +178,11 @@ const AboutUs = () => {
             </div>
 
             {/* Accreditations */}
-            <div className="px-10 space-y-8">
-                <p className="text-5xl font-bold">
+            <div className="px-3 space-y-8 lg:px-10">
+                <p className="text-xl font-bold lg:text-5xl">
                     Accreditations / Alliances / Memberships
                 </p>
-                <div className="flex items-start w-full gap-20 text-left">
+                <div className="flex items-start w-full gap-5 text-left lg:gap-20">
                     <button
                         className={`text-lg font-semibold ${
                             membershipTab === 'fmc'
@@ -215,7 +215,7 @@ const AboutUs = () => {
                     </button>
                 </div>
                 <div className="space-y-4">
-                    <div className="grid items-start w-full grid-cols-2 text-left xl:gap-40 md:gap-20">
+                    <div className="grid items-start w-full text-left lg:grid-cols-2 xl:gap-40 md:gap-20">
                         {membershipTab === 'fmc' && (
                             <>
                                 <div className="space-y-8">
@@ -327,16 +327,55 @@ const AboutUs = () => {
             </div>
 
             {/* Our USPS */}
-            <div className="grid items-start justify-center gap-5 px-10 lg:grid-cols-2 xl:gap-40 md:gap-20">
-                <div className="space-y-3">
-                    <p className="text-4xl font-bold">Our USPS</p>
-                    <p className="text-[#6C6C6C]">
-                        Provides high quality, comprehensive transportation
-                        services and always understand client's requirements.{' '}
-                    </p>
+            <div className="pb-10 space-y-10">
+                <div className="grid items-start justify-center gap-5 px-3 lg:px-10 lg:grid-cols-2">
+                    <div className="space-y-3">
+                        <p className="text-4xl font-bold">Our USPS</p>
+                        <p className="text-[#6C6C6C]">
+                            Provides high quality, comprehensive transportation
+                            services and always understand client's
+                            requirements.{' '}
+                        </p>
+                    </div>
+                    <div className="grid items-start gap-5 lg:grid-cols-2">
+                        <div className="p-5 space-y-4 rounded-md cursor-pointer hover:shadow-lg hover:bg-white">
+                            <Image
+                                src={'/static/images/abouticon1.png'}
+                                alt="unsplash"
+                                loading="lazy"
+                                width={50}
+                                height={50}
+                                className=""
+                            />
+                            <p className="text-[#1B1B1B] text-xl font-semibold">
+                                Economical Pricing
+                            </p>
+                            <p className="text-[#1B1B1B]">
+                                Sea freight transportation is offered from home
+                                to abroad and vice versa.
+                            </p>
+                        </div>
+                        <div className="p-5 space-y-4 rounded-md cursor-pointer hover:shadow-lg hover:bg-white">
+                            <Image
+                                src={'/static/images/abouticon1.png'}
+                                alt="unsplash"
+                                loading="lazy"
+                                width={50}
+                                height={50}
+                                className=""
+                            />
+                            <p className="text-[#1B1B1B] text-xl font-semibold">
+                                Economical Pricing
+                            </p>
+                            <p className="text-[#1B1B1B]">
+                                Sea freight transportation is offered from home
+                                to abroad and vice versa.
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div className="grid items-start gap-5 lg:grid-cols-2">
-                    <div className="p-5 space-y-4 bg-white rounded-md shadow-lg">
+                <div className="grid items-start gap-5 px-3 lg:px-10 lg:grid-cols-4 md:grid-cols-2">
+                    <div className="p-5 space-y-4 rounded-md cursor-pointer hover:shadow-lg hover:bg-white">
                         <Image
                             src={'/static/images/abouticon1.png'}
                             alt="unsplash"
@@ -353,7 +392,7 @@ const AboutUs = () => {
                             abroad and vice versa.
                         </p>
                     </div>
-                    <div className="p-5 space-y-4 bg-white rounded-md shadow-lg">
+                    <div className="p-5 space-y-4 rounded-md cursor-pointer hover:shadow-lg hover:bg-white">
                         <Image
                             src={'/static/images/abouticon1.png'}
                             alt="unsplash"
@@ -370,76 +409,40 @@ const AboutUs = () => {
                             abroad and vice versa.
                         </p>
                     </div>
-                </div>
-            </div>
-            <div className="grid items-start gap-5 px-10 lg:grid-cols-4 md:grid-cols-2">
-                <div className="p-5 space-y-4 bg-white rounded-md shadow-lg">
-                    <Image
-                        src={'/static/images/abouticon1.png'}
-                        alt="unsplash"
-                        loading="lazy"
-                        width={50}
-                        height={50}
-                        className=""
-                    />
-                    <p className="text-[#1B1B1B] text-xl font-semibold">
-                        Economical Pricing
-                    </p>
-                    <p className="text-[#1B1B1B]">
-                        Sea freight transportation is offered from home to
-                        abroad and vice versa.
-                    </p>
-                </div>
-                <div className="p-5 space-y-4 bg-white rounded-md shadow-lg">
-                    <Image
-                        src={'/static/images/abouticon1.png'}
-                        alt="unsplash"
-                        loading="lazy"
-                        width={50}
-                        height={50}
-                        className=""
-                    />
-                    <p className="text-[#1B1B1B] text-xl font-semibold">
-                        Economical Pricing
-                    </p>
-                    <p className="text-[#1B1B1B]">
-                        Sea freight transportation is offered from home to
-                        abroad and vice versa.
-                    </p>
-                </div>
-                <div className="p-5 space-y-4 bg-white rounded-md shadow-lg">
-                    <Image
-                        src={'/static/images/abouticon1.png'}
-                        alt="unsplash"
-                        loading="lazy"
-                        width={50}
-                        height={50}
-                        className=""
-                    />
-                    <p className="text-[#1B1B1B] text-xl font-semibold">
-                        Economical Pricing
-                    </p>
-                    <p className="text-[#1B1B1B]">
-                        Sea freight transportation is offered from home to
-                        abroad and vice versa.
-                    </p>
-                </div>
-                <div className="p-5 space-y-4 bg-white rounded-md shadow-lg">
-                    <Image
-                        src={'/static/images/abouticon1.png'}
-                        alt="unsplash"
-                        loading="lazy"
-                        width={50}
-                        height={50}
-                        className=""
-                    />
-                    <p className="text-[#1B1B1B] text-xl font-semibold">
-                        Economical Pricing
-                    </p>
-                    <p className="text-[#1B1B1B]">
-                        Sea freight transportation is offered from home to
-                        abroad and vice versa.
-                    </p>
+                    <div className="p-5 space-y-4 rounded-md cursor-pointer hover:shadow-lg hover:bg-white">
+                        <Image
+                            src={'/static/images/abouticon1.png'}
+                            alt="unsplash"
+                            loading="lazy"
+                            width={50}
+                            height={50}
+                            className=""
+                        />
+                        <p className="text-[#1B1B1B] text-xl font-semibold">
+                            Economical Pricing
+                        </p>
+                        <p className="text-[#1B1B1B]">
+                            Sea freight transportation is offered from home to
+                            abroad and vice versa.
+                        </p>
+                    </div>
+                    <div className="p-5 space-y-4 rounded-md cursor-pointer hover:shadow-lg hover:bg-white">
+                        <Image
+                            src={'/static/images/abouticon1.png'}
+                            alt="unsplash"
+                            loading="lazy"
+                            width={50}
+                            height={50}
+                            className=""
+                        />
+                        <p className="text-[#1B1B1B] text-xl font-semibold">
+                            Economical Pricing
+                        </p>
+                        <p className="text-[#1B1B1B]">
+                            Sea freight transportation is offered from home to
+                            abroad and vice versa.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>

@@ -16,14 +16,14 @@ const CommonBanner = ({ title, image, page }) => {
                 className="object-cover object-center w-full h-full rounded-2xl"
             />
             <div className="absolute text-center -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                <h1 className="text-2xl font-bold text-center text-black uppercase md:text-4xl">
+                <h1 className="text-2xl font-bold text-center text-black capitalize md:text-4xl">
                     {title}
                 </h1>
-                <div className="flex items-center gap-3 px-4">
+                <div className="flex items-center gap-3 px-0 lg:px-4">
                     <Link href="/">
-                        <p className="text-lg text-black">Home</p>
+                        <p className="text-sm text-black lg:text-lg">Home</p>
                     </Link>
-                    <IoIosArrowForward className="text-lg" />
+                    <IoIosArrowForward className="text-sm lg:text-lg" />
                     <p className="text-lg text-black">{page}</p>
                 </div>
             </div>
