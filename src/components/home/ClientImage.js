@@ -15,9 +15,9 @@ const ClientImageSection = () => {
             <div className="absolute top-0 flex items-center justify-start w-full h-full text-left">
                 <div className="mx-5 space-y-4 lg:space-y-10 lg:mx-28">
                     <p className="lg:text-2xl text-sm lg:w-[36%] text-justify text-white font-semibold">
-                        We are proud to be the Transflash&apos;s long-term
-                        partner. They help me quickly deliver cargo to our
-                        Singapore clients, without penalties and delays
+                        We are proud to be the Transflash long-term partner.
+                        They help me quickly deliver cargo to our Singapore
+                        clients, without penalties and delays
                     </p>
                     <hr className="w-1/3 h-0.5 border-t-0 bg-[#C4C4C4] opacity-40 dark:bg-white/10" />
                     <div className="flex items-center gap-3">

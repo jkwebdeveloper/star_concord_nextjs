@@ -142,10 +142,9 @@ const AboutUs = () => {
                     </p>
                     <hr className="w-1/5 h-0.5 border-t-0 bg-primary_color dark:bg-white/10" />
                     <p>
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the
-                        industry&apos;s standard dummy text ever since the
-                        1500s,
+                        Lorem Ipsum is simply dummy text of the printing and
+                        typesetting industry. Lorem Ipsum has been the industry
+                        standard dummy text ever since the 1500s,
                     </p>
                     <div className="flex-col items-center gap-10 space-y-5 lg:space-y-0 lg:flex-row">
                         <div className="flex items-center gap-3">
@@ -334,8 +333,7 @@ const AboutUs = () => {
                         <p className="text-4xl font-bold">Our USPS</p>
                         <p className="text-[#6C6C6C]">
                             Provides high quality, comprehensive transportation
-                            services and always understand client&apos;s
-                            requirements.{' '}
+                            services and always understand client requirements.
                         </p>
                     </div>
                     <div className="grid items-start gap-5 lg:grid-cols-2">
