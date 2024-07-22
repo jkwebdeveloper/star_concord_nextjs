@@ -23,7 +23,7 @@ const IndustriesSection = () => {
                 </div>
                 <div className="grid items-start justify-center gap-5 lg:grid-cols-3">
                     {Data.map(item => (
-                        <Link href="/industries-detail">
+                        <Link href="/industries-detail" key={item.id}>
                             <div className="relative" key={item.id}>
                                 <div className="relative w-full h-auto mx-auto overflow-hidden rounded-xl">
                                     <Image

@@ -144,7 +144,8 @@ const AboutUs = () => {
                     <p>
                         Lorem Ipsum is simply dummy text of the printing and
                         typesetting industry. Lorem Ipsum has been the
-                        industry's standard dummy text ever since the 1500s,
+                        industry&apos;s standard dummy text ever since the
+                        1500s,
                     </p>
                     <div className="flex-col items-center gap-10 space-y-5 lg:space-y-0 lg:flex-row">
                         <div className="flex items-center gap-3">
@@ -333,7 +334,7 @@ const AboutUs = () => {
                         <p className="text-4xl font-bold">Our USPS</p>
                         <p className="text-[#6C6C6C]">
                             Provides high quality, comprehensive transportation
-                            services and always understand client's
+                            services and always understand client&apos;s
                             requirements.{' '}
                         </p>
                     </div>
