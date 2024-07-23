@@ -5,7 +5,7 @@ const HeroSection = () => {
     return (
         <div className="container relative w-full mx-auto">
             <Image
-                src={'/static/images/banner.png'}
+                src={'/static/images/home-banner.jpg'}
                 alt="banner"
                 loading="lazy"
                 width={900}
