@@ -24,7 +24,7 @@ const Header = () => {
     }, []);
     return (
         <div
-            className={`p-2 bg-white duration-300 transition-all text-black w-full ${
+            className={`bg-white duration-300 transition-all text-black w-full ${
                 sticky &&
                 'z-50 top-0 duration-300 transition-all fixed shadow-2xl'
             }`}
@@ -38,7 +38,7 @@ const Header = () => {
                 <div className="flex items-center justify-between p-5">
                     <div>
                         <Image
-                            src={'/static/images/logo.png'}
+                            src={'/static/images/StarConcord Logo.png'}
                             alt="logo"
                             loading="lazy"
                             width={150}
@@ -119,17 +119,17 @@ const Header = () => {
             {/* mobile header end */}
 
             <div
-                className="container mx-auto xl:flex xl:justify-between md:items-center"
+                className="container py-3 mx-auto xl:flex xl:justify-between md:items-center"
                 id="topMenu"
             >
                 <nav className="container flex items-center justify-between mx-auto">
                     <Link href="/">
                         <Image
-                            src={'/static/images/logo.png'}
+                            src={'/static/images/logo2.png'}
                             alt="logo"
                             loading="lazy"
-                            width={150}
-                            height={150}
+                            width={100}
+                            height={100}
                         />
                     </Link>
                     <ul className="hidden gap-5 lg:flex">
