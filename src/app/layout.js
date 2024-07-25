@@ -1,10 +1,10 @@
-import { Inter, Mulish } from 'next/font/google';
+import { Instrument_Sans, Inter, Mulish } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/global';
 import Footer from '@/components/global/Footer';
 
-const mulish = Mulish({
-    weight: ['400', '700', '900', '300', '200'],
+const instrument = Instrument_Sans({
+    // weight: ['400', '700', '200'],
     style: ['normal', 'italic'],
     subsets: ['latin'],
     display: 'swap',
@@ -18,7 +18,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
-            <body className={mulish.className}>
+            <body className={instrument.className}>
                 <Header />
                 {children}
                 <Footer />

@@ -171,7 +171,7 @@ const CarouselPrevious = React.forwardRef(
         variant={variant}
         size={size}
         className={cn(
-          "left-[48%] mt-7 relative border border-[#D4DEEF] text-primary_color active:scale-90 transition hover:bg-primary_color hover:text-white  h-8 w-8 rounded-full",
+          "md:left-[48%] left-[38%] mt-7 relative border border-[#D4DEEF] text-primary_color active:scale-90 transition hover:bg-primary_color hover:text-white  h-8 w-8 rounded-full",
           className
         )}
         disabled={!canScrollPrev}
@@ -196,7 +196,7 @@ const CarouselNext = React.forwardRef(
         variant={variant}
         size={size}
         className={cn(
-          "relative left-[50%] border border-[#D4DEEF] text-primary_color active:scale-90 transition hover:bg-primary_color hover:text-white h-8 w-8 rounded-full",
+          "relative md:left-[50%] left-[40%] border border-[#D4DEEF] text-primary_color active:scale-90 transition hover:bg-primary_color hover:text-white h-8 w-8 rounded-full",
           className
         )}
         disabled={!canScrollNext}

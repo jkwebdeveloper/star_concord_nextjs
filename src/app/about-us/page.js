@@ -215,7 +215,7 @@ const AboutUs = () => {
                     </button>
                 </div>
                 <div className="space-y-4">
-                    <div className="grid items-start w-full text-left lg:grid-cols-2 xl:gap-40 md:gap-20">
+                    <div className="grid items-start w-full text-left lg:grid-cols-2 gap-5 xl:gap-40 md:gap-20">
                         {membershipTab === 'fmc' && (
                             <>
                                 <div className="space-y-8">
@@ -235,7 +235,7 @@ const AboutUs = () => {
                                             loading
                                         </li>
                                     </ul>
-                                    <Button variant="primary">
+                                    <Button variant="primary" className="mb-3">
                                         View details
                                     </Button>
                                 </div>

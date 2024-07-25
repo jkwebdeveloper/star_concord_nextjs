@@ -23,7 +23,7 @@ const OurServiceSection = () => {
                         </p>
                     </div>
                 </div>
-                <div className="grid items-start md:w-[70%] w-full mx-auto justify-center grid-cols-1 gap-5 px-10 lg:grid-cols-2">
+                <div className="grid items-start md:w-[70%] w-full mx-auto justify-center grid-cols-1 gap-5 md:px-10 lg:grid-cols-2">
                     <div className="bg-[#F7F9FB] h-[220px] rounded-lg pb-5 flex flex-col justify-between">
                         <div className="flex justify-end">
                             <Image
@@ -58,19 +58,19 @@ const OurServiceSection = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="bg-[#F7F9FB] h-[220px] rounded-lg pb-5 flex flex-col justify-between">
+                    <div className="bg-[#F7F9FB] h-[220px] rounded-lg pb-6 flex flex-col justify-between">
                         <div className="flex justify-end">
                             <Image
                                 src={'/static/images/Cargo 1.png'}
                                 alt="unsplash"
                                 loading="lazy"
-                                width={150}
-                                height={150}
+                                width={130}
+                                height={130}
                                 className="object-cover"
                             />
                         </div>
                         <div className="flex justify-start text-left">
-                            <p className="text-2xl ml-4 text-left font-bold text-[#1C3E58]">
+                            <p className="text-2xl ml-4 mb-2 text-left font-bold text-[#1C3E58]">
                                 Project Cargo <br /> Handling
                             </p>
                         </div>
@@ -81,8 +81,8 @@ const OurServiceSection = () => {
                                 src={'/static/images/warehouse 1.png'}
                                 alt="unsplash"
                                 loading="lazy"
-                                width={150}
-                                height={150}
+                                width={130}
+                                height={130}
                                 className="object-cover"
                             />
                         </div>
