@@ -125,6 +125,56 @@ const AboutUs = () => {
                 </div>
             </div>
 
+            <div className="grid items-start justify-center gap-5 px-3 lg:px-10 lg:grid-cols-2 xl:gap-40 md:gap-20">
+                <div className="">
+                    <Image
+                        src={'/static/images/about4.png'}
+                        alt="unsplash"
+                        loading="lazy"
+                        width={600}
+                        height={900}
+                        className="object-cover rounded-xl"
+                    />
+                </div>
+                <div className="w-full text-[#1B1B1B] space-y-6">
+                    <p className="text-xl font-bold xl:text-5xl md:text-2xl">
+                        Offering Complete Range of Global Logistics Solutions
+                    </p>
+                    <p className="text-sm text-justify md:text-base md:text-left">
+                        We at STAR CONCORD, a shipping agent in India, offer
+                        cost-effective services for LCL Cargo Consolidations,
+                        FCL& Air Freight Forwarding Services, Warehousing
+                        Solutions, Transportation and Supply Chain & Logistics
+                        Management. We deliver competitively priced solutions
+                        that will help you save on shipping, freight
+                        transportation and logistics costs.
+                    </p>
+                    <p className="text-sm text-justify md:text-base md:text-left">
+                        We serve a variety of industries including
+                        Manufacturing, Industrial, Hospitality, Oil &amp; Gas,
+                        Automobiles, Electronics, Marine, Heavy Duty Projects,
+                        Aviation, FMCG, Retails, Healthcare and Residential. Our
+                        scope of transportation is not limited to ships and
+                        aeroplanes, we operate on multiple modes of
+                        transportation while delivering door to door and ensure
+                        that your goods are picked up &amp; delivered safely
+                        from origin to its final destination.
+                    </p>
+                    <p className="text-sm text-justify md:text-base md:text-left">
+                        With an expansive global network of partners &amp;
+                        allies, we can deliver to all corners of the world. For
+                        all your shipping needs, we will help you find the right
+                        solutions for your business with our shipping &amp;
+                        logistics support.
+                    </p>
+                    <p className="text-sm font-semibold text-justify md:text-base md:text-left">
+                        {' '}
+                        <span className="font-normal">We have</span> “A
+                        Passionate Commitment to Making a Difference”.
+                    </p>
+                </div>
+            </div>
+
             {/* Why us */}
             <div className="grid items-start justify-center gap-5 px-3 lg:px-10 lg:grid-cols-2 xl:gap-40 md:gap-20">
                 <Image
@@ -215,7 +265,7 @@ const AboutUs = () => {
                     </button>
                 </div>
                 <div className="space-y-4">
-                    <div className="grid items-start w-full text-left lg:grid-cols-2 gap-5 xl:gap-40 md:gap-20">
+                    <div className="grid items-start w-full gap-5 text-left lg:grid-cols-2 xl:gap-40 md:gap-20">
                         {membershipTab === 'fmc' && (
                             <>
                                 <div className="space-y-8">
