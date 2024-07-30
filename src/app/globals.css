@@ -83,6 +83,30 @@ body::-webkit-scrollbar-thumb {
     width: 100%;
     left: 0;
 }
+.title:after,
+.heading:after {
+    background: #0057a4;
+    content: '';
+    display: block;
+    height: 3px;
+    width: 100px;
+    margin-top: 7px;
+}
+
+.header:after {
+    background: none repeat scroll 0 0 transparent;
+    content: '';
+    display: block;
+    height: 2px;
+    background: #0057a4;
+    transition: width 0.2s ease 0s, left 0.2s ease 0s;
+    width: 0;
+}
+
+.header:hover:after {
+    width: 100%;
+    left: 0;
+}
 /* Swiper Slider */
 body .swiper {
     padding-bottom: 3rem !important;

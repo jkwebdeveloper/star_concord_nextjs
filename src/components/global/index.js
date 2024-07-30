@@ -133,11 +133,12 @@ const Header = () => {
                             src={'/static/images/Star Concord Logo new-01.png'}
                             alt="logo"
                             loading="lazy"
-                            width={150}
-                            height={150}
+                            width={200}
+                            height={200}
+                            className="object-cover"
                         />
                     </Link>
-                    <ul className="hidden gap-5 lg:flex">
+                    <ul className="hidden gap-10 lg:flex">
                         {/* {menuItems.map((item, index) => (
               <li
                 key={index}

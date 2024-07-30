@@ -4,7 +4,7 @@ import React from 'react';
 const OurServiceSection = () => {
     return (
         <div className="container w-full mx-auto space-y-4 text-center">
-            <p className="text-sm text-[#104B59]">Our Services</p>
+            <p className="font-semibold text-[#104B59]">Our Services</p>
             <p className="text-xl font-bold lg:text-5xl">Global Solutions</p>
             <div className="flex flex-col items-start space-y-5 md:flex-row md:space-y-0">
                 <div className="md:w-[30%] w-full space-y-5">
@@ -30,8 +30,8 @@ const OurServiceSection = () => {
                                 src={'/static/images/Harbor Crane 1.png'}
                                 alt="unsplash"
                                 loading="lazy"
-                                width={150}
-                                height={150}
+                                width={200}
+                                height={200}
                                 className="object-cover"
                             />
                         </div>
@@ -47,8 +47,8 @@ const OurServiceSection = () => {
                                 src={'/static/images/package 1.png'}
                                 alt="unsplash"
                                 loading="lazy"
-                                width={150}
-                                height={150}
+                                width={170}
+                                height={170}
                                 className="object-cover"
                             />
                         </div>
