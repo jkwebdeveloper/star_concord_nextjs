@@ -138,7 +138,8 @@ const Header = () => {
                             className="object-cover"
                         />
                     </Link>
-                    <ul className="hidden gap-10 lg:flex">
+                    <div className=" h-10 hidden xl:flex min-h-[5px] w-0.5 bg-[#CECECE] dark:bg-white/10"></div>
+                    <ul className="hidden md:gap-8 xl:gap-11 lg:flex">
                         {/* {menuItems.map((item, index) => (
               <li
                 key={index}
@@ -178,11 +179,11 @@ const Header = () => {
                     <div className="hidden gap-3 text-center lg:flex">
                         <Button
                             variant="disable"
-                            className="hover:text-white text-primary_color"
+                            className="font-bold hover:text-white text-primary_color"
                         >
                             Login
                         </Button>
-                        <Button variant="primary" className="">
+                        <Button variant="primary" className="font-semibold">
                             Signup
                         </Button>
                     </div>

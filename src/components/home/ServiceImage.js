@@ -14,11 +14,11 @@ const ServiceImage = () => {
                 className="object-cover w-full h-full rounded-xl "
             />
             <div className="absolute top-0 flex items-center justify-start w-full h-full text-left">
-                <div className="mx-5 space-y-3 lg:space-y-6 lg:mx-28">
-                    <p className="text-lg font-bold text-justify text-white md:text-2xl lg:text-5xl">
+                <div className="mx-5 space-y-2 lg:space-y-6 lg:mx-28">
+                    <p className="text-base font-bold text-justify text-white md:text-2xl lg:text-5xl">
                         Service is Our Promise
                     </p>
-                    <p className="text-white">
+                    <p className="text-sm text-white md:base">
                         We are glad to assist with you about your freight &amp;
                         shipping needs…
                     </p>
