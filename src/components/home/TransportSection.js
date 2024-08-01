@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from '../ui/button';
+import Image from 'next/image';
 
 const TransportSection = () => {
     return (
@@ -28,44 +29,17 @@ const TransportSection = () => {
                         </Button>
                     </div>
                 </div>
-                <div className="justify-center w-full space-y-8">
-                    <h2 className="text-base font-semibold text-[#1B1B1B]">
-                        Pacific Star Group
-                    </h2>
-                    <div className="grid items-center grid-cols-2 gap-2">
-                        <div className="bg-[#F7F9FB] space-y-3 rounded-xl p-3 md:p-6">
-                            <div className="text-3xl font-bold md:text-5xl text-primary_color">
-                                +2500
-                            </div>
-                            <div className="text-sm text-gray-600 md:text-base">
-                                Employees
-                            </div>
-                        </div>
-                        <div className="bg-[#F7F9FB] space-y-3 rounded-xl p-3 md:p-6">
-                            <div className="text-3xl font-bold md:text-5xl text-primary_color">
-                                500
-                            </div>
-                            <div className="text-sm text-gray-600 md:text-base">
-                                KTEUs Moved
-                            </div>
-                        </div>
-                        <div className="bg-[#F7F9FB] space-y-3 rounded-xl p-3 md:p-6">
-                            <div className="text-3xl font-bold md:text-5xl text-primary_color">
-                                +50
-                            </div>
-                            <div className="text-sm text-gray-600 md:text-base">
-                                Offices in Asia
-                            </div>
-                        </div>
-                        <div className="bg-[#F7F9FB] space-y-3 rounded-xl p-3 md:p-6">
-                            <div className="text-3xl font-bold md:text-5xl text-primary_color">
-                                +250
-                            </div>
-                            <div className="text-sm text-gray-600 md:text-base">
-                                Destinations Worldwide
-                            </div>
-                        </div>
-                    </div>
+                <div>
+                    <Image
+                        src={'/static/images/home.png'}
+                        alt="banner"
+                        loading="lazy"
+                        width={800}
+                        layout="responsive"
+                        height={800}
+                        objectFit="cover"
+                        className="object-cover rounded-xl "
+                    />
                 </div>
             </div>
         </div>

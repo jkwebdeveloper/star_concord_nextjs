@@ -8,9 +8,11 @@ const HeroSection = () => {
                 src={'/static/images/home-banner.jpg'}
                 alt="banner"
                 loading="lazy"
+                layout="responsive"
+                objectFit="cover"
                 width={1000}
                 height={1000}
-                className="object-cover w-full h-full rounded-xl "
+                className="w-full h-full rounded-xl "
             />
             <div className="absolute left-0 flex items-center justify-center w-full h-full md:top-0 -top-6">
                 <div className="text-center md:space-y-7">

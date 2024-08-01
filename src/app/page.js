@@ -4,6 +4,7 @@ import HeroSection from '@/components/home/HeroSection';
 import LocationSection from '@/components/home/Location';
 import OurIndustriesSection from '@/components/home/OurIndustries';
 import OurServiceSection from '@/components/home/OurService';
+import PacificSection from '@/components/home/Pacific';
 import ServiceImage from '@/components/home/ServiceImage';
 import TextSection from '@/components/home/TextSection';
 import TransportSection from '@/components/home/TransportSection';
@@ -21,6 +22,7 @@ export default function Home() {
                 <LocationSection />
                 <ServiceImage />
                 <GetInTouchSection />
+                <PacificSection />
             </div>
             <div className="">
                 <TextSection />
