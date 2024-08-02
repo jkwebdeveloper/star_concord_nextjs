@@ -132,7 +132,7 @@ const IndustriesDetail = () => {
                                     on time withour trafic jams at the borders
                                     and operate with our own traction services
                                     in 20 different countries. We can increase
-                                    its capacities according to clients' demand.
+                                    its capacities according to clients demand.
                                 </p>
                                 <p className="text-[#1B1B1B] md:text-left text-justify">
                                     Odio risus mauris semper duis ullamcorper
@@ -188,7 +188,7 @@ const IndustriesDetail = () => {
                                     on time withour trafic jams at the borders
                                     and operate with our own traction services
                                     in 20 different countries. We can increase
-                                    its capacities according to clients' demand.
+                                    its capacities according to clients demand.
                                 </p>
                                 <p className="text-[#1B1B1B] md:text-left text-justify">
                                     Odio risus mauris semper duis ullamcorper
@@ -243,7 +243,7 @@ const IndustriesDetail = () => {
                                     on time withour trafic jams at the borders
                                     and operate with our own traction services
                                     in 20 different countries. We can increase
-                                    its capacities according to clients' demand.
+                                    its capacities according to clients demand.
                                 </p>
                                 <p className="text-[#1B1B1B] md:text-left text-justify">
                                     Odio risus mauris semper duis ullamcorper
@@ -299,7 +299,7 @@ const IndustriesDetail = () => {
                                     on time withour trafic jams at the borders
                                     and operate with our own traction services
                                     in 20 different countries. We can increase
-                                    its capacities according to clients' demand.
+                                    its capacities according to clients demand.
                                 </p>
                                 <p className="text-[#1B1B1B] md:text-left text-justify">
                                     Odio risus mauris semper duis ullamcorper
@@ -354,7 +354,7 @@ const IndustriesDetail = () => {
                                     on time withour trafic jams at the borders
                                     and operate with our own traction services
                                     in 20 different countries. We can increase
-                                    its capacities according to clients' demand.
+                                    its capacities according to clients demand.
                                 </p>
                                 <p className="text-[#1B1B1B] md:text-left text-justify">
                                     Odio risus mauris semper duis ullamcorper
