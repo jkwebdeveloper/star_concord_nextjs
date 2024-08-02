@@ -153,10 +153,10 @@ const Header = () => {
                         {[
                             { name: 'Home', href: '/' },
                             { name: 'About us', href: '/about-us' },
-                            { name: 'Services', href: '/' },
-                            { name: 'Industries', href: '/' },
+                            { name: 'Services', href: '/service' },
+                            { name: 'Industries', href: '/industries' },
                             { name: 'Articles', href: '/' },
-                            { name: 'Blogs', href: '/' },
+                            { name: 'Blogs', href: '/blog' },
                             { name: 'Contact us', href: '/contact-us' },
                         ].map(link => (
                             <Link key={link.name} href={link.href}>
