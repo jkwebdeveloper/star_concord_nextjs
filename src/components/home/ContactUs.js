@@ -15,8 +15,9 @@ const GetInTouchSection = () => {
                         Get in touch with us
                     </p>
                     <p className="text-[#6C6C6C] text-sm">
-                        Contact us on direct, by phone or fill out the form to
-                        receive a free consultation from our enthusiastic staff.
+                        Our team of experts is ready to work with you, to find
+                        the best freight forwarding solutions for your needs.
+                        Get in touch with us today
                     </p>
                     <div className="space-y-2">
                         <div className="flex items-center gap-3">

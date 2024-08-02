@@ -18,11 +18,11 @@ const HeroSection = () => {
                 <div className="text-center md:space-y-7">
                     <p className="md:w-1/2 w-[90%] leading-5 mx-auto text-base font-bold text-center text-white lg:text-5xl">
                         LCL Consolidators, Best Freight Forwarding & Shipping
-                        Agent In India
+                        Agent in India
                     </p>
-                    <p className="md:w-1/2 mx-auto mt-2 text-[10px] text-center text-white lg:mt-4 lg:w-auto lg:text-sm">
-                        No Matter The Location, We Have You Covered With Our
-                        Global Shipping
+                    <p className="md:w-1/2 mx-auto mt-2 text-[10px]  text-center text-white lg:mt-4 lg:w-auto lg:text-sm">
+                        No matter the Location, We have got you covered with our
+                        Global Shipping
                     </p>
                 </div>
             </div>

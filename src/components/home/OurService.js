@@ -3,9 +3,11 @@ import React from 'react';
 
 const OurServiceSection = () => {
     return (
-        <div className="container w-full mx-auto space-y-4 text-center">
-            <p className="font-semibold text-[#104B59]">Our Services</p>
-            <p className="text-xl font-bold lg:text-5xl">Global Solutions</p>
+        <div className="container w-full mx-auto space-y-6 text-center">
+            {/* <p className="font-semibold text-[#104B59]">Our Global Services</p> */}
+            <p className="text-xl font-bold lg:text-5xl">
+                Our Global Solutions
+            </p>
             <div className="flex flex-col items-start space-y-5 md:flex-row md:space-y-0">
                 <div className="md:w-[30%] w-full space-y-5">
                     <div className="bg-[#F7F9FB] relative w-full h-fit min-h-[450px] rounded-lg p-5 flex flex-col justify-end">

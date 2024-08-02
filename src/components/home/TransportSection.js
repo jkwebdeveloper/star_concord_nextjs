@@ -7,9 +7,9 @@ const TransportSection = () => {
         <div className="container w-full mx-auto">
             <div className="grid items-start gap-5 lg:grid-cols-2 xl:gap-40 md:gap-20">
                 <div className="space-y-4 lg:space-y-8">
-                    <h2 className="text-base font-semibold text-[#1B1B1B]">
+                    {/* <h2 className="text-base font-semibold text-[#1B1B1B]">
                         Logistics Transportation
-                    </h2>
+                    </h2> */}
                     <h1 className="text-lg font-bold leading-4 lg:text-5xl">
                         Offering Complete Range of Global Logistics Solutions
                     </h1>
