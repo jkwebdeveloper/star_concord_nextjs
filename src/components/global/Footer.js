@@ -6,6 +6,7 @@ import { FaTwitter } from 'react-icons/fa';
 import { FaLinkedinIn } from 'react-icons/fa';
 import { FaInstagram } from 'react-icons/fa';
 import { FaFacebookF } from 'react-icons/fa6';
+import Link from 'next/link';
 
 const Footer = () => {
     return (
@@ -37,12 +38,24 @@ const Footer = () => {
                             <div className="space-y-6">
                                 <p className="text-lg font-bold">Quick Links</p>
                                 <div className="space-y-2">
-                                    <p>About us</p>
-                                    <p>Services</p>
-                                    <p>Industries</p>
-                                    <p>Contact Us</p>
-                                    <p>Blog</p>
-                                    <p>Article</p>
+                                    <Link href="/about-us">
+                                        <p className="mb-2">About us</p>
+                                    </Link>
+                                    <Link href="/service">
+                                        <p className="mb-2">Services</p>
+                                    </Link>
+                                    <Link href="/industries">
+                                        <p className="mb-2">Industries</p>
+                                    </Link>
+                                    <Link href="/contact-us">
+                                        <p className="mb-2">Contact Us</p>
+                                    </Link>
+                                    <Link href="/blog">
+                                        <p className="mb-2">Blog</p>
+                                    </Link>
+                                    <Link href="/">
+                                        <p>Article</p>
+                                    </Link>
                                 </div>
                             </div>
                             <div className="space-y-6">

@@ -15,7 +15,7 @@ const BlogPage = () => {
             <div className="px-10 pb-20 space-y-10">
                 <div className="grid items-start justify-center gap-5 lg:grid-cols-3">
                     {BlogData.map(item => (
-                        <Link href="" key={item.id}>
+                        <Link href="/blog-detail" key={item.id}>
                             <div className="space-y-3" key={item.id}>
                                 <Image
                                     src={item.image}
