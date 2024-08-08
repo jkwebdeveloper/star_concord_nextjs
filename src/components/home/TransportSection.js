@@ -1,47 +1,70 @@
-import React from 'react';
+"use client"
+import React, { useEffect, useState } from 'react';
 import { Button } from '../ui/button';
 import Image from 'next/image';
+import axios from 'axios';
 
 const TransportSection = () => {
+    const [transport, setTransport] = useState({});
+    const [loading, setLoading] = useState(false);
+
+    const handleGetTransport = () => {
+        setLoading(true);
+        axios("https://starconcord.onrender.com/api/homePage", {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "GET",
+        })
+            .then((res) => {
+                setTransport(res.data.data);
+                setLoading(false);
+            })
+            .catch((err) => {
+                setLoading(false);
+            });
+    };
+
+    useEffect(() => {
+        handleGetTransport();
+    }, []);
+
     return (
         <div className="container w-full mx-auto">
-            <div className="grid items-start gap-5 lg:grid-cols-2 xl:gap-40 md:gap-20">
-                <div className="space-y-4 lg:space-y-8">
-                    {/* <h2 className="text-base font-semibold text-[#1B1B1B]">
-                        Logistics Transportation
-                    </h2> */}
-                    <h1 className="text-lg font-bold leading-4 lg:text-5xl">
-                        Offering Complete Range of Global Logistics Solutions
-                    </h1>
-                    <hr className="w-1/5 h-0.5 border-t-0 bg-primary_color dark:bg-white/10" />
-                    <p className="text-[#1B1B1B] text-base ">
-                        We at STAR CONCORD, a shipping agent in India, offer
-                        cost-effective services for LCL Cargo Consolidations,
-                        FCL& Air Freight Forwarding Services, Warehousing
-                        Solutions, Transportation and Supply Chain & Logistics
-                        Management. We deliver competitively priced solutions
-                        that will help you save on shipping, freight
-                        transportation and logistics costs.
-                    </p>
-                    <div className="">
-                        <Button variant="primary" className="">
-                            More Details
-                        </Button>
+            {loading ? (
+                <div className="flex justify-center w-64 mx-auto mt-28">
+                    <p>Loading...</p>
+                </div>
+            ) : (
+                <div className="grid items-start gap-5 lg:grid-cols-2 xl:gap-40 md:gap-20">
+                    <div className="space-y-4 lg:space-y-8">
+                        <h1 className="text-lg font-bold leading-4 lg:text-5xl">
+                            {transport?.topTitle}
+                        </h1>
+                        <hr className="w-1/5 h-0.5 border-t-0 bg-primary_color dark:bg-white/10" />
+                        <div className="text-[#1B1B1B] text-base " dangerouslySetInnerHTML={{ __html: transport?.topContent }}>
+
+                        </div>
+                        <div className="">
+                            <Button variant="primary" className="">
+                                More Details
+                            </Button>
+                        </div>
+                    </div>
+                    <div>
+                        <Image
+                            src={`https://starconcord.onrender.com/uploads${transport?.topBanner}`}
+                            alt="banner"
+                            loading="lazy"
+                            width={800}
+                            layout="responsive"
+                            height={800}
+                            objectFit="cover"
+                            className="object-cover rounded-xl "
+                        />
                     </div>
                 </div>
-                <div>
-                    <Image
-                        src={'/static/images/home.png'}
-                        alt="banner"
-                        loading="lazy"
-                        width={800}
-                        layout="responsive"
-                        height={800}
-                        objectFit="cover"
-                        className="object-cover rounded-xl "
-                    />
-                </div>
-            </div>
+            )}
         </div>
     );
 };
