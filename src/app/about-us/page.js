@@ -1,14 +1,40 @@
 'use client';
-
 import CommonBanner from '@/components/global/CommonBanner';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { FaRegCircleCheck } from 'react-icons/fa6';
+import axios from 'axios';
 
 const AboutUs = () => {
     const [selectedTab, setSelectedTab] = useState('mission');
     const [membershipTab, setmembershipTab] = useState('fmc');
+    const [aboutUs, setAboutUs] = useState([]);
+    const [loading, setLoading] = useState(false);
+
+    const handleGetAboutUs = () => {
+        setLoading(true);
+        axios("https://starconcord.onrender.com/api/aboutUsPage", {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "GET",
+        })
+            .then((res) => {
+                setAboutUs(res.data.data);
+                setLoading(false);
+            })
+            .catch((err) => {
+                setLoading(false);
+            });
+    };
+
+    useEffect(() => {
+        handleGetAboutUs();
+    }, []);
+
+    const firstTwoUsps = aboutUs?.uspsList?.slice(0, 2);
+    const remainingUsps = aboutUs?.uspsList?.slice(2);
 
     return (
         <div className="container w-full mx-auto lg:space-y-20 space-y-7">
@@ -17,483 +43,359 @@ const AboutUs = () => {
                 title="About us"
                 page="About us"
             />
-            {/* About company Sevtion */}
-            <div className="grid items-start justify-center gap-5 px-3 lg:px-10 lg:grid-cols-2 xl:gap-40 md:gap-20">
-                <div className="w-full text-[#1B1B1B] space-y-20">
-                    <div className="space-y-10">
+            {loading ? (
+                <div className="flex justify-center w-64 mx-auto mt-28">
+                    <p>Loading...</p>
+                </div>
+            ) : (
+                <>
+                    {/* About company Sevtion */}
+                    <div className="grid items-start justify-center gap-5 px-3 lg:px-10 lg:grid-cols-2 xl:gap-40 md:gap-20">
+                        <div className="w-full text-[#1B1B1B] space-y-20">
+                            <div className="space-y-10">
+                                <div className="space-y-4">
+                                    <p className="text-lg font-semibold">
+                                        About company
+                                    </p>
+                                </div>
+                                <p className='text-4xl font-bold'>{aboutUs?.aboutContentTitle}</p>
+                                <div className='text-lg' dangerouslySetInnerHTML={{ __html: aboutUs?.aboutContent }}></div>
+                                <div className='flex items-center gap-3 md:gap-16'>
+                                    <p className="font-semibold">CEO {aboutUs?.ceoName}</p>
+                                    <Image
+                                        src={`https://starconcord.onrender.com/uploads${aboutUs?.ceoSignature}`}
+                                        alt="unsplash"
+                                        loading="lazy"
+                                        width={200}
+                                        height={100}
+                                        className="object-cover rounded-xl"
+                                    />
+                                </div>
+                            </div>
+                            <div className="space-y-8">
+                                <div className="grid items-start w-full grid-cols-2 text-left">
+                                    <button
+                                        className={`text-lg font-semibold ${selectedTab === 'mission'
+                                            ? 'text-primary_color border-b-2 text-left border-primary_color'
+                                            : 'border-b-2 text-left border-[#C4C4C4]'
+                                            }`}
+                                        onClick={() => setSelectedTab('mission')}
+                                    >
+                                        Our mission
+                                    </button>
+                                    <button
+                                        className={`text-lg font-semibold ${selectedTab === 'vision'
+                                            ? 'text-primary_color text-left border-b-2 border-primary_color'
+                                            : 'border-b-2 text-left border-[#C4C4C4]'
+                                            }`}
+                                        onClick={() => setSelectedTab('vision')}
+                                    >
+                                        Our vision
+                                    </button>
+                                </div>
+                                <div className="space-y-6">
+                                    {selectedTab === 'mission' && (
+                                        <div className="space-y-8">
+                                            <div className='space-y-3' dangerouslySetInnerHTML={{ __html: aboutUs?.ourMission }}></div>
+                                            <Button variant="primary">
+                                                Explore more
+                                            </Button>
+                                        </div>
+                                    )}
+                                    {selectedTab === 'vision' && (
+                                        <div className="space-y-8">
+                                            {/* <p className="text-[#1B1B1B]">
+                                                Lorem ipsum, dolor sit amet consectetur
+                                                adipisicing elit. Minima perspiciatis
+                                                nostrum officiis autem dolorum suscipit
+                                                accusamus ipsam nihil ullam
+                                                reprehenderit! Accusantium, ipsam?
+                                            </p>
+                                            <ul className="pl-5 font-semibold text-[#1B1B1B] space-y-2 list-disc">
+                                                <li>
+                                                    Superior transportation and
+                                                    logistics services
+                                                </li>
+                                                <li>Guarantee on-time delivery</li>
+                                                <li>
+                                                    The most cost-effective delivery for
+                                                    clients
+                                                </li>
+                                            </ul> */}
+                                            <div className='space-y-3' dangerouslySetInnerHTML={{ __html: aboutUs?.ourVision }}></div>
+                                            <Button variant="primary">
+                                                Explore more
+                                            </Button>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="">
+                            <Image
+                                src={`https://starconcord.onrender.com/uploads${aboutUs?.rightBanner}`}
+                                alt="unsplash"
+                                loading="lazy"
+                                width={600}
+                                height={900}
+                                className="object-cover rounded-xl"
+                            />
+                        </div>
+                    </div>
+
+                    <div className="grid items-start justify-center gap-5 px-3 lg:px-10 lg:grid-cols-2 xl:gap-40 md:gap-20">
+                        <div className="">
+                            <Image
+                                src={`https://starconcord.onrender.com/uploads${aboutUs?.secBanner}`}
+                                alt="unsplash"
+                                loading="lazy"
+                                width={600}
+                                height={900}
+                                className="object-cover rounded-xl"
+                            />
+                        </div>
+                        <div className="w-full text-[#1B1B1B] space-y-6">
+                            <p className="text-xl font-bold xl:text-5xl md:text-2xl">
+                                Offering Complete Range of Global Logistics Solutions
+                            </p>
+                            <div className="space-y-4 text-sm text-justify md:text-base md:text-left" dangerouslySetInnerHTML={{ __html: aboutUs?.secContent }}>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Why us */}
+                    <div className="grid items-start justify-center gap-5 px-3 lg:px-10 lg:grid-cols-2 xl:gap-40 md:gap-20">
+                        <Image
+                            src={`https://starconcord.onrender.com/uploads${aboutUs?.whyusImage}`}
+                            alt="unsplash"
+                            loading="lazy"
+                            width={600}
+                            height={900}
+                            className="object-cover"
+                        />
+                        <div className="space-y-8">
+                            <p className="text-[#1B1B1B] font-semibold">Why Us</p>
+                            <p className="text-xl font-bold lg:text-4xl">
+                                {aboutUs?.secContentTitle}
+                            </p>
+                            <hr className="w-1/5 h-0.5 border-t-0 bg-primary_color dark:bg-white/10" />
+                            <div className='grid grid-cols-1 gap-5 md:grid-cols-2'>
+                                {aboutUs?.whyusPoints?.map((item1) => (
+                                    <div className="flex items-center gap-3" key={item1._id}>
+                                        <FaRegCircleCheck className="text-xl text-primary_color" />
+                                        <p className="text-xl font-semibold">
+                                            {item1?.name}
+                                        </p>
+                                    </div>
+                                ))}
+
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Accreditations */}
+                    <div className="px-3 space-y-8 lg:px-10">
+                        <p className="text-xl font-bold lg:text-5xl">
+                            Accreditations / Alliances / Memberships
+                        </p>
+                        <div className="flex items-start w-full gap-5 text-left lg:gap-20">
+                            <button
+                                className={`text-lg font-semibold ${membershipTab === 'fmc'
+                                    ? 'text-black border-b-2 text-left border-primary_color'
+                                    : 'border-b-2 text-left text-[#6C6C6C] border-[#C4C4C4]'
+                                    }`}
+                                onClick={() => setmembershipTab('fmc')}
+                            >
+                                Accreditation with FMC (USA)
+                            </button>
+                            <button
+                                className={`text-lg font-semibold ${membershipTab === 'mto'
+                                    ? 'text-black text-left border-b-2 border-primary_color'
+                                    : 'border-b-2 text-left text-[#6C6C6C] border-[#C4C4C4]'
+                                    }`}
+                                onClick={() => setmembershipTab('mto')}
+                            >
+                                MTO
+                            </button>
+                            <button
+                                className={`text-lg font-semibold ${membershipTab === 'iata'
+                                    ? 'text-black text-left border-b-2 border-primary_color'
+                                    : 'border-b-2 text-left text-[#6C6C6C] border-[#C4C4C4]'
+                                    }`}
+                                onClick={() => setmembershipTab('iata')}
+                            >
+                                Accreditation with IATA
+                            </button>
+                        </div>
                         <div className="space-y-4">
-                            <p className="text-lg font-semibold">
-                                About company
-                            </p>
-                            <p className="text-4xl font-bold">
-                                Global Leading business
-                            </p>
+                            <div className="grid items-start w-full gap-5 text-left lg:grid-cols-2 xl:gap-40 md:gap-20">
+                                {membershipTab === 'fmc' && (
+                                    <>
+                                        <div className="space-y-8">
+                                            {/* <p className="text-[#1B1B1B]">
+                                                We guarantee strict compliance to all
+                                                procedures before, during and after
+                                                journey.
+                                            </p>
+                                            <ul className="pl-5 font-semibold text-[#1B1B1B] space-y-2 list-disc">
+                                                <li>
+                                                    Standard operating procedures for
+                                                    vehicle maintenance
+                                                </li>
+                                                <li>Journey management plan</li>
+                                                <li>
+                                                    Standard operating procedures for
+                                                    loading
+                                                </li>
+                                            </ul> */}
+                                            <div className="text-[#1B1B1B] space-y-4" dangerouslySetInnerHTML={{ __html: aboutUs?.fmcDescription }}></div>
+                                            <Button variant="primary" className="mb-3">
+                                                View details
+                                            </Button>
+                                        </div>
+                                        <div className="">
+                                            <Image
+                                                src={`https://starconcord.onrender.com/uploads${aboutUs?.fmcImage}`}
+                                                alt="unsplash"
+                                                loading="lazy"
+                                                width={600}
+                                                height={600}
+                                                className="object-cover rounded-xl"
+                                            />
+                                        </div>
+                                    </>
+                                )}
+                                {membershipTab === 'mto' && (
+                                    <>
+                                        <div className="space-y-8">
+                                            <div className="text-[#1B1B1B] space-y-4" dangerouslySetInnerHTML={{ __html: aboutUs?.mtoDescription }}></div>
+                                            {/* <p className="text-[#1B1B1B]">
+                                                Lorem ipsum dolor sit amet consectetur
+                                                adipisicing elit. Soluta adipisci omnis
+                                                amet, quam eum deserunt at maxime
+                                                aspernatur voluptas officiis?
+                                            </p>
+                                            <ul className="pl-5 font-semibold text-[#1B1B1B] space-y-2 list-disc">
+                                                <li>
+                                                    Standard operating procedures for
+                                                    vehicle maintenance
+                                                </li>
+                                                <li>Journey management plan</li>
+                                                <li>
+                                                    Standard operating procedures for
+                                                    loading
+                                                </li>
+                                            </ul> */}
+                                            <Button variant="primary">
+                                                View details
+                                            </Button>
+                                        </div>
+                                        <div className="">
+                                            <Image
+                                                src={`https://starconcord.onrender.com/uploads${aboutUs?.mtoImage}`}
+                                                alt="unsplash"
+                                                loading="lazy"
+                                                width={990}
+                                                height={10}
+                                                className="object-cover rounded-xl"
+                                            />
+                                        </div>
+                                    </>
+                                )}
+                                {membershipTab === 'iata' && (
+                                    <>
+                                        <div className="space-y-8">
+                                            <div className="text-[#1B1B1B] space-y-4" dangerouslySetInnerHTML={{ __html: aboutUs?.iataDescription }}></div>
+                                            {/* <p className="text-[#1B1B1B]">
+                                                We guarantee strict compliance to all
+                                                procedures before, during and after
+                                                journey.
+                                            </p>
+                                            <ul className="pl-5 font-semibold text-[#1B1B1B] space-y-2 list-disc">
+                                                <li>
+                                                    Standard operating procedures for
+                                                    vehicle maintenance
+                                                </li>
+                                                <li>Journey management plan</li>
+                                                <li>
+                                                    Standard operating procedures for
+                                                    loading
+                                                </li>
+                                            </ul> */}
+                                            <Button variant="primary">
+                                                View details
+                                            </Button>
+                                        </div>
+                                        <div className="">
+                                            <Image
+                                                src={`https://starconcord.onrender.com/uploads${aboutUs?.iataImage}`}
+                                                alt="unsplash"
+                                                loading="lazy"
+                                                width={600}
+                                                height={600}
+                                                className="object-cover rounded-xl"
+                                            />
+                                        </div>
+                                    </>
+                                )}
+                            </div>
                         </div>
-                        <p>
-                            We have built a team of employees, who are
-                            participated in professional training courses , are
-                            groomed to handle any emerging situation with a
-                            level of composure that gives the customer peace of
-                            mind.
-                        </p>
-                        <p className="font-semibold">CEO Jenny Wilson</p>
                     </div>
-                    <div className="space-y-8">
-                        <div className="grid items-start w-full grid-cols-2 text-left">
-                            <button
-                                className={`text-lg font-semibold ${
-                                    selectedTab === 'mission'
-                                        ? 'text-primary_color border-b-2 text-left border-primary_color'
-                                        : 'border-b-2 text-left border-[#C4C4C4]'
-                                }`}
-                                onClick={() => setSelectedTab('mission')}
-                            >
-                                Our mission
-                            </button>
-                            <button
-                                className={`text-lg font-semibold ${
-                                    selectedTab === 'vision'
-                                        ? 'text-primary_color text-left border-b-2 border-primary_color'
-                                        : 'border-b-2 text-left border-[#C4C4C4]'
-                                }`}
-                                onClick={() => setSelectedTab('vision')}
-                            >
-                                Our vision
-                            </button>
-                        </div>
-                        <div className="space-y-6">
-                            {selectedTab === 'mission' && (
-                                <div className="space-y-8">
-                                    <p className="text-[#1B1B1B]">
-                                        Offering our customers the opportunity
-                                        to conduct their shipments in a friendly
-                                        environmental way
-                                    </p>
-                                    <ul className="pl-5 font-semibold text-[#1B1B1B] space-y-2 list-disc">
-                                        <li>
-                                            Superior transportation and
-                                            logistics services
-                                        </li>
-                                        <li>Guarantee on-time delivery</li>
-                                        <li>
-                                            The most cost-effective delivery for
-                                            clients
-                                        </li>
-                                    </ul>
-                                    <Button variant="primary">
-                                        Explore more
-                                    </Button>
-                                </div>
-                            )}
-                            {selectedTab === 'vision' && (
-                                <div className="space-y-8">
-                                    <p className="text-[#1B1B1B]">
-                                        Lorem ipsum, dolor sit amet consectetur
-                                        adipisicing elit. Minima perspiciatis
-                                        nostrum officiis autem dolorum suscipit
-                                        accusamus ipsam nihil ullam
-                                        reprehenderit! Accusantium, ipsam?
-                                    </p>
-                                    <ul className="pl-5 font-semibold text-[#1B1B1B] space-y-2 list-disc">
-                                        <li>
-                                            Superior transportation and
-                                            logistics services
-                                        </li>
-                                        <li>Guarantee on-time delivery</li>
-                                        <li>
-                                            The most cost-effective delivery for
-                                            clients
-                                        </li>
-                                    </ul>
-                                    <Button variant="primary">
-                                        Explore more
-                                    </Button>
-                                </div>
-                            )}
-                        </div>
-                    </div>
-                </div>
-                <div className="">
-                    <Image
-                        src={'/static/images/unsplash.png'}
-                        alt="unsplash"
-                        loading="lazy"
-                        width={600}
-                        height={900}
-                        className="object-cover rounded-xl"
-                    />
-                </div>
-            </div>
 
-            <div className="grid items-start justify-center gap-5 px-3 lg:px-10 lg:grid-cols-2 xl:gap-40 md:gap-20">
-                <div className="">
-                    <Image
-                        src={'/static/images/about4.png'}
-                        alt="unsplash"
-                        loading="lazy"
-                        width={600}
-                        height={900}
-                        className="object-cover rounded-xl"
-                    />
-                </div>
-                <div className="w-full text-[#1B1B1B] space-y-6">
-                    <p className="text-xl font-bold xl:text-5xl md:text-2xl">
-                        Offering Complete Range of Global Logistics Solutions
-                    </p>
-                    <p className="text-sm text-justify md:text-base md:text-left">
-                        We at STAR CONCORD, a shipping agent in India, offer
-                        cost-effective services for LCL Cargo Consolidations,
-                        FCL& Air Freight Forwarding Services, Warehousing
-                        Solutions, Transportation and Supply Chain & Logistics
-                        Management. We deliver competitively priced solutions
-                        that will help you save on shipping, freight
-                        transportation and logistics costs.
-                    </p>
-                    <p className="text-sm text-justify md:text-base md:text-left">
-                        We serve a variety of industries including
-                        Manufacturing, Industrial, Hospitality, Oil &amp; Gas,
-                        Automobiles, Electronics, Marine, Heavy Duty Projects,
-                        Aviation, FMCG, Retails, Healthcare and Residential. Our
-                        scope of transportation is not limited to ships and
-                        aeroplanes, we operate on multiple modes of
-                        transportation while delivering door to door and ensure
-                        that your goods are picked up &amp; delivered safely
-                        from origin to its final destination.
-                    </p>
-                    <p className="text-sm text-justify md:text-base md:text-left">
-                        With an expansive global network of partners &amp;
-                        allies, we can deliver to all corners of the world. For
-                        all your shipping needs, we will help you find the right
-                        solutions for your business with our shipping &amp;
-                        logistics support.
-                    </p>
-                    <p className="text-sm font-semibold text-justify md:text-base md:text-left">
-                        {' '}
-                        <span className="font-normal">We have</span> “A
-                        Passionate Commitment to Making a Difference”.
-                    </p>
-                </div>
-            </div>
-
-            {/* Why us */}
-            <div className="grid items-start justify-center gap-5 px-3 lg:px-10 lg:grid-cols-2 xl:gap-40 md:gap-20">
-                <Image
-                    src={'/static/images/aboutpage.png'}
-                    alt="unsplash"
-                    loading="lazy"
-                    width={600}
-                    height={900}
-                    className="object-cover"
-                />
-                <div className="space-y-8">
-                    <p className="text-[#1B1B1B] font-semibold">Why Us</p>
-                    <p className="text-xl font-bold lg:text-4xl">
-                        Stay on budget <br /> with our transport
-                    </p>
-                    <hr className="w-1/5 h-0.5 border-t-0 bg-primary_color dark:bg-white/10" />
-                    <p>
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the industry
-                        standard dummy text ever since the 1500s,
-                    </p>
-                    <div className="flex-col items-center gap-10 space-y-5 lg:space-y-0 lg:flex-row">
-                        <div className="flex items-center gap-3">
-                            <FaRegCircleCheck className="text-xl text-primary_color" />
-                            <p className="text-xl font-semibold">
-                                Safe Package
-                            </p>
-                        </div>
-                        <div className="flex items-center gap-3">
-                            <FaRegCircleCheck className="text-xl text-primary_color" />
-                            <p className="text-xl font-semibold">
-                                Transparent Pricing
-                            </p>
-                        </div>
-                    </div>
-                    <div className="flex-col items-center gap-10 space-y-5 lg:flex-row lg:space-y-0">
-                        <div className="flex items-center gap-3">
-                            <FaRegCircleCheck className="text-xl text-primary_color" />
-                            <p className="text-xl font-semibold">
-                                Global Tracking
-                            </p>
-                        </div>
-                        <div className="flex items-center gap-3">
-                            <FaRegCircleCheck className="text-xl text-primary_color" />
-                            <p className="text-xl font-semibold">
-                                24 / 7 Support
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Accreditations */}
-            <div className="px-3 space-y-8 lg:px-10">
-                <p className="text-xl font-bold lg:text-5xl">
-                    Accreditations / Alliances / Memberships
-                </p>
-                <div className="flex items-start w-full gap-5 text-left lg:gap-20">
-                    <button
-                        className={`text-lg font-semibold ${
-                            membershipTab === 'fmc'
-                                ? 'text-black border-b-2 text-left border-primary_color'
-                                : 'border-b-2 text-left text-[#6C6C6C] border-[#C4C4C4]'
-                        }`}
-                        onClick={() => setmembershipTab('fmc')}
-                    >
-                        Accreditation with FMC (USA)
-                    </button>
-                    <button
-                        className={`text-lg font-semibold ${
-                            membershipTab === 'mto'
-                                ? 'text-black text-left border-b-2 border-primary_color'
-                                : 'border-b-2 text-left text-[#6C6C6C] border-[#C4C4C4]'
-                        }`}
-                        onClick={() => setmembershipTab('mto')}
-                    >
-                        MTO
-                    </button>
-                    <button
-                        className={`text-lg font-semibold ${
-                            membershipTab === 'iata'
-                                ? 'text-black text-left border-b-2 border-primary_color'
-                                : 'border-b-2 text-left text-[#6C6C6C] border-[#C4C4C4]'
-                        }`}
-                        onClick={() => setmembershipTab('iata')}
-                    >
-                        Accreditation with IATA
-                    </button>
-                </div>
-                <div className="space-y-4">
-                    <div className="grid items-start w-full gap-5 text-left lg:grid-cols-2 xl:gap-40 md:gap-20">
-                        {membershipTab === 'fmc' && (
-                            <>
-                                <div className="space-y-8">
-                                    <p className="text-[#1B1B1B]">
-                                        We guarantee strict compliance to all
-                                        procedures before, during and after
-                                        journey.
-                                    </p>
-                                    <ul className="pl-5 font-semibold text-[#1B1B1B] space-y-2 list-disc">
-                                        <li>
-                                            Standard operating procedures for
-                                            vehicle maintenance
-                                        </li>
-                                        <li>Journey management plan</li>
-                                        <li>
-                                            Standard operating procedures for
-                                            loading
-                                        </li>
-                                    </ul>
-                                    <Button variant="primary" className="mb-3">
-                                        View details
-                                    </Button>
+                    {/* Our USPS */}
+                    <div className="pb-10 space-y-10">
+                        <div className="grid items-start justify-center gap-5 px-3 lg:px-10 lg:grid-cols-2">
+                            <div className="space-y-3">
+                                <p className="text-4xl font-bold">Our USPS</p>
+                                <div className="text-[#6C6C6C]" dangerouslySetInnerHTML={{ __html: aboutUs?.uspsDescription }}>
                                 </div>
-                                <div className="">
+                            </div>
+                            <div className="grid items-start gap-5 lg:grid-cols-2">
+                                {firstTwoUsps?.map((uspsItem) => (
+                                    <div key={uspsItem._id} className="p-5 space-y-4 rounded-md cursor-pointer hover:shadow-lg hover:bg-white">
+                                        <Image
+                                            src={`https://starconcord.onrender.com/uploads${uspsItem.uspsIconImage}`}
+                                            alt={uspsItem.uspsName}
+                                            loading="lazy"
+                                            width={50}
+                                            height={50}
+                                            className=""
+                                        />
+                                        <p className="text-[#1B1B1B] text-xl font-semibold">
+                                            {uspsItem.uspsName}
+                                        </p>
+                                        <div
+                                            className="text-[#1B1B1B]"
+                                            dangerouslySetInnerHTML={{ __html: uspsItem.uspsContent }}
+                                        />
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="grid items-start gap-5 px-3 lg:px-10 lg:grid-cols-4 md:grid-cols-2">
+                            {remainingUsps?.map((uspsItem) => (
+                                <div key={uspsItem._id} className="p-5 space-y-4 rounded-md cursor-pointer hover:shadow-lg hover:bg-white">
                                     <Image
-                                        src={'/static/images/banner.png'}
-                                        alt="unsplash"
+                                        src={`https://starconcord.onrender.com/uploads${uspsItem.uspsIconImage}`}
+                                        alt={uspsItem.uspsName}
                                         loading="lazy"
-                                        width={600}
-                                        height={600}
-                                        className="object-cover w-full rounded-xl"
+                                        width={50}
+                                        height={50}
+                                        className=""
+                                    />
+                                    <p className="text-[#1B1B1B] text-xl font-semibold">
+                                        {uspsItem.uspsName}
+                                    </p>
+                                    <div
+                                        className="text-[#1B1B1B]"
+                                        dangerouslySetInnerHTML={{ __html: uspsItem.uspsContent }}
                                     />
                                 </div>
-                            </>
-                        )}
-                        {membershipTab === 'mto' && (
-                            <>
-                                <div className="space-y-8">
-                                    <p className="text-[#1B1B1B]">
-                                        Lorem ipsum dolor sit amet consectetur
-                                        adipisicing elit. Soluta adipisci omnis
-                                        amet, quam eum deserunt at maxime
-                                        aspernatur voluptas officiis?
-                                    </p>
-                                    <ul className="pl-5 font-semibold text-[#1B1B1B] space-y-2 list-disc">
-                                        <li>
-                                            Standard operating procedures for
-                                            vehicle maintenance
-                                        </li>
-                                        <li>Journey management plan</li>
-                                        <li>
-                                            Standard operating procedures for
-                                            loading
-                                        </li>
-                                    </ul>
-                                    <Button variant="primary">
-                                        View details
-                                    </Button>
-                                </div>
-                                <div className="">
-                                    <Image
-                                        src={'/static/images/banner.png'}
-                                        alt="unsplash"
-                                        loading="lazy"
-                                        width={600}
-                                        height={600}
-                                        className="object-cover w-full rounded-xl"
-                                    />
-                                </div>
-                            </>
-                        )}
-                        {membershipTab === 'iata' && (
-                            <>
-                                <div className="space-y-8">
-                                    <p className="text-[#1B1B1B]">
-                                        We guarantee strict compliance to all
-                                        procedures before, during and after
-                                        journey.
-                                    </p>
-                                    <ul className="pl-5 font-semibold text-[#1B1B1B] space-y-2 list-disc">
-                                        <li>
-                                            Standard operating procedures for
-                                            vehicle maintenance
-                                        </li>
-                                        <li>Journey management plan</li>
-                                        <li>
-                                            Standard operating procedures for
-                                            loading
-                                        </li>
-                                    </ul>
-                                    <Button variant="primary">
-                                        View details
-                                    </Button>
-                                </div>
-                                <div className="">
-                                    <Image
-                                        src={'/static/images/banner.png'}
-                                        alt="unsplash"
-                                        loading="lazy"
-                                        width={600}
-                                        height={600}
-                                        className="object-cover w-full rounded-xl"
-                                    />
-                                </div>
-                            </>
-                        )}
-                    </div>
-                </div>
-            </div>
-
-            {/* Our USPS */}
-            <div className="pb-10 space-y-10">
-                <div className="grid items-start justify-center gap-5 px-3 lg:px-10 lg:grid-cols-2">
-                    <div className="space-y-3">
-                        <p className="text-4xl font-bold">Our USPS</p>
-                        <p className="text-[#6C6C6C]">
-                            Provides high quality, comprehensive transportation
-                            services and always understand client requirements.
-                        </p>
-                    </div>
-                    <div className="grid items-start gap-5 lg:grid-cols-2">
-                        <div className="p-5 space-y-4 rounded-md cursor-pointer hover:shadow-lg hover:bg-white">
-                            <Image
-                                src={'/static/images/abouticon1.png'}
-                                alt="unsplash"
-                                loading="lazy"
-                                width={50}
-                                height={50}
-                                className=""
-                            />
-                            <p className="text-[#1B1B1B] text-xl font-semibold">
-                                Economical Pricing
-                            </p>
-                            <p className="text-[#1B1B1B]">
-                                Sea freight transportation is offered from home
-                                to abroad and vice versa.
-                            </p>
-                        </div>
-                        <div className="p-5 space-y-4 rounded-md cursor-pointer hover:shadow-lg hover:bg-white">
-                            <Image
-                                src={'/static/images/abouticon1.png'}
-                                alt="unsplash"
-                                loading="lazy"
-                                width={50}
-                                height={50}
-                                className=""
-                            />
-                            <p className="text-[#1B1B1B] text-xl font-semibold">
-                                Economical Pricing
-                            </p>
-                            <p className="text-[#1B1B1B]">
-                                Sea freight transportation is offered from home
-                                to abroad and vice versa.
-                            </p>
+                            ))}
                         </div>
                     </div>
-                </div>
-                <div className="grid items-start gap-5 px-3 lg:px-10 lg:grid-cols-4 md:grid-cols-2">
-                    <div className="p-5 space-y-4 rounded-md cursor-pointer hover:shadow-lg hover:bg-white">
-                        <Image
-                            src={'/static/images/abouticon1.png'}
-                            alt="unsplash"
-                            loading="lazy"
-                            width={50}
-                            height={50}
-                            className=""
-                        />
-                        <p className="text-[#1B1B1B] text-xl font-semibold">
-                            Economical Pricing
-                        </p>
-                        <p className="text-[#1B1B1B]">
-                            Sea freight transportation is offered from home to
-                            abroad and vice versa.
-                        </p>
-                    </div>
-                    <div className="p-5 space-y-4 rounded-md cursor-pointer hover:shadow-lg hover:bg-white">
-                        <Image
-                            src={'/static/images/abouticon1.png'}
-                            alt="unsplash"
-                            loading="lazy"
-                            width={50}
-                            height={50}
-                            className=""
-                        />
-                        <p className="text-[#1B1B1B] text-xl font-semibold">
-                            Economical Pricing
-                        </p>
-                        <p className="text-[#1B1B1B]">
-                            Sea freight transportation is offered from home to
-                            abroad and vice versa.
-                        </p>
-                    </div>
-                    <div className="p-5 space-y-4 rounded-md cursor-pointer hover:shadow-lg hover:bg-white">
-                        <Image
-                            src={'/static/images/abouticon1.png'}
-                            alt="unsplash"
-                            loading="lazy"
-                            width={50}
-                            height={50}
-                            className=""
-                        />
-                        <p className="text-[#1B1B1B] text-xl font-semibold">
-                            Economical Pricing
-                        </p>
-                        <p className="text-[#1B1B1B]">
-                            Sea freight transportation is offered from home to
-                            abroad and vice versa.
-                        </p>
-                    </div>
-                    <div className="p-5 space-y-4 rounded-md cursor-pointer hover:shadow-lg hover:bg-white">
-                        <Image
-                            src={'/static/images/abouticon1.png'}
-                            alt="unsplash"
-                            loading="lazy"
-                            width={50}
-                            height={50}
-                            className=""
-                        />
-                        <p className="text-[#1B1B1B] text-xl font-semibold">
-                            Economical Pricing
-                        </p>
-                        <p className="text-[#1B1B1B]">
-                            Sea freight transportation is offered from home to
-                            abroad and vice versa.
-                        </p>
-                    </div>
-                </div>
-            </div>
+                </>
+            )}
         </div>
     );
 };

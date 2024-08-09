@@ -1,22 +1,46 @@
-import React from 'react';
+"use client"
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
 const TextSection = () => {
+
+    const [paraData, setParaData] = useState({});
+    const [loading, setLoading] = useState(false);
+
+    const handleGetText = () => {
+        setLoading(true);
+        axios("https://starconcord.onrender.com/api/homePage", {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "GET",
+        })
+            .then((res) => {
+                setParaData(res.data.data);
+                setLoading(false);
+            })
+            .catch((err) => {
+                setLoading(false);
+            });
+    };
+
+    useEffect(() => {
+        handleGetText();
+    }, []);
+
     return (
         <div className="w-full bg-[#F7F9FB]">
             <div className="container relative w-full p-2 px-5 py-10 mx-auto space-y-2 lg:px-10 lg:space-y-4">
-                <p className="text-[#1B1B1B] md:text-left text-justify">
-                    Established in 1977, PACIFIC STAR GROUP is now one of the
-                    largest shipping agents and most influential market leaders
-                    in Taiwan, throughout Greater China, the USA & Globally.
-                    Pacific Star Group’s services include liner agency,
-                    shipbroker, tramp agency, container leasing, NVOCC, ocean
-                    and air freight forwarding and customs clearance. Pacific
-                    Star Group has strategically placed offices across the globe
-                    to reach every client who needs reliable shipping services.
-                    Currently, Pacific Star Group has over 2,500 professionals
-                    to ensure a worry-free delivery.
-                </p>
-                <p className="text-[#1B1B1B] md:text-left text-justify">
+                {loading ? (
+                    <div className="flex justify-center w-64 mx-auto mt-28">
+                        <p>Loading...</p>
+                    </div>
+                ) : (
+                    <div className="text-[#1B1B1B] space-y-3 md:text-left text-justify" dangerouslySetInnerHTML={{ __html: paraData?.bottomContent }}>
+
+                    </div>
+                )}
+                {/* <p className="text-[#1B1B1B] md:text-left text-justify">
                     Over the years, the Taiwan Ministry of Transportation and
                     Communication and the Port Authority of Keelung has
                     consistently named Pacific Star Group as “The best NVOCC of
@@ -33,7 +57,7 @@ const TextSection = () => {
                     Our team of experts is ready to work with you, to find the
                     best freight forwarding solutions for your needs. Get in
                     touch with us today.
-                </p>
+                </p> */}
             </div>
         </div>
     );

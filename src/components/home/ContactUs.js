@@ -1,12 +1,49 @@
-import React from 'react';
+"use client"
+import React, { Fragment, useState } from 'react';
 import { RiMailSendLine } from 'react-icons/ri';
 import { IoSend } from 'react-icons/io5';
 import { MdOutlinePhoneInTalk } from 'react-icons/md';
 import { IoMailOutline } from 'react-icons/io5';
 import { SlLocationPin } from 'react-icons/sl';
 import { Button } from '../ui/button';
+import ValidationSchema, { contactValidation } from '../Validation';
+import axios from 'axios';
+import toast from 'react-hot-toast';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 const GetInTouchSection = () => {
+    const [loading, setLoading] = useState(false);
+
+    const handlePost = (values, actions) => {
+        console.log(values);
+        setLoading(true);
+        axios("https://starconcord.onrender.com/api/send-meesage", {
+            method: "post",
+            data: {
+                email: values.email,
+                name: values.name,
+                phone: values.phone,
+                message: values.message,
+            },
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((res) => {
+                console.log(res.data);
+                setLoading(false);
+                toast.success(res.data.massage, {
+                    zIndex: "9999px",
+                  });
+                actions.resetForm(); // Reset form after successful submission
+            })
+            .catch((err) => {
+                console.log(err, "error");
+                toast.error("Phone is invalid", { duration: 3000 });
+                setLoading(false);
+            });
+    };
+
     return (
         <div className="container w-full mx-auto">
             <div className="grid items-center gap-5 lg:grid-cols-2 xl:gap-40 md:gap-20">
@@ -49,45 +86,86 @@ const GetInTouchSection = () => {
                         <RiMailSendLine className="text-2xl text-primary_color" />
                         <p className="text-xl font-bold">Send us message</p>
                     </div>
-                    <div class="flex flex-col gap-6">
-                        <div class="relative h-11 w-full">
-                            <input
-                                placeholder="Full name"
-                                className="w-full font-semibold h-full bg-transparent border-b peer border-[#7A7A7A] placeholder:font-semibold placeholder-[#6C6C6C]  focus:border-primary_color focus:outline-0 "
-                                type="text"
-                            />
-                            {/* <label className=" after:border-gray-500">
-                                Full name
-                            </label> */}
-                        </div>
-                        <div class="relative h-11 w-full">
-                            <input
-                                placeholder="Phone number"
-                                className="w-full font-semibold h-full bg-transparent border-b peer border-[#7A7A7A] placeholder:font-semibold placeholder-[#6C6C6C]  focus:border-primary_color focus:outline-0 "
-                                type="text"
-                            />
-                        </div>
-                        <div class="relative h-11 w-full">
-                            <input
-                                placeholder="Email adress"
-                                className="w-full font-semibold h-full bg-transparent border-b peer border-[#7A7A7A] placeholder:font-semibold placeholder-[#6C6C6C]  focus:border-primary_color focus:outline-0 "
-                                type="email"
-                            />
-                        </div>
-                        <div className="relative w-full min-w-[200px]">
-                            <textarea
-                                className="w-full font-semibold h-full bg-transparent border-b peer border-[#7A7A7A] placeholder:font-semibold placeholder-[#6C6C6C]  focus:border-primary_color focus:outline-0"
-                                placeholder="Message"
-                            ></textarea>
-                        </div>
-                    </div>
-                    <Button
-                        className="flex items-center gap-3"
-                        variant="primary"
+                    <Formik
+                        initialValues={contactValidation.initialState}
+                        validationSchema={contactValidation.schema}
+                        onSubmit={handlePost}
                     >
-                        <IoSend />
-                        Send message
-                    </Button>
+                        {({
+                            values,
+                            errors,
+                            touched,
+                            handleBlur,
+                            handleChange,
+                            handleSubmit,
+                        }) => (
+                            <Form>
+                                <div className="flex flex-col gap-6">
+                                    <div className="relative w-full h-11">
+                                        <Field
+                                            placeholder="Full name"
+                                            className="w-full font-semibold h-full bg-transparent border-b peer border-[#7A7A7A] placeholder:font-semibold placeholder-[#6C6C6C]  focus:border-primary_color focus:outline-0 "
+                                            type="text"
+                                            name="name"
+                                        />
+                                        <ErrorMessage
+                                            name="name"
+                                            component="span"
+                                            className="text-red-600"
+                                        />
+                                    </div>
+                                    <div className="relative w-full h-11">
+                                        <Field
+                                            placeholder="Phone number"
+                                            className="w-full font-semibold h-full bg-transparent border-b peer border-[#7A7A7A] placeholder:font-semibold placeholder-[#6C6C6C]  focus:border-primary_color focus:outline-0 "
+                                            type="tel"
+                                            maxLength={10}
+                                            name="phone"
+                                        />
+                                        <ErrorMessage
+                                            name="phone"
+                                            component="span"
+                                            className="text-red-600"
+                                        />
+                                    </div>
+                                    <div className="relative w-full h-11">
+                                        <Field
+                                            placeholder="Email address"
+                                            className="w-full font-semibold h-full bg-transparent border-b peer border-[#7A7A7A] placeholder:font-semibold placeholder-[#6C6C6C]  focus:border-primary_color focus:outline-0 "
+                                            type="email"
+                                            name="email"
+                                        />
+                                        <ErrorMessage
+                                            name="email"
+                                            component="span"
+                                            className="text-red-600"
+                                        />
+                                    </div>
+                                    <div className="relative w-full min-w-[200px]">
+                                        <Field
+                                            as="textarea"
+                                            className="w-full font-semibold h-full bg-transparent border-b peer border-[#7A7A7A] placeholder:font-semibold placeholder-[#6C6C6C]  focus:border-primary_color focus:outline-0"
+                                            placeholder="Message"
+                                            name="message"
+                                        ></Field>
+                                        <ErrorMessage
+                                            name="message"
+                                            component="span"
+                                            className="text-red-600"
+                                        />
+                                    </div>
+                                </div>
+                                <Button
+                                    type="submit"
+                                    className="flex items-center gap-3 mt-6"
+                                    variant="primary"
+                                >
+                                    <IoSend />
+                                    {loading ? "Loading..." : "Send message"}
+                                </Button>
+                            </Form>
+                        )}
+                    </Formik>
                 </div>
             </div>
         </div>
