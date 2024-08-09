@@ -179,6 +179,8 @@ const AboutUs = () => {
                                 {aboutUs?.secContentTitle}
                             </p>
                             <hr className="w-1/5 h-0.5 border-t-0 bg-primary_color dark:bg-white/10" />
+                            <div className="text-[#1B1B1B]"
+                                dangerouslySetInnerHTML={{ __html: aboutUs.whyusContent }}></div>
                             <div className='grid grid-cols-1 gap-5 md:grid-cols-2'>
                                 {aboutUs?.whyusPoints?.map((item1) => (
                                     <div className="flex items-center gap-3" key={item1._id}>
