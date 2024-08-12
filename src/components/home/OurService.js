@@ -2,13 +2,10 @@
 import axios from 'axios';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
-import AOS from "aos";
-import "aos/dist/aos.css";
+
 
 const OurServiceSection = () => {
-    useEffect(() => {
-        AOS.init();
-      }, []);
+    
     const [service, setService] = useState([]);
     const [loading, setLoading] = useState(false);
 
@@ -46,7 +43,7 @@ const OurServiceSection = () => {
                 <div className="flex flex-col items-start space-y-5 md:flex-row md:space-y-0">
                     {service?.ourServices?.[0] && (
                         <div className="md:w-[30%] w-full space-y-5">
-                            <div data-aos="fade-right" className="bg-[#F7F9FB] relative w-full h-fit min-h-[517px] rounded-lg p-5 flex flex-col justify-end">
+                            <div  className="bg-[#F7F9FB] relative w-full h-fit min-h-[517px] rounded-lg p-5 flex flex-col justify-end">
                                 <Image
                                     src={`https://starconcord.onrender.com/uploads${service.ourServices[0].serviceIconImage}`}
                                     alt={service.ourServices[0].serviceName}
@@ -64,7 +61,7 @@ const OurServiceSection = () => {
                     <div className="grid items-start md:w-[70%] w-full mx-auto justify-center grid-cols-1 gap-9 md:px-10 lg:grid-cols-2">
 
                         {service?.ourServices?.[1] && (
-                            <div data-aos="zoom-in" className="bg-[#F7F9FB] min-h-[220px] rounded-lg pb-5 flex flex-col">
+                            <div  className="bg-[#F7F9FB] min-h-[220px] rounded-lg pb-5 flex flex-col">
                                 <div className='flex justify-end'>
 
                                     <Image
@@ -84,7 +81,7 @@ const OurServiceSection = () => {
                             </div>
                         )}
                         {service?.ourServices?.[2] && (
-                            <div data-aos="fade-left" className="bg-[#F7F9FB] min-h-[220px] rounded-lg pb-5 flex flex-col">
+                            <div  className="bg-[#F7F9FB] min-h-[220px] rounded-lg pb-5 flex flex-col">
                                 <div className="flex justify-end">
                                     <Image
                                         src={`https://starconcord.onrender.com/uploads${service.ourServices[2].serviceIconImage}`}
@@ -103,7 +100,7 @@ const OurServiceSection = () => {
                             </div>
                         )}
                         {service?.ourServices?.[3] && (
-                            <div data-aos="zoom-in" className="bg-[#F7F9FB] min-h-[220px] rounded-lg pb-4 flex flex-col">
+                            <div  className="bg-[#F7F9FB] min-h-[220px] rounded-lg pb-4 flex flex-col">
                                 <div className="flex justify-end">
                                     <Image
                                         src={`https://starconcord.onrender.com/uploads${service.ourServices[3].serviceIconImage}`}
@@ -122,7 +119,7 @@ const OurServiceSection = () => {
                             </div>
                         )}
                         {service?.ourServices?.[4] && (
-                            <div data-aos="fade-left" className="bg-[#F7F9FB] min-h-[220px] rounded-lg pb-5 flex flex-col">
+                            <div  className="bg-[#F7F9FB] min-h-[220px] rounded-lg pb-5 flex flex-col">
                                 <div className="flex justify-end">
                                     <Image
                                         src={`https://starconcord.onrender.com/uploads${service.ourServices[4].serviceIconImage}`}

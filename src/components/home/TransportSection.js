@@ -3,13 +3,13 @@ import React, { useEffect, useState } from 'react';
 import { Button } from '../ui/button';
 import Image from 'next/image';
 import axios from 'axios';
-import AOS from "aos";
-import "aos/dist/aos.css";
+// import AOS from "aos";
+// import "aos/dist/aos.css";
 
 const TransportSection = () => {
-    useEffect(() => {
-        AOS.init();
-      }, []);
+    // useEffect(() => {
+    //     AOS.init();
+    //   }, []);
     const [transport, setTransport] = useState({});
     const [loading, setLoading] = useState(false);
 
@@ -42,7 +42,7 @@ const TransportSection = () => {
                 </div>
             ) : (
                 <div className="grid items-start gap-5 lg:grid-cols-2 xl:gap-40 md:gap-20">
-                    <div data-aos="fade-right" className="space-y-4 lg:space-y-8">
+                    <div className="space-y-4 lg:space-y-8">
                         <h1 className="text-lg font-bold leading-4 lg:text-5xl">
                             {transport?.topTitle}
                         </h1>
@@ -62,7 +62,7 @@ const TransportSection = () => {
                             alt="banner"
                             loading="lazy"
                             width={800}
-                            data-aos="fade-left"
+                            
                             layout="responsive"
                             height={800}
                             objectFit="cover"
