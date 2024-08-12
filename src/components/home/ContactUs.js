@@ -1,5 +1,5 @@
 "use client"
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { RiMailSendLine } from 'react-icons/ri';
 import { IoSend } from 'react-icons/io5';
 import { MdOutlinePhoneInTalk } from 'react-icons/md';
@@ -11,8 +11,32 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
+
 const GetInTouchSection = () => {
+
     const [loading, setLoading] = useState(false);
+    const [contact, setContact] = useState({})
+
+    const handleGetContact = () => {
+        setLoading(true)
+        axios('https://starconcord.onrender.com/api/contactUs', {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            method: 'GET',
+        })
+            .then((res) => {
+                setContact(res.data.data)
+                setLoading(false)
+            })
+            .catch((err) => {
+                setLoading(false)
+            })
+    }
+
+    useEffect(() => {
+        handleGetContact()
+    }, [])
 
     const handlePost = (values, actions) => {
         console.log(values);
@@ -34,7 +58,7 @@ const GetInTouchSection = () => {
                 setLoading(false);
                 toast.success(res.data.massage, {
                     zIndex: "9999px",
-                  });
+                });
                 actions.resetForm(); // Reset form after successful submission
             })
             .catch((err) => {
@@ -63,21 +87,20 @@ const GetInTouchSection = () => {
                                 Phone number
                             </p>
                         </div>
-                        <p className="text-lg font-bold">(480) 555-0103</p>
+                        <p className="text-lg font-bold">{contact?.phone}</p>
                         <div className="flex items-center gap-3">
                             <IoMailOutline className="text-xl text-primary_color" />
                             <p className="text-[#6C6C6C] text-lg">Email</p>
                         </div>
                         <p className="text-lg font-bold">
-                            kenzi.lawson@example.com
+                            {contact?.email}
                         </p>
                         <div className="flex items-center gap-3">
                             <SlLocationPin className="text-xl text-primary_color" />
                             <p className="text-[#6C6C6C] text-lg">Adress</p>
                         </div>
                         <p className="text-lg font-bold w-[70%]">
-                            Office No. 304, Town Centre - 2, Andheri Kurla Road,
-                            Marol, Andheri East, Mumbai - 400059
+                            {contact?.address}
                         </p>
                     </div>
                 </div>

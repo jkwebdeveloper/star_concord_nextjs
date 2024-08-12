@@ -49,9 +49,9 @@ const PacificSection = () => {
 
     return (
         <div className="container w-full mx-auto space-y-5">
-            <h2 className="text-4xl font-bold text-center text-black">
+            {/* <h2 className="text-4xl font-bold text-center text-black">
                 Pacific Star Group
-            </h2>
+            </h2> */}
             <div ref={ref} className="grid items-start gap-5 md:grid-cols-2 lg:grid-cols-4">
                 {loading ? (
                     <div className="flex justify-center w-64 mx-auto mt-28">

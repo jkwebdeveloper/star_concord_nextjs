@@ -3,8 +3,13 @@ import axios from 'axios'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const HeroSection = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   const [banners, setBanners] = useState({})
   const [loading, setLoading] = useState(false)
 
@@ -64,7 +69,7 @@ const HeroSection = () => {
               console.log(item)
               return (
                 <Link href={item?.link} key={item?._id} target="_blank">
-                  <div className="px-5 space-y-2" key={item._id}>
+                  <div data-aos="fade-up" className="px-5 space-y-2" key={item._id}>
                     <p className="cursor-pointer hover:font-semibold w-[70%] leading-10 border-b-2 border-white hover:border-primary_color">
                       {item?.name}
                     </p>

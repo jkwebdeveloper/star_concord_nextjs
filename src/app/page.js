@@ -19,9 +19,9 @@ export default function Home() {
                 <OurServiceSection />
                 <ClientImageSection />
                 <OurIndustriesSection />
-                <LocationSection />
                 <ServiceImage />
                 <GetInTouchSection />
+                <LocationSection />
                 <PacificSection />
             </div>
             <div className="">

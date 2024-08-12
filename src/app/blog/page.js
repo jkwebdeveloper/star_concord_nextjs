@@ -5,7 +5,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { FaRegClock } from 'react-icons/fa6'
-import { format } from 'date-fns'
 
 const BlogPage = () => {
   const [blogs, setBlogs] = useState([])
@@ -49,7 +48,7 @@ const BlogPage = () => {
             <>
               {blogs.map((item) => (
                 <Link
-                  href={`/blog/${item._id}`}
+                  href={`/blog-detail/${item._id}`}
                   state={{ id: item._id }}
                   key={item._id}
                 >
@@ -66,7 +65,7 @@ const BlogPage = () => {
                     <div className="flex items-center gap-2">
                       <FaRegClock className="text-[#6C6C6C] text-lg" />
                       <p className="text-[#6C6C6C] text-lg">
-                        {format(new Date(item?.createdAt), 'dd, MMM yyyy')}
+                        {(new Date(item?.createdAt), 'dd, MMM yyyy')}
                       </p>
                     </div>
                     <p className="text-2xl font-bold">{item?.title}</p>
