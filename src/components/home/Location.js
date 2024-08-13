@@ -45,7 +45,8 @@ const LocationSection = () => {
                         src={`https://starconcord.onrender.com/uploads${location?.locationBanner}`}
                         alt="banner"
                         loading="lazy"
-                        width={600}
+                        quality={100}
+                        width={1000}
                         height={900}
                         className="object-cover w-full"
                     />

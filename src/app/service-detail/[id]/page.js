@@ -7,17 +7,31 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { IoIosArrowForward } from 'react-icons/io';
+import { useParams, useRouter } from 'next/navigation'
 
 const ServiceDetail = () => {
-    const [activeService, setActiveService] = useState(
-        'LCL Consolidators in Singapore'
-    );
-    const [serviceDetails, setServiceDetails] = useState({});
+    const [service, setService] = useState({ services: [] });
     const [loading, setLoading] = useState(false);
-    const [service, setService] = useState([]);
+    const [serviceDetails, setServiceDetails] = useState({});
+    const [activeService, setActiveService] = useState(null);
 
+    const router = useRouter();
+    const params = useParams();
+    const { id } = params;
 
-    const handleGetServiceDetail = () => {
+    useEffect(() => {
+        handleGetService();
+    }, []);
+
+    useEffect(() => {
+        if (activeService, id) {
+            handleGetServiceDetail(activeService)
+            handleGetServiceDetail(id)
+        }
+    }, [activeService, id]);
+
+    const handleGetServiceDetail = (id) => {
+        if (!id) return
         setLoading(true);
         axios.get(`https://starconcord.onrender.com/api/serviceList/${id}`, {
             headers: {
@@ -26,17 +40,13 @@ const ServiceDetail = () => {
             method: "GET",
         })
             .then((res) => {
-                setServiceDetails(res.data.data);
+                setServiceDetails(res.data.data || {});
                 setLoading(false);
             })
             .catch((err) => {
                 setLoading(false);
             });
     };
-
-    useEffect(() => {
-        handleGetServiceDetail();
-    }, []);
 
     const handleGetService = () => {
         setLoading(true);
@@ -55,11 +65,13 @@ const ServiceDetail = () => {
             });
     };
 
-    useEffect(() => {
-        handleGetService();
-    }, []);
+    const handleServiceClick = (item) => {
+        setActiveService(item._id)
+        router.push(`/service-detail/${item._id}`)
+        setServiceDetails(item)
+    }
 
-   
+
     return (
         <div className="container w-full pb-10 mx-auto lg:space-y-20 space-y-7">
             <div className="relative md:h-80 h-60">
@@ -67,6 +79,7 @@ const ServiceDetail = () => {
                     // src={dynamicImage ? BaseUrl.concat(dynamicImage) : image}
                     src="/static/images/common.jpg"
                     loading="lazy"
+                    alt='banner'
                     width={450}
                     height={350}
                     className="object-cover object-center w-full h-full rounded-2xl"
@@ -92,28 +105,27 @@ const ServiceDetail = () => {
                         </p>
                         <hr className="w-full h-0.5 border-t-0 bg-[#dfdfdf] dark:bg-white/10" />
                         <div className="space-y-5">
-                            {service.map(industry => (
-                                <div
-                                    key={industry}
-                                    className="flex items-center gap-5 cursor-pointer"
-                                    onClick={() => setActiveService(industry)}
-                                >
+                            {service?.services.length > 0 ? (
+                                service.services.map((item) => (
                                     <div
-                                        className={`w-0.5 min-h-[25px] ${activeService === industry
-                                                ? 'bg-primary_color'
-                                                : 'bg-[#EBF1E4]'
-                                            }`}
-                                    ></div>
-                                    <p
-                                        className={`font-semibold text-xl ${activeService === industry
-                                                ? 'text-black'
-                                                : 'text-[#8C929C]'
-                                            }`}
+                                        key={item._id}
+                                        className="flex items-center gap-5 cursor-pointer"
+                                        onClick={() => handleServiceClick(item)}
                                     >
-                                        {industry}
-                                    </p>
-                                </div>
-                            ))}
+                                        <div
+                                            className={`w-0.5 min-h-[25px] ${item._id === activeService ? 'bg-primary_color' : 'bg-[#EBF1E4]'}`}
+                                        ></div>
+                                        <p
+                                            className={`font-semibold text-xl ${item._id === activeService ? 'text-black' : 'text-[#8C929C]'}`}
+                                        >
+                                            {item?.serviceName}
+                                        </p>
+                                    </div>
+                                ))
+                            ) : (
+                                <p>No industries available</p>
+                            )}
+
                         </div>
                     </div>
                 </div>
@@ -314,7 +326,7 @@ const ServiceDetail = () => {
                             </div>
                         </>
                     )}
-                   
+
                 </div>
             </div>
             <GetInTouchSection />

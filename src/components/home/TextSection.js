@@ -40,24 +40,6 @@ const TextSection = () => {
 
                     </div>
                 )}
-                {/* <p className="text-[#1B1B1B] md:text-left text-justify">
-                    Over the years, the Taiwan Ministry of Transportation and
-                    Communication and the Port Authority of Keelung has
-                    consistently named Pacific Star Group as “The best NVOCC of
-                    the year”. CommonWealth Magazine, Business Weekly and China
-                    Credit Information Services have also ranked the group as
-                    one of the “Top 500 Corporations” in the service industry.
-                    These recognitions fuelled our perseverance as a shipping
-                    company to strive for excellence.
-                </p>
-                <p className="text-[#1B1B1B] font-semibold">
-                    A Passionate Commitment to Making a Difference
-                </p>
-                <p className="text-[#1B1B1B]">
-                    Our team of experts is ready to work with you, to find the
-                    best freight forwarding solutions for your needs. Get in
-                    touch with us today.
-                </p> */}
             </div>
         </div>
     );

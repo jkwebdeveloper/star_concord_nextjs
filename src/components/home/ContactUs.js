@@ -95,7 +95,7 @@ const GetInTouchSection = () => {
                         </p>
                         <div className="flex items-center gap-3">
                             <SlLocationPin className="text-xl text-primary_color" />
-                            <p className="text-[#6C6C6C] text-lg">Adress</p>
+                            <p className="text-[#6C6C6C] text-lg">Address</p>
                         </div>
                         <p className="text-lg font-bold w-[70%]">
                             {contact?.address}
