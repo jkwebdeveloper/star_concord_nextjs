@@ -2,30 +2,66 @@
 import CommonBanner from '@/components/global/CommonBanner';
 import GetInTouchSection from '@/components/home/ContactUs';
 import { Button } from '@/components/ui/button';
+import axios from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { IoIosArrowForward } from 'react-icons/io';
 
 const ServiceDetail = () => {
     const [activeService, setActiveService] = useState(
         'LCL Consolidators in Singapore'
     );
+    const [serviceDetails, setServiceDetails] = useState({});
+    const [loading, setLoading] = useState(false);
+    const [service, setService] = useState([]);
 
-    const services = [
-        'LCL Consolidators in Singapore',
-        'International Freight Forwarding',
-        'Air Freight Forwarding',
-        'Sea Freight Forwarding',
-        'Project Cargo Handling',
-    ];
+
+    const handleGetServiceDetail = () => {
+        setLoading(true);
+        axios.get(`https://starconcord.onrender.com/api/serviceList/${id}`, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "GET",
+        })
+            .then((res) => {
+                setServiceDetails(res.data.data);
+                setLoading(false);
+            })
+            .catch((err) => {
+                setLoading(false);
+            });
+    };
+
+    useEffect(() => {
+        handleGetServiceDetail();
+    }, []);
+
+    const handleGetService = () => {
+        setLoading(true);
+        axios("https://starconcord.onrender.com/api/serviceList", {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "GET",
+        })
+            .then((res) => {
+                setService(res.data.data);
+                setLoading(false);
+            })
+            .catch((err) => {
+                setLoading(false);
+            });
+    };
+
+    useEffect(() => {
+        handleGetService();
+    }, []);
+
+   
     return (
         <div className="container w-full pb-10 mx-auto lg:space-y-20 space-y-7">
-            {/* <CommonBanner
-                image="/static/images/common.jpg"
-                title="Healthcare and Pharmaceuticals Logistics"
-                page="Industries"
-            /> */}
             <div className="relative md:h-80 h-60">
                 <Image
                     // src={dynamicImage ? BaseUrl.concat(dynamicImage) : image}
@@ -56,25 +92,23 @@ const ServiceDetail = () => {
                         </p>
                         <hr className="w-full h-0.5 border-t-0 bg-[#dfdfdf] dark:bg-white/10" />
                         <div className="space-y-5">
-                            {services.map(industry => (
+                            {service.map(industry => (
                                 <div
                                     key={industry}
                                     className="flex items-center gap-5 cursor-pointer"
                                     onClick={() => setActiveService(industry)}
                                 >
                                     <div
-                                        className={`w-0.5 min-h-[25px] ${
-                                            activeService === industry
+                                        className={`w-0.5 min-h-[25px] ${activeService === industry
                                                 ? 'bg-primary_color'
                                                 : 'bg-[#EBF1E4]'
-                                        }`}
+                                            }`}
                                     ></div>
                                     <p
-                                        className={`font-semibold text-xl ${
-                                            activeService === industry
+                                        className={`font-semibold text-xl ${activeService === industry
                                                 ? 'text-black'
                                                 : 'text-[#8C929C]'
-                                        }`}
+                                            }`}
                                     >
                                         {industry}
                                     </p>
@@ -280,228 +314,7 @@ const ServiceDetail = () => {
                             </div>
                         </>
                     )}
-                    {activeService === 'International Freight Forwarding' && (
-                        <>
-                            <Image
-                                // src={dynamicImage ? BaseUrl.concat(dynamicImage) : image}
-                                src="/static/images/home-banner.jpg"
-                                loading="lazy"
-                                width={890}
-                                height={550}
-                                className="object-cover min-w-full rounded-2xl"
-                            />
-                            <div className="space-y-7">
-                                <p className="text-[#1B1B1B] md:text-left text-justify">
-                                    Our freight transport services are fast,
-                                    efficient and reliable, even under these
-                                    challenging circumstances. We deliver goods
-                                    on time withour trafic jams at the borders
-                                    and operate with our own traction services
-                                    in 20 different countries. We can increase
-                                    its capacities according to clients demand.
-                                </p>
-                                <p className="text-[#1B1B1B] md:text-left text-justify">
-                                    Odio risus mauris semper duis ullamcorper
-                                    duis felis. Quis interdum condimentum
-                                    viverra at nulla tristique laoreet egestas
-                                    pellentesque. Erat et fermentum varius
-                                    varius.{' '}
-                                </p>
-                                <p className="text-2xl font-bold text-[#1B1B1B]">
-                                    Our strengths and advantages
-                                </p>
-                                <p className="text-[#1B1B1B] md:text-left text-justify">
-                                    Our strengths and advantages make us
-                                    different from our competitors and we always
-                                    is one of transportation and logistics firms
-                                    customers expect to conduct their shipments
-                                </p>
-                                <p className="text-[#1B1B1B] md:text-left text-justify">
-                                    Thanks to our enthusiastic employees who
-                                    make sure all goods reach destinations in a
-                                    fast and safe way. We are doing everything
-                                    so that consignments reach their
-                                    destinations. Flexible and environmentally
-                                    friendly rail services provides reliable and
-                                    pre-defined scheduled departures.
-                                </p>
-                                <p className="text-[#1B1B1B] md:text-left text-justify">
-                                    We are proud to serve more than 3,000
-                                    customers and are the most environment
-                                    friendly mode of land transportation, so our
-                                    rail freight service is always the top
-                                    choice.
-                                </p>
-                            </div>
-                        </>
-                    )}
-                    {activeService === 'Air Freight Forwarding' && (
-                        <>
-                            <Image
-                                // src={dynamicImage ? BaseUrl.concat(dynamicImage) : image}
-                                src="/static/images/indu.png"
-                                loading="lazy"
-                                width={990}
-                                height={50}
-                                quality={100}
-                                className="object-cover min-w-full rounded-2xl"
-                            />
-                            <div className="space-y-7">
-                                <p className="text-[#1B1B1B] md:text-left text-justify">
-                                    Our freight transport services are fast,
-                                    efficient and reliable, even under these
-                                    challenging circumstances. We deliver goods
-                                    on time withour trafic jams at the borders
-                                    and operate with our own traction services
-                                    in 20 different countries. We can increase
-                                    its capacities according to clients demand.
-                                </p>
-                                <p className="text-[#1B1B1B] md:text-left text-justify">
-                                    Odio risus mauris semper duis ullamcorper
-                                    duis felis. Quis interdum condimentum
-                                    viverra at nulla tristique laoreet egestas
-                                    pellentesque. Erat et fermentum varius
-                                    varius.{' '}
-                                </p>
-                                <p className="text-2xl font-bold text-[#1B1B1B]">
-                                    Our strengths and advantages
-                                </p>
-                                <p className="text-[#1B1B1B] md:text-left text-justify">
-                                    Our strengths and advantages make us
-                                    different from our competitors and we always
-                                    is one of transportation and logistics firms
-                                    customers expect to conduct their shipments
-                                </p>
-                                <p className="text-[#1B1B1B] md:text-left text-justify">
-                                    Thanks to our enthusiastic employees who
-                                    make sure all goods reach destinations in a
-                                    fast and safe way. We are doing everything
-                                    so that consignments reach their
-                                    destinations. Flexible and environmentally
-                                    friendly rail services provides reliable and
-                                    pre-defined scheduled departures.
-                                </p>
-                                <p className="text-[#1B1B1B] md:text-left text-justify">
-                                    We are proud to serve more than 3,000
-                                    customers and are the most environment
-                                    friendly mode of land transportation, so our
-                                    rail freight service is always the top
-                                    choice.
-                                </p>
-                            </div>
-                        </>
-                    )}
-                    {activeService === 'Sea Freight Forwarding' && (
-                        <>
-                            <Image
-                                // src={dynamicImage ? BaseUrl.concat(dynamicImage) : image}
-
-                                src="/static/images/home-banner.jpg"
-                                loading="lazy"
-                                width={890}
-                                height={550}
-                                className="object-cover min-w-full rounded-2xl"
-                            />
-                            <div className="space-y-7">
-                                <p className="text-[#1B1B1B] md:text-left text-justify">
-                                    Our freight transport services are fast,
-                                    efficient and reliable, even under these
-                                    challenging circumstances. We deliver goods
-                                    on time withour trafic jams at the borders
-                                    and operate with our own traction services
-                                    in 20 different countries. We can increase
-                                    its capacities according to clients demand.
-                                </p>
-                                <p className="text-[#1B1B1B] md:text-left text-justify">
-                                    Odio risus mauris semper duis ullamcorper
-                                    duis felis. Quis interdum condimentum
-                                    viverra at nulla tristique laoreet egestas
-                                    pellentesque. Erat et fermentum varius
-                                    varius.{' '}
-                                </p>
-                                <p className="text-2xl font-bold text-[#1B1B1B]">
-                                    Our strengths and advantages
-                                </p>
-                                <p className="text-[#1B1B1B] md:text-left text-justify">
-                                    Our strengths and advantages make us
-                                    different from our competitors and we always
-                                    is one of transportation and logistics firms
-                                    customers expect to conduct their shipments
-                                </p>
-                                <p className="text-[#1B1B1B] md:text-left text-justify">
-                                    Thanks to our enthusiastic employees who
-                                    make sure all goods reach destinations in a
-                                    fast and safe way. We are doing everything
-                                    so that consignments reach their
-                                    destinations. Flexible and environmentally
-                                    friendly rail services provides reliable and
-                                    pre-defined scheduled departures.
-                                </p>
-                                <p className="text-[#1B1B1B] md:text-left text-justify">
-                                    We are proud to serve more than 3,000
-                                    customers and are the most environment
-                                    friendly mode of land transportation, so our
-                                    rail freight service is always the top
-                                    choice.
-                                </p>
-                            </div>
-                        </>
-                    )}
-                    {activeService === 'Project Cargo Handling' && (
-                        <>
-                            <Image
-                                // src={dynamicImage ? BaseUrl.concat(dynamicImage) : image}
-                                src="/static/images/indu.png"
-                                loading="lazy"
-                                width={890}
-                                height={550}
-                                className="object-cover min-w-full rounded-2xl"
-                            />
-                            <div className="space-y-7">
-                                <p className="text-[#1B1B1B] md:text-left text-justify">
-                                    Our freight transport services are fast,
-                                    efficient and reliable, even under these
-                                    challenging circumstances. We deliver goods
-                                    on time withour trafic jams at the borders
-                                    and operate with our own traction services
-                                    in 20 different countries. We can increase
-                                    its capacities according to clients demand.
-                                </p>
-                                <p className="text-[#1B1B1B] md:text-left text-justify">
-                                    Odio risus mauris semper duis ullamcorper
-                                    duis felis. Quis interdum condimentum
-                                    viverra at nulla tristique laoreet egestas
-                                    pellentesque. Erat et fermentum varius
-                                    varius.{' '}
-                                </p>
-                                <p className="text-2xl font-bold text-[#1B1B1B]">
-                                    Our strengths and advantages
-                                </p>
-                                <p className="text-[#1B1B1B] md:text-left text-justify">
-                                    Our strengths and advantages make us
-                                    different from our competitors and we always
-                                    is one of transportation and logistics firms
-                                    customers expect to conduct their shipments
-                                </p>
-                                <p className="text-[#1B1B1B] md:text-left text-justify">
-                                    Thanks to our enthusiastic employees who
-                                    make sure all goods reach destinations in a
-                                    fast and safe way. We are doing everything
-                                    so that consignments reach their
-                                    destinations. Flexible and environmentally
-                                    friendly rail services provides reliable and
-                                    pre-defined scheduled departures.
-                                </p>
-                                <p className="text-[#1B1B1B] md:text-left text-justify">
-                                    We are proud to serve more than 3,000
-                                    customers and are the most environment
-                                    friendly mode of land transportation, so our
-                                    rail freight service is always the top
-                                    choice.
-                                </p>
-                            </div>
-                        </>
-                    )}
+                   
                 </div>
             </div>
             <GetInTouchSection />

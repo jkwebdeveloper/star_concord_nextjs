@@ -46,7 +46,7 @@ const Header = () => {
                 <div className="flex items-center justify-between p-5">
                     <Link href="/">
                         <Image
-                            src={'/static/images/Star Concord Logo new-01.png'}
+                            src={'/static/images/logo_final.png'}
                             alt="logo"
                             loading="lazy"
                             width={120}
@@ -130,7 +130,7 @@ const Header = () => {
                 <nav className="container flex items-center justify-between mx-auto">
                     <Link href="/">
                         <Image
-                            src={'/static/images/Star Concord Logo new-01.png'}
+                            src={'/static/images/logo_final.png'}
                             alt="logo"
                             loading="lazy"
                             width={200}

@@ -39,7 +39,7 @@ const Footer = () => {
                                 <p className="text-lg font-bold">Quick Links</p>
                                 <div className="space-y-2">
                                     <Link href="/about-us">
-                                        <p className="mb-2">About us</p>
+                                        <p className="mb-2">About Us</p>
                                     </Link>
                                     <Link href="/service">
                                         <p className="mb-2">Services</p>
@@ -51,17 +51,17 @@ const Footer = () => {
                                         <p className="mb-2">Contact Us</p>
                                     </Link>
                                     <Link href="/blog">
-                                        <p className="mb-2">Blog</p>
+                                        <p className="mb-2">Blogs</p>
                                     </Link>
                                     <Link href="/">
-                                        <p>Article</p>
+                                        <p>Articles</p>
                                     </Link>
                                 </div>
                             </div>
                             <div className="space-y-6">
                                 <p className="text-lg font-bold">Services</p>
                                 <div className="space-y-2">
-                                    <p>LCL Consolidators in Singapore</p>
+                                    <p> LCL Consolidators in India</p>
                                     <p>Sea Freight</p>
                                     <p>Air Freight</p>
                                     <p>3PL Services</p>

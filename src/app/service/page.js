@@ -138,7 +138,7 @@ const ServicePage = () => {
                                                     <p className="text-2xl font-bold text-[#104B59]">
                                                         {item?.serviceName}
                                                     </p>
-                                                    <Link href="/service-detail" key={item?._id}>
+                                                    <Link href={`/service-detail/${item._id}`} state={{ id: item._id }} key={item?._id}>
                                                         <div className="flex items-center gap-2">
                                                             <p className="text-[#104B59] text-sm font-bold">
                                                                 READ MORE
