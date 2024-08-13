@@ -1,14 +1,5 @@
-import ClientImageSection from '@/components/home/ClientImage';
-import GetInTouchSection from '@/components/home/ContactUs';
-import HeroSection from '@/components/home/HeroSection';
-import LocationSection from '@/components/home/Location';
-import OurIndustriesSection from '@/components/home/OurIndustries';
-import OurServiceSection from '@/components/home/OurService';
-import PacificSection from '@/components/home/Pacific';
-import ServiceImage from '@/components/home/ServiceImage';
-import TextSection from '@/components/home/TextSection';
-import TransportSection from '@/components/home/TransportSection';
-import Image from 'next/image';
+'use client';
+import { HeroSection, TransportSection, OurService, ClientImage, OurIndustries, ServiceImage, ContactUs, Location, Pacific, TextSection } from '@/components'
 
 export default function Home() {
     return (
@@ -16,13 +7,13 @@ export default function Home() {
             <HeroSection />
             <div className="container px-3 pb-10 mx-auto space-y-6 xl:space-y-14 lg:px-10">
                 <TransportSection />
-                <OurServiceSection />
-                <ClientImageSection />
-                <OurIndustriesSection />
+                <OurService />
+                <ClientImage />
+                <OurIndustries />
                 <ServiceImage />
-                <GetInTouchSection />
-                <LocationSection />
-                <PacificSection />
+                <ContactUs />
+                <Location />
+                <Pacific />
             </div>
             <div className="">
                 <TextSection />

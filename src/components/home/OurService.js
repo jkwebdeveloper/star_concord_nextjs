@@ -4,7 +4,7 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
 
-const OurServiceSection = () => {
+const OurService = () => {
     
     const [service, setService] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -144,4 +144,4 @@ const OurServiceSection = () => {
     );
 };
 
-export default OurServiceSection;
+export default OurService;

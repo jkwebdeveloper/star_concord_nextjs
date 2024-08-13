@@ -53,19 +53,24 @@ const BlogPage = () => {
                   key={item._id}
                 >
                   <div className="space-y-3" key={item._id}>
-                    <Image
-                      src={`https://starconcord.onrender.com/uploads${item?.blogImage}`}
-                      alt="offer1"
-                      loading="lazy"
-                      width={400}
-                      quality={100}
-                      height={400}
-                      className="z-0 object-cover rounded-xl"
-                    />
+                    <div className="relative w-full overflow-hidden h-80 rounded-xl">
+                      <Image
+                        src={`https://starconcord.onrender.com/uploads${item?.blogImage}`}
+                        alt={item.title}
+                        loading="lazy"
+                        layout="fill"
+                        objectFit="cover"
+                        quality={100}
+                      />
+                    </div>
                     <div className="flex items-center gap-2">
                       <FaRegClock className="text-[#6C6C6C] text-lg" />
                       <p className="text-[#6C6C6C] text-lg">
-                        {(new Date(item?.createdAt), 'dd, MMM yyyy')}
+                        {new Date(item?.createdAt).toLocaleDateString('en-US', {
+                          day: '2-digit',
+                          month: 'short',
+                          year: 'numeric',
+                        })}
                       </p>
                     </div>
                     <p className="text-2xl font-bold">{item?.title}</p>

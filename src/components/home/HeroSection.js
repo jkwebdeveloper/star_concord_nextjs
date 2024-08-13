@@ -35,16 +35,12 @@ const HeroSection = () => {
   }, [])
   return (
     <div className="container relative w-full mx-auto">
-      {loading ? (
-        <div className="flex justify-center w-64 mx-auto mt-28">
-          <p>Loading...</p>
-        </div>
-      ) : banners.bannerOne ? (
+      {banners.bannerOne && (
         <>
           <Image
             // src={'/static/images/home-banner.jpg'}
             src={`https://starconcord.onrender.com/uploads${banners.bannerOne}`}
-            alt="banner"
+            alt=""
             loading="lazy"
             layout="responsive"
             objectFit="cover"
@@ -69,7 +65,7 @@ const HeroSection = () => {
               console.log(item)
               return (
                 <Link href={item?.link} key={item?._id} target="_blank">
-                  <div data-aos="fade-up" className="px-5 space-y-2" key={item._id}>
+                  <div className="px-5 space-y-2" key={item._id}>
                     <p className="cursor-pointer hover:font-semibold w-[70%] leading-10 border-b-2 border-white hover:border-primary_color">
                       {item?.name}
                     </p>
@@ -80,8 +76,6 @@ const HeroSection = () => {
             })}
           </div>
         </>
-      ) : (
-        <div>No banner</div>
       )}
     </div>
   )

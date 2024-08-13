@@ -10,7 +10,7 @@ import {
     CarouselPrevious,
 } from '@/components/ui/carousel';
 
-const ClientImageSection = () => {
+const ClientImage = () => {
     const [images, setImages] = useState({});
     const [loading, setLoading] = useState(false);
     const [testimonial, setTestimonial] = useState([]);
@@ -132,4 +132,4 @@ const ClientImageSection = () => {
     );
 };
 
-export default ClientImageSection;
+export default ClientImage;

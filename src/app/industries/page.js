@@ -45,7 +45,7 @@ const IndustriesSection = () => {
                 </div>
             ) : (
                 <div className="px-10 pb-20 space-y-14">
-                    <div className="grid items-center grid-cols-2">
+                    <div className="grid items-center grid-cols-1 gap-3 md:grid-cols-2">
                         <p className="text-4xl font-bold text-[#1B1B1B]">
                             {industries?.config?.indTitle}
                         </p>
@@ -53,18 +53,19 @@ const IndustriesSection = () => {
                             {industries?.config?.indDescription}
                         </p>
                     </div>
-                    <div className="grid items-start justify-center gap-5 lg:grid-cols-3">
+                    <div className="grid items-start justify-center grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
                         {industries?.industry && industries.industry.length > 0 ? (
                             industries.industry.map(item => (
                                 <Link href={`/industries-detail/${item._id}`} state={{ id: item._id }} key={item._id}>
                                     <div className="relative">
-                                        <div className="relative w-full h-auto mx-auto overflow-hidden rounded-xl">
+                                        <div className="relative w-full mx-auto overflow-hidden h-80 rounded-xl">
                                             <Image
                                                 src={`https://starconcord.onrender.com/uploads${item?.banners}`}
                                                 alt={item?.industryName}
                                                 loading="lazy"
-                                                width={400}
-                                                height={400}
+                                                layout="fill"
+                                                objectFit="cover"
+                                                quality={100}
                                                 className="z-0 object-cover transition-all duration-300 hover:scale-110"
                                             />
                                         </div>
