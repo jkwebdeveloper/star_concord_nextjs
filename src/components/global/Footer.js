@@ -9,6 +9,7 @@ import { FaInstagram } from 'react-icons/fa';
 import { FaFacebookF } from 'react-icons/fa6';
 import Link from 'next/link';
 import axios from 'axios';
+import PageLoader from '../ui/pageloader';
 
 const Footer = () => {
     const [service, setService] = useState([]);
@@ -89,26 +90,30 @@ const Footer = () => {
                             </div>
                             <div className="space-y-6">
                                 <p className="text-lg font-bold">Services</p>
-                                <div className='space-y-4'>
-                                    {service.length > 0 ? (
-                                        service.map((item) => (
-                                            <div
-                                                key={item._id}
-                                                className="space-y-4"
-                                            >
-                                                <Link href={`/service-detail/${item._id}`} state={{ id: item._id }} key={item?._id}>
-                                                    <p
-                                                        className=""
-                                                    >
-                                                        {item?.serviceName}
-                                                    </p>
-                                                </Link>
-                                            </div>
-                                        ))
-                                    ) : (
-                                        <p>No industries available</p>
-                                    )}
-                                </div>
+                                {loading ? (
+                                    <PageLoader />
+                                ) : (
+                                    <div className='space-y-4'>
+                                        {service.length > 0 ? (
+                                            service.map((item) => (
+                                                <div
+                                                    key={item._id}
+                                                    className="space-y-4"
+                                                >
+                                                    <Link href={`/service-detail/${item._id}`} state={{ id: item._id }} key={item?._id}>
+                                                        <p
+                                                            className=""
+                                                        >
+                                                            {item?.serviceName}
+                                                        </p>
+                                                    </Link>
+                                                </div>
+                                            ))
+                                        ) : (
+                                            <p>No industries available</p>
+                                        )}
+                                    </div>
+                                )}
 
                             </div>
                             <hr className="w-full h-0.5 border-t-0 bg-[#c5c5c5] dark:bg-white/10" />

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Button } from '../ui/button';
 import Image from 'next/image';
 import axios from 'axios';
+import PageLoader from '../ui/pageloader';
 // import AOS from "aos";
 // import "aos/dist/aos.css";
 
@@ -36,35 +37,41 @@ const TransportSection = () => {
 
     return (
         <div className="container w-full mx-auto">
-            <div className="grid items-start gap-5 lg:grid-cols-2 xl:gap-40 md:gap-20">
-                <div className="space-y-4 lg:space-y-8">
-                    <h1 className="text-lg font-bold leading-4 lg:text-5xl">
-                        {transport?.topTitle}
-                    </h1>
-                    <hr className="w-1/5 h-0.5 border-t-0 bg-primary_color dark:bg-white/10" />
-                    <div className="text-[#1B1B1B] text-base " dangerouslySetInnerHTML={{ __html: transport?.topContent }}>
+            {loading ? (
+                <div className='flex items-center justify-center'>
+                    <PageLoader />
+                </div>
+            ) : (
+                <div className="grid items-start gap-5 lg:grid-cols-2 xl:gap-40 md:gap-20">
+                    <div className="space-y-4 lg:space-y-8">
+                        <h1 className="text-lg font-bold leading-4 lg:text-5xl">
+                            {transport?.topTitle}
+                        </h1>
+                        <hr className="w-1/5 h-0.5 border-t-0 bg-primary_color dark:bg-white/10" />
+                        <div className="text-[#1B1B1B] text-base " dangerouslySetInnerHTML={{ __html: transport?.topContent }}>
 
+                        </div>
+                        <div className="">
+                            <Button variant="primary" className="">
+                                More Details
+                            </Button>
+                        </div>
                     </div>
-                    <div className="">
-                        <Button variant="primary" className="">
-                            More Details
-                        </Button>
+                    <div>
+                        <Image
+                            src={`https://starconcord.onrender.com/uploads${transport?.topBanner}`}
+                            alt="banner"
+                            loading="lazy"
+                            width={800}
+
+                            layout="responsive"
+                            height={800}
+                            objectFit="cover"
+                            className="object-cover rounded-xl "
+                        />
                     </div>
                 </div>
-                <div>
-                    <Image
-                        src={`https://starconcord.onrender.com/uploads${transport?.topBanner}`}
-                        alt="banner"
-                        loading="lazy"
-                        width={800}
-
-                        layout="responsive"
-                        height={800}
-                        objectFit="cover"
-                        className="object-cover rounded-xl "
-                    />
-                </div>
-            </div>
+            )}
         </div>
     );
 };

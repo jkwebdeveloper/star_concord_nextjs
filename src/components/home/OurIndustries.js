@@ -10,6 +10,7 @@ import {
 import Image from 'next/image';
 import { v4 } from 'uuid';
 import axios from 'axios';
+import PageLoader from '../ui/pageloader';
 
 const OurIndustriesSection = () => {
     const [industries, setIndustries] = useState({ ourIndustries: [] });
@@ -41,9 +42,7 @@ const OurIndustriesSection = () => {
                 Our Industries
             </p>
             {loading ? (
-                <div className="flex justify-center w-64 mx-auto mt-28">
-                    <p>Loading...</p>
-                </div>
+                <PageLoader/>
             ) : (
 
                 <div className="w-full">

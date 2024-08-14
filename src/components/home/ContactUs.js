@@ -10,6 +10,7 @@ import ValidationSchema, { contactValidation } from '../Validation';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import Spinner from '../ui/spinner';
 
 
 const GetInTouchSection = () => {
@@ -180,9 +181,14 @@ const GetInTouchSection = () => {
                                     type="submit"
                                     className="flex items-center gap-3 mt-6"
                                     variant="primary"
+                                    disabled={loading}
                                 >
                                     <IoSend />
-                                    {loading ? "Loading..." : "Send message"}
+                                    {loading ? "Sending..." : "Send message"}
+                                    {/* <Spinner show={loading}
+                                        width="35"
+                                        height="35"
+                                        text="Send message" /> */}
                                 </Button>
                             </Form>
                         )}

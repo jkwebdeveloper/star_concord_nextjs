@@ -3,6 +3,7 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { Button } from '../ui/button';
 import axios from 'axios';
+import PageLoader from '../ui/pageloader';
 
 const ServiceImage = () => {
     const [serviceData, setServiceData] = useState({});
@@ -31,9 +32,7 @@ const ServiceImage = () => {
     return (
         <div className="container relative w-full p-2 mx-auto space-y-2 text-center lg:space-y-4">
             {loading ? (
-                <div className="flex justify-center w-64 mx-auto mt-28">
-                    <p>Loading...</p>
-                </div>
+                <PageLoader/>
             ) : (
                 <>
                     <Image

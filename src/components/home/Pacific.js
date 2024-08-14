@@ -3,6 +3,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
+import PageLoader from '../ui/pageloader';
 
 const PacificSection = () => {
     const [pacific, setPacific] = useState({});
@@ -54,9 +55,7 @@ const PacificSection = () => {
             </h2> */}
             <div ref={ref} className="grid items-start gap-5 md:grid-cols-2 lg:grid-cols-4">
                 {loading ? (
-                    <div className="flex justify-center w-64 mx-auto mt-28">
-                        <p>Loading...</p>
-                    </div>
+                    <PageLoader/>
                 ) : (
                     <>
                         <div className="bg-[#F7F9FB] space-y-3 rounded-xl p-3 md:p-6">

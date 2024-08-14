@@ -9,6 +9,7 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from '@/components/ui/carousel';
+import PageLoader from '../ui/pageloader';
 
 const ClientImage = () => {
     const [images, setImages] = useState({});
@@ -62,9 +63,7 @@ const ClientImage = () => {
     return (
         <div className="container relative w-full p-2 mx-auto space-y-2 text-center lg:space-y-4">
             {loading ? (
-                <div className="flex justify-center w-64 mx-auto text-2xl font-semibold mt-28">
-                    <p>Loading...</p>
-                </div>
+                <PageLoader/>
             ) : (
                 <>
                     <Image

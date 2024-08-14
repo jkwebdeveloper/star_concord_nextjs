@@ -2,6 +2,7 @@
 import axios from 'axios';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
+import PageLoader from '../ui/pageloader';
 
 
 const OurService = () => {
@@ -36,9 +37,7 @@ const OurService = () => {
                 Our Global Solutions
             </p>
             {loading ? (
-                <div className="flex justify-center w-64 mx-auto mt-28">
-                    <p>Loading...</p>
-                </div>
+                <PageLoader/>
             ) : (
                 <div className="flex flex-col items-start space-y-5 md:flex-row md:space-y-0">
                     {service?.ourServices?.[0] && (

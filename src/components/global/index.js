@@ -9,6 +9,7 @@ import { Button } from '../ui/button';
 import { useRouter } from 'next/navigation';
 import { FaChevronDown } from "react-icons/fa";
 import axios from 'axios';
+import PageLoader from '../ui/pageloader';
 
 const Header = () => {
     const router = useRouter();
@@ -194,25 +195,29 @@ const Header = () => {
                             {/* dropdown */}
                             <div className="absolute overflow-y-auto z-10 min-w-[20rem] group-hover:scale-100 scale-0 custom_scrollbar transition-all origin-top  bg-white text-left ease-in-out duration-300 top-9 -left-5 rounded-lg shadow-2xl text-textColor space-y-2">
                                 {/* left side */}
-                                <ul className="max-h-full overflow-y-auto font-semibold tracking-wide capitalize">
-                                    {industries?.industry.length > 0 &&
-                                        industries?.industry.map((item) => (
-                                            <Link href={`/industries-detail/${item._id}`} state={{ id: item._id }} key={item._id}>
-                                                <li
-                                                    className={`cursor-pointer text-[16px] px-5 py-2 hover:bg-primary_color hover:text-white flex items-center justify-between font-semibold capitalize ${active === "Contact"
-                                                        ? 'text-black font-semibold'
-                                                        : 'text-[#6C6C6C] font-normal'
-                                                        }`}
-                                                    key={item?._id}
-                                                >
-                                                    <span className="whitespace-nowrap">
-                                                        {item?.industryName}
-                                                    </span>
-                                                    <FaChevronRight className="" />
-                                                </li>
-                                            </Link>
-                                        ))}
-                                </ul>
+                                {loading ? (
+                                    <PageLoader />
+                                ) : (
+                                    <ul className="max-h-full overflow-y-auto font-semibold tracking-wide capitalize">
+                                        {industries?.industry.length > 0 &&
+                                            industries?.industry.map((item) => (
+                                                <Link href={`/industries-detail/${item._id}`} state={{ id: item._id }} key={item._id}>
+                                                    <li
+                                                        className={`cursor-pointer text-[16px] px-5 py-2 hover:bg-primary_color hover:text-white flex items-center justify-between font-semibold capitalize ${active === "Contact"
+                                                            ? 'text-black font-semibold'
+                                                            : 'text-[#6C6C6C] font-normal'
+                                                            }`}
+                                                        key={item?._id}
+                                                    >
+                                                        <span className="whitespace-nowrap">
+                                                            {item?.industryName}
+                                                        </span>
+                                                        <FaChevronRight className="" />
+                                                    </li>
+                                                </Link>
+                                            ))}
+                                    </ul>
+                                )}
                             </div>
                         </div>
                         <div
