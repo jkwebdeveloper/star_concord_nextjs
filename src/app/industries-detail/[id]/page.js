@@ -6,6 +6,7 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { IoIosArrowForward } from 'react-icons/io';
 import { useParams, useRouter } from 'next/navigation'
+import PageLoader from '@/components/ui/pageloader';
 
 
 const IndustriesDetail = () => {
@@ -139,9 +140,7 @@ const IndustriesDetail = () => {
                 <div className="inline-block h-auto w-0.5 self-stretch bg-[#dfdfdf] dark:bg-white/10"></div>
                 <div className="md:w-[70%] w-[90%] mx-auto space-y-5 h-fit min-h-[350px]">
                     {loading ? (
-                        <div className="flex justify-center w-64 mx-auto mt-28">
-                            <p>Loading...</p>
-                        </div>
+                        <PageLoader />
                     ) : (
                         <>
                             {industriesDetails ? (

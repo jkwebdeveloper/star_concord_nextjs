@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { FaRegCircleCheck } from 'react-icons/fa6';
 import axios from 'axios';
+import PageLoader from '@/components/ui/pageloader';
 
 const AboutUs = () => {
     const [selectedTab, setSelectedTab] = useState('mission');
@@ -38,17 +39,15 @@ const AboutUs = () => {
 
     return (
         <div className="container w-full mx-auto lg:space-y-20 space-y-7">
-            <CommonBanner
-                image="/static/images/common.jpg"
-                title="About us"
-                page="About us"
-            />
             {loading ? (
-                <div className="flex justify-center w-64 mx-auto mt-28">
-                    <p>Loading...</p>
-                </div>
+                <PageLoader />
             ) : (
                 <>
+                    <CommonBanner
+                        image="/static/images/common.jpg"
+                        title="About us"
+                        page="About us"
+                    />
                     {/* About company Sevtion */}
                     <div className="grid items-start justify-center gap-5 px-3 lg:px-10 lg:grid-cols-2 xl:gap-40 md:gap-20">
                         <div className="w-full text-[#1B1B1B] space-y-20">

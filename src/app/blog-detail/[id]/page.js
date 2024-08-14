@@ -1,4 +1,5 @@
 'use client'
+import PageLoader from '@/components/ui/pageloader'
 import axios from 'axios'
 import { format } from 'date-fns'
 import Image from 'next/image'
@@ -14,13 +15,13 @@ const BlogDetailsPage = () => {
   const [blogDetails, setBlogDetails] = useState({})
   const [loading, setLoading] = useState(false)
 
-  
+
   const params = useParams();
   const { id } = params;
 
 
   const handleGetBlogDetails = () => {
-    
+
     if (!id) return
     setLoading(true)
     axios.get(`https://starconcord.onrender.com/api/blogList/${id}`, {
@@ -30,14 +31,14 @@ const BlogDetailsPage = () => {
       method: 'GET',
     })
       .then((res) => {
-        
+
         setBlogDetails(res.data.data || null);
         setLoading(false)
-        console.log(res.data.data , "response👍💥😊😊");
+        console.log(res.data.data, "response👍💥😊😊");
       })
       .catch((err) => {
         console.log(err);
-        
+
         setLoading(false)
       })
   }
@@ -48,43 +49,41 @@ const BlogDetailsPage = () => {
 
   return (
     <div className="container w-full pb-10 mx-auto lg:space-y-20 space-y-7">
-      <div className="relative md:h-80 h-60">
-        <Image
-          // src={dynamicImage ? BaseUrl.concat(dynamicImage) : image}
-          src="/static/images/common.jpg"
-          alt='banner'
-          loading="lazy"
-          width={450}
-          height={350}
-          className="object-cover object-center w-full h-full rounded-2xl"
-        />
-        <div className="absolute w-full space-y-2 text-center -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-          <div className="flex items-center justify-center gap-2">
-            <LuClock4 className="text-lg font-semibold text-primary_color" />
-            <p className="text-lg font-semibold text-primary_color">
-              {blogDetails
-                ? format(Date(blogDetails?.createdAt), 'dd, MMM yyyy')
-                : ''}
-            </p>
-          </div>
-          <h1 className="text-2xl font-bold text-center text-black capitalize md:text-4xl">
-          {blogDetails?.title}
-          </h1>
-          <div className="flex items-center justify-center gap-3">
-            <Link href="/">
-              <p className="text-lg text-black">Home</p>
-            </Link>
-            <IoIosArrowForward className="text-lg" />
-            <p className="text-lg text-black">Blogs</p>
-          </div>
-        </div>
-      </div>
       {loading ? (
-        <div className="flex justify-center w-64 mx-auto mt-28">
-          <p>Loading...</p>
-        </div>
+        <PageLoader/>
       ) : (
         <>
+          <div className="relative md:h-80 h-60">
+            <Image
+              // src={dynamicImage ? BaseUrl.concat(dynamicImage) : image}
+              src="/static/images/common.jpg"
+              alt='banner'
+              loading="lazy"
+              width={450}
+              height={350}
+              className="object-cover object-center w-full h-full rounded-2xl"
+            />
+            <div className="absolute w-full space-y-2 text-center -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+              <div className="flex items-center justify-center gap-2">
+                <LuClock4 className="text-lg font-semibold text-primary_color" />
+                <p className="text-lg font-semibold text-primary_color">
+                  {blogDetails
+                    ? format(Date(blogDetails?.createdAt), 'dd, MMM yyyy')
+                    : ''}
+                </p>
+              </div>
+              <h1 className="text-2xl font-bold text-center text-black capitalize md:text-4xl">
+                {blogDetails?.title}
+              </h1>
+              <div className="flex items-center justify-center gap-3">
+                <Link href="/">
+                  <p className="text-lg text-black">Home</p>
+                </Link>
+                <IoIosArrowForward className="text-lg" />
+                <p className="text-lg text-black">Blogs</p>
+              </div>
+            </div>
+          </div>
           <div className="px-5 pb-20 space-y-20 lg:px-20">
             <div className="space-y-10">
               <div
@@ -119,7 +118,7 @@ const BlogDetailsPage = () => {
                 }}
               ></div>
               <div className="grid gap-5 md:grid-cols-2">
-              {blogDetails?.image1 && (
+                {blogDetails?.image1 && (
                   <div className="">
                     <Image
                       src={`https://starconcord.onrender.com/uploads${blogDetails.image1}`}

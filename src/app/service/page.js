@@ -1,5 +1,6 @@
 "use client"
 import CommonBanner from '@/components/global/CommonBanner';
+import PageLoader from '@/components/ui/pageloader';
 import { Item } from '@radix-ui/react-accordion';
 import axios from 'axios';
 import Image from 'next/image';
@@ -57,17 +58,15 @@ const ServicePage = () => {
 
     return (
         <div className="container w-full mx-auto lg:space-y-20 space-y-7">
-            <CommonBanner
-                image="/static/images/common.jpg"
-                title="Services"
-                page="Services"
-            />
             {loading ? (
-                <div className="flex justify-center w-64 mx-auto mt-28">
-                    <p>Loading...</p>
-                </div>
+                <PageLoader />
             ) : (
                 <>
+                    <CommonBanner
+                        image="/static/images/common.jpg"
+                        title="Services"
+                        page="Services"
+                    />
                     <div className="grid items-start justify-center gap-5 px-3 lg:px-10 lg:grid-cols-2 xl:gap-40 md:gap-20">
                         <p className="text-4xl font-bold">{otherText?.serTitle}</p>
                         <p className="text-[#1B1B1B]">

@@ -1,5 +1,6 @@
 'use client'
 import CommonBanner from '@/components/global/CommonBanner'
+import PageLoader from '@/components/ui/pageloader'
 import axios from 'axios'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -39,13 +40,11 @@ const BlogPage = () => {
         page="Blog"
       />
       <div className="px-10 pb-20 space-y-10">
-        <div className="grid items-start justify-center gap-5 lg:grid-cols-3">
-          {loading ? (
-            <div className="flex justify-center w-64 mx-auto mt-28">
-              <p>Loading...</p>
-            </div>
-          ) : blogs.length > 0 ? (
-            <>
+        {loading ? (
+          <PageLoader/>
+        ) : blogs.length > 0 ? (
+          <>
+            <div className="grid items-start justify-center gap-5 lg:grid-cols-3">
               {blogs.map((item) => (
                 <Link
                   href={`/blog-detail/${item._id}`}
@@ -78,13 +77,13 @@ const BlogPage = () => {
                   </div>
                 </Link>
               ))}
-            </>
-          ) : (
-            <div className="flex justify-center w-64 mx-auto mt-28">
-              <p>No Blogs...</p>
             </div>
-          )}
-        </div>
+          </>
+        ) : (
+          <div className="flex justify-center w-64 mx-auto mt-28">
+            <p>No Blogs...</p>
+          </div>
+        )}
       </div>
     </div>
   )

@@ -8,6 +8,7 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { IoIosArrowForward } from 'react-icons/io';
 import { useParams, useRouter } from 'next/navigation';
+import PageLoader from '@/components/ui/pageloader';
 
 const ServiceDetail = () => {
     const [service, setService] = useState([]);
@@ -99,7 +100,7 @@ const ServiceDetail = () => {
                             <p className="text-lg text-black">Home</p>
                         </Link>
                         <IoIosArrowForward className="text-lg" />
-                        <p className="text-lg text-black">Industries</p>
+                        <p className="text-lg text-black">Services</p>
                     </div>
                 </div>
             </div>
@@ -107,7 +108,7 @@ const ServiceDetail = () => {
                 <div className="h-fit min-h-[350px] md:w-[40%] lg:w-[25%] w-[90%] mx-auto space-y-5">
                     <div className="space-y-4">
                         <p className="text-xl font-semibold">
-                            Other Industries{' '}
+                            Other Services{' '}
                         </p>
                         <hr className="w-full h-0.5 border-t-0 bg-[#dfdfdf] dark:bg-white/10" />
                         <div className="space-y-5">
@@ -129,7 +130,7 @@ const ServiceDetail = () => {
                                     </div>
                                 ))
                             ) : (
-                                <p>No industries available</p>
+                                <p>No Services available</p>
                             )}
                         </div>
                     </div>
@@ -137,9 +138,7 @@ const ServiceDetail = () => {
                 <div className="inline-block h-auto w-0.5 self-stretch bg-[#dfdfdf] dark:bg-white/10"></div>
                 <div className="md:w-[70%] w-[90%] mx-auto space-y-5 h-fit min-h-[350px]">
                     {loading ? (
-                        <div className="flex justify-center w-64 mx-auto mt-28">
-                            <p>Loading...</p>
-                        </div>
+                        <PageLoader/>
                     ) : Object.keys(serviceDetails).length > 0 ? (
                         <>
                             {serviceDetails ? (
