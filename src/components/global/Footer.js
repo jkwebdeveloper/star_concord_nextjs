@@ -1,5 +1,6 @@
+"use client"
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from '../ui/button';
 import { ImLocation2 } from 'react-icons/im';
 import { FaTwitter } from 'react-icons/fa';
@@ -7,8 +8,33 @@ import { FaLinkedinIn } from 'react-icons/fa';
 import { FaInstagram } from 'react-icons/fa';
 import { FaFacebookF } from 'react-icons/fa6';
 import Link from 'next/link';
+import axios from 'axios';
 
 const Footer = () => {
+    const [service, setService] = useState([]);
+    const [loading, setLoading] = useState(false);
+
+    const handleGetService = () => {
+        setLoading(true);
+        axios("https://starconcord.onrender.com/api/serviceList", {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "GET",
+        })
+            .then((res) => {
+                console.log('API Response:', res.data.data);
+                setService(res.data.data || []);
+                setLoading(false);
+            })
+            .catch((err) => {
+                setLoading(false);
+            });
+    };
+
+    useEffect(() => {
+        handleGetService();
+    }, []);
     return (
         <>
             <div
@@ -34,7 +60,7 @@ const Footer = () => {
                                 Find Booking Office
                             </Button>
                         </div>
-                        <div className="grid items-start justify-center grid-cols-1 gap-5 lg:grid-cols-2">
+                        <div className="grid items-start justify-center grid-cols-1 gap-5 lg:gap-0 lg:grid-cols-2">
                             <div className="space-y-6">
                                 <p className="text-lg font-bold">Quick Links</p>
                                 <div className="space-y-2">
@@ -53,21 +79,37 @@ const Footer = () => {
                                     <Link href="/blog">
                                         <p className="mb-2">Blogs</p>
                                     </Link>
-                                    <Link href="/">
-                                        <p>Articles</p>
+                                    <Link href="/article">
+                                        <p className="mb-2">Articles</p>
+                                    </Link>
+                                    <Link href="/location">
+                                        <p>Location</p>
                                     </Link>
                                 </div>
                             </div>
                             <div className="space-y-6">
                                 <p className="text-lg font-bold">Services</p>
-                                <div className="space-y-2">
-                                    <p> LCL Consolidators in India</p>
-                                    <p>Sea Freight</p>
-                                    <p>Air Freight</p>
-                                    <p>3PL Services</p>
-                                    <p>Project Cargo Handling</p>
-                                    <p>Warehousing</p>
+                                <div className='space-y-4'>
+                                    {service.length > 0 ? (
+                                        service.map((item) => (
+                                            <div
+                                                key={item._id}
+                                                className="space-y-4"
+                                            >
+                                                <Link href={`/service-detail/${item._id}`} state={{ id: item._id }} key={item?._id}>
+                                                    <p
+                                                        className=""
+                                                    >
+                                                        {item?.serviceName}
+                                                    </p>
+                                                </Link>
+                                            </div>
+                                        ))
+                                    ) : (
+                                        <p>No industries available</p>
+                                    )}
                                 </div>
+
                             </div>
                             <hr className="w-full h-0.5 border-t-0 bg-[#c5c5c5] dark:bg-white/10" />
                         </div>

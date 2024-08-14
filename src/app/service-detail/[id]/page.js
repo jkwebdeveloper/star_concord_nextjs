@@ -7,10 +7,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { IoIosArrowForward } from 'react-icons/io';
-import { useParams, useRouter } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation';
 
 const ServiceDetail = () => {
-    const [service, setService] = useState({ services: [] });
+    const [service, setService] = useState([]);
     const [loading, setLoading] = useState(false);
     const [serviceDetails, setServiceDetails] = useState({});
     const [activeService, setActiveService] = useState(null);
@@ -24,14 +24,13 @@ const ServiceDetail = () => {
     }, []);
 
     useEffect(() => {
-        if (activeService, id) {
-            handleGetServiceDetail(activeService)
-            handleGetServiceDetail(id)
+        if (id) {
+            handleGetServiceDetail(id);
         }
-    }, [activeService, id]);
+    }, [id]);
 
     const handleGetServiceDetail = (id) => {
-        if (!id) return
+        if (!id) return;
         setLoading(true);
         axios.get(`https://starconcord.onrender.com/api/serviceList/${id}`, {
             headers: {
@@ -40,10 +39,12 @@ const ServiceDetail = () => {
             method: "GET",
         })
             .then((res) => {
+                console.log(res.data, 'service details');
                 setServiceDetails(res.data.data || {});
                 setLoading(false);
             })
             .catch((err) => {
+                console.error(err);
                 setLoading(false);
             });
     };
@@ -57,26 +58,31 @@ const ServiceDetail = () => {
             method: "GET",
         })
             .then((res) => {
-                setService(res.data.data);
+                console.log(res.data);
+                const servicesData = res.data.data || [];
+                setService(servicesData);
                 setLoading(false);
+
+                if (servicesData.length > 0) {
+                    const activeService = servicesData.find(item => item._id === id);
+                    setActiveService(activeService ? activeService._id : servicesData[0]._id);
+                }
             })
             .catch((err) => {
+                console.error(err);
                 setLoading(false);
             });
     };
 
     const handleServiceClick = (item) => {
-        setActiveService(item._id)
-        router.push(`/service-detail/${item._id}`)
-        setServiceDetails(item)
-    }
-
+        setActiveService(item._id);
+        router.push(`/service-detail/${item._id}`);
+    };
 
     return (
         <div className="container w-full pb-10 mx-auto lg:space-y-20 space-y-7">
             <div className="relative md:h-80 h-60">
                 <Image
-                    // src={dynamicImage ? BaseUrl.concat(dynamicImage) : image}
                     src="/static/images/common.jpg"
                     loading="lazy"
                     alt='banner'
@@ -86,7 +92,7 @@ const ServiceDetail = () => {
                 />
                 <div className="absolute w-full space-y-2 text-center -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
                     <h1 className="text-2xl font-bold text-center text-black capitalize md:text-4xl">
-                        International Freight Forwarding
+                        {serviceDetails.serviceName || "Service Details"}
                     </h1>
                     <div className="flex items-center justify-center gap-3">
                         <Link href="/">
@@ -105,8 +111,8 @@ const ServiceDetail = () => {
                         </p>
                         <hr className="w-full h-0.5 border-t-0 bg-[#dfdfdf] dark:bg-white/10" />
                         <div className="space-y-5">
-                            {service?.services.length > 0 ? (
-                                service.services.map((item) => (
+                            {service.length > 0 ? (
+                                service.map((item) => (
                                     <div
                                         key={item._id}
                                         className="flex items-center gap-5 cursor-pointer"
@@ -125,213 +131,130 @@ const ServiceDetail = () => {
                             ) : (
                                 <p>No industries available</p>
                             )}
-
                         </div>
                     </div>
                 </div>
                 <div className="inline-block h-auto w-0.5 self-stretch bg-[#dfdfdf] dark:bg-white/10"></div>
                 <div className="md:w-[70%] w-[90%] mx-auto space-y-5 h-fit min-h-[350px]">
-                    {activeService === 'LCL Consolidators in Singapore' && (
+                    {loading ? (
+                        <div className="flex justify-center w-64 mx-auto mt-28">
+                            <p>Loading...</p>
+                        </div>
+                    ) : Object.keys(serviceDetails).length > 0 ? (
                         <>
-                            <Image
-                                // src={dynamicImage ? BaseUrl.concat(dynamicImage) : image}
-                                src="/static/images/service2.png"
-                                loading="lazy"
-                                width={890}
-                                height={550}
-                                quality={100}
-                                className="object-cover min-w-full rounded-2xl"
-                            />
-                            <div className="space-y-10">
-                                <div className="space-y-4">
-                                    <p className="text-[#1B1B1B] md:text-left text-justify">
-                                        Our freight transport services are fast,
-                                        efficient and reliable, even under these
-                                        challenging circumstances. We deliver
-                                        goods on time withour trafic jams at the
-                                        borders and operate with our own
-                                        traction services in 20 different
-                                        countries. We can increase its
-                                        capacities according to clients demand.
-                                    </p>
-                                    <p className="text-[#1B1B1B] md:text-left text-justify">
-                                        Odio risus mauris semper duis
-                                        ullamcorper duis felis. Quis interdum
-                                        condimentum viverra at nulla tristique
-                                        laoreet egestas pellentesque. Erat et
-                                        fermentum varius varius.{' '}
-                                    </p>
-                                </div>
+                            {serviceDetails ? (
+                                <>
+                                    <Image
+                                        src={`https://starconcord.onrender.com/uploads${serviceDetails?.featuredBanners}`}
+                                        loading="lazy"
+                                        alt=''
+                                        width={890}
+                                        height={550}
+                                        quality={100}
+                                        className="object-cover min-w-full rounded-2xl"
+                                    />
+                                    <div className="space-y-10">
+                                        <div className="space-y-4">
+                                            <div className="text-[#1B1B1B] md:text-left text-justify" dangerouslySetInnerHTML={{
+                                                __html: serviceDetails?.serviceTopContent,
+                                            }} />
+                                        </div>
 
-                                <div className="space-y-10">
-                                    <p className="text-2xl font-bold">
-                                        What we can do for you :
-                                    </p>
-                                    <div className="flex items-start gap-3">
-                                        <Image
-                                            // src={dynamicImage ? BaseUrl.concat(dynamicImage) : image}
-                                            src="/static/images/icon.png"
-                                            loading="lazy"
-                                            width={40}
-                                            height={40}
-                                            className=""
-                                            quality={100}
-                                            layout="fixed"
-                                            alt="Icon"
-                                        />
-                                        <div className="flex-col space-y-2">
-                                            <p className="text-xl font-semibold">
-                                                Customize according to needs{' '}
-                                            </p>
-                                            <p className="text-[#6C6C6C]">
-                                                We can customize our service
-                                                according to the amount of goods
-                                                you want to store.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div className="flex items-start gap-3">
-                                        <Image
-                                            // src={dynamicImage ? BaseUrl.concat(dynamicImage) : image}
-                                            src="/static/images/icon (1).png"
-                                            loading="lazy"
-                                            width={40}
-                                            height={40}
-                                            className=""
-                                            quality={100}
-                                            layout="fixed"
-                                            alt="Icon"
-                                        />
-                                        <div className="flex-col space-y-2">
-                                            <p className="text-xl font-semibold">
-                                                Reduce your costs
-                                            </p>
-                                            <p className="text-[#6C6C6C]">
-                                                You will not have to invest to
-                                                build and operate a private
-                                                warehouse
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div className="flex items-start gap-3">
-                                        <Image
-                                            // src={dynamicImage ? BaseUrl.concat(dynamicImage) : image}
-                                            src="/static/images/icon (2).png"
-                                            loading="lazy"
-                                            width={40}
-                                            height={40}
-                                            className=""
-                                            quality={100}
-                                            layout="fixed"
-                                            alt="Icon"
-                                        />
-                                        <div className="flex-col space-y-2">
-                                            <p className="text-xl font-semibold">
-                                                Shorten your cycle time
-                                            </p>
-                                            <p className="text-[#6C6C6C]">
-                                                Shorten your cycle time is the
-                                                benefit warehousing service
-                                                bring for businesses.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div className="flex items-start gap-3">
-                                        <Image
-                                            // src={dynamicImage ? BaseUrl.concat(dynamicImage) : image}
-                                            src="/static/images/icon (3).png"
-                                            loading="lazy"
-                                            width={40}
-                                            height={40}
-                                            className=""
-                                            quality={100}
-                                            layout="fixed"
-                                            alt="Icon"
-                                        />
-                                        <div className="flex-col space-y-2">
-                                            <p className="text-xl font-semibold">
-                                                Increase operation efficiency
-                                            </p>
-                                            <p className="text-[#6C6C6C]">
-                                                Warehousing service help reduce
-                                                cost & save you time
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <Button variant="primary">
-                                        Contact Us
-                                    </Button>
-                                </div>
-                                <div className="space-y-8">
-                                    <p className="text-2xl font-bold">
-                                        buyer and seller consoles
-                                    </p>
-                                    <p className="text-[#6C6C6C]">
-                                        Our strengths and advantages make us
-                                        different from our competitors and we
-                                        always is one of transportation and
-                                        logistics firms customers expect to
-                                        conduct their shipments
-                                    </p>
-                                    <div className="grid grid-cols-2 gap-4">
-                                        {/* Left Side Image */}
-                                        <div className="flex-1">
-                                            <Image
-                                                src="/static/images/details1.jpg"
-                                                loading="lazy"
-                                                width={10}
-                                                height={50}
-                                                quality={100}
-                                                layout="responsive"
-                                                alt="Main Image"
-                                                className="rounded-2xl"
-                                            />
-                                        </div>
-                                        {/* Right Side Images */}
-                                        <div className="flex flex-col justify-between gap-4">
-                                            <div>
-                                                <Image
-                                                    src="/static/images/details2.jpg"
-                                                    loading="lazy"
-                                                    width={300}
-                                                    height={250}
-                                                    quality={100}
-                                                    layout="responsive"
-                                                    alt="Top Right Image"
-                                                    className="object-cover rounded-2xl"
-                                                />
+                                        {serviceDetails.showWcdContent && (
+                                            <div className="space-y-10">
+                                                <p className="text-2xl font-bold">
+                                                    What we can do for you:
+                                                </p>
+                                                {serviceDetails.wcdContent?.map((item) => (
+                                                    <div key={item?._id} className="flex items-start gap-3">
+                                                        <Image
+                                                            src={`https://starconcord.onrender.com/uploads${item?.image}`}
+                                                            loading="lazy"
+                                                            width={40}
+                                                            height={40}
+                                                            alt="Icon"
+                                                            quality={100}
+                                                            layout="fixed"
+                                                            className=""
+                                                        />
+                                                        <div className="flex-col space-y-2">
+                                                            <p className="text-xl font-semibold">
+                                                                {item.title}
+                                                            </p>
+                                                            <p className="text-[#6C6C6C]">
+                                                                {item.description}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                                <Button variant="primary">
+                                                    Contact Us
+                                                </Button>
                                             </div>
-                                            <div>
-                                                <Image
-                                                    src="/static/images/details3.jpg"
-                                                    loading="lazy"
-                                                    width={300}
-                                                    height={250}
-                                                    quality={100}
-                                                    layout="responsive"
-                                                    alt="Bottom Right Image"
-                                                    className="object-cover rounded-2xl"
-                                                />
+                                        )}
+                                        {serviceDetails.showBSContent && (
+                                            <div className="space-y-8">
+                                                <p className="text-2xl font-bold">
+                                                    Buyer and Seller Consoles
+                                                </p>
+                                                <div className="text-[#6C6C6C]" dangerouslySetInnerHTML={{
+                                                    __html: serviceDetails?.beforeImgContent,
+                                                }} />
+                                                <div className="grid grid-cols-2 gap-4">
+                                                    <div className="flex-1">
+                                                        <Image
+                                                            src={`https://starconcord.onrender.com/uploads${serviceDetails.image1}`}
+                                                            loading="lazy"
+                                                            width={300}
+                                                            height={250}
+                                                            quality={100}
+                                                            layout="responsive"
+                                                            alt="Main Image"
+                                                            className="rounded-2xl"
+                                                        />
+                                                    </div>
+                                                    <div className="flex flex-col justify-between gap-4">
+                                                        <div>
+                                                            <Image
+                                                                src={`https://starconcord.onrender.com/uploads${serviceDetails.image2}`}
+                                                                loading="lazy"
+                                                                width={300}
+                                                                height={250}
+                                                                quality={100}
+                                                                layout="responsive"
+                                                                alt="Top Right Image"
+                                                                className="object-cover rounded-2xl"
+                                                            />
+                                                        </div>
+                                                        <div>
+                                                            <Image
+                                                                src={`https://starconcord.onrender.com/uploads${serviceDetails.image3}`}
+                                                                loading="lazy"
+                                                                width={300}
+                                                                height={250}
+                                                                quality={100}
+                                                                layout="responsive"
+                                                                alt="Bottom Right Image"
+                                                                className="object-cover rounded-2xl"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
+                                        )}
                                     </div>
-                                    <p className="text-[#6C6C6C]">
-                                        We are proud to serve more than 3,000
-                                        customers and are the most environment
-                                        friendly mode of land transportation, so
-                                        our rail freight service is always the
-                                        top choice.
-                                    </p>
-                                </div>
-                            </div>
+                                </>
+                            ) : (
+                                <div>No service details found.</div>
+                            )}
                         </>
+                    ) : (
+                        <p>No service details available.</p>
                     )}
-
                 </div>
             </div>
-            <GetInTouchSection />
         </div>
     );
-};
+}
 
 export default ServiceDetail;

@@ -60,17 +60,19 @@ const AboutUs = () => {
                                 </div>
                                 <p className='text-4xl font-bold'>{aboutUs?.aboutContentTitle}</p>
                                 <div className='text-lg' dangerouslySetInnerHTML={{ __html: aboutUs?.aboutContent }}></div>
-                                <div className='flex items-center gap-3 md:gap-16'>
-                                    <p className="font-semibold">CEO {aboutUs?.ceoName}</p>
-                                    <Image
-                                        src={`https://starconcord.onrender.com/uploads${aboutUs?.ceoSignature}`}
-                                        alt="unsplash"
-                                        loading="lazy"
-                                        width={200}
-                                        height={100}
-                                        className="object-cover rounded-xl"
-                                    />
-                                </div>
+                                {aboutUs.ceoName && (
+                                    <div className='flex items-center gap-3 md:gap-16'>
+                                        <p className="font-semibold">CEO {aboutUs?.ceoName}</p>
+                                        <Image
+                                            src={`https://starconcord.onrender.com/uploads${aboutUs?.ceoSignature}`}
+                                            alt="unsplash"
+                                            loading="lazy"
+                                            width={200}
+                                            height={100}
+                                            className="object-cover rounded-xl"
+                                        />
+                                    </div>
+                                )}
                             </div>
                             <div className="space-y-8">
                                 <div className="grid items-start w-full grid-cols-2 text-left">

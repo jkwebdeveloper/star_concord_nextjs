@@ -84,13 +84,15 @@ const IndustriesDetail = () => {
                     // src={dynamicImage ? BaseUrl.concat(dynamicImage) : image}
                     src="/static/images/common.jpg"
                     loading="lazy"
+                    alt='banner'
                     width={450}
                     height={350}
                     className="object-cover object-center w-full h-full rounded-2xl"
                 />
                 <div className="absolute w-full space-y-2 text-center -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
                     <h1 className="text-2xl font-bold text-center text-black capitalize md:text-4xl">
-                        Healthcare and Pharmaceuticals Logistics
+
+                        {industriesDetails.industryName || "Healthcare and Pharmaceuticals Logistics"}
                     </h1>
                     <div className="flex items-center justify-center gap-3">
                         <Link href="/">
