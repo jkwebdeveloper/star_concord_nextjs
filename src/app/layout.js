@@ -2,6 +2,7 @@ import { Instrument_Sans, Inter, Mulish } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/global';
 import Footer from '@/components/global/Footer';
+import ScrollToTop from '@/components/global/ScrollToTop';
 
 const instrument = Instrument_Sans({
     // weight: ['400', '700', '200'],
@@ -21,6 +22,7 @@ export default function RootLayout({ children }) {
             <body className={instrument.className}>
                 <Header />
                 {children}
+                <ScrollToTop />
                 <Footer />
             </body>
         </html>
