@@ -168,7 +168,7 @@ const ServiceDetail = () => {
                                                 {serviceDetails.wcdContent?.map((item) => (
                                                     <div key={item?._id} className="flex items-start gap-3">
                                                         <Image
-                                                            src={`https://starconcord.onrender.com/uploads${item?.image}`}
+                                                            src={`https://starconcord.onrender.com/uploads/${item?.image}`}
                                                             loading="lazy"
                                                             width={40}
                                                             height={40}
