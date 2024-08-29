@@ -92,36 +92,3 @@ const OurIndustriesSection = () => {
 };
 
 export default OurIndustriesSection;
-
-// const Data = [
-//     {
-//         id: 1,
-//         image: '/static/images/Frame.png',
-//         title: 'Healthcare & Pharmay',
-//         desc: 'Vix ut ignota deserunt partien ad, pros tale falli periculis ad, idque deseruisse constituam.',
-//     },
-//     {
-//         id: 2,
-//         image: '/static/images/Frame (1).png',
-//         title: 'Oil & Gas',
-//         desc: 'Vix ut ignota deserunt partien ad, pros tale falli periculis ad, idque deseruisse constituam.',
-//     },
-//     {
-//         id: 3,
-//         image: '/static/images/Frame (2).png',
-//         title: 'Hotel & Resort',
-//         desc: 'Vix ut ignota deserunt partien ad, pros tale falli periculis ad, idque deseruisse constituam.',
-//     },
-//     {
-//         id: 4,
-//         image: '/static/images/Frame (3).png',
-//         title: 'Automotive Industries',
-//         desc: 'Vix ut ignota deserunt partien ad, pros tale falli periculis ad, idque deseruisse constituam.',
-//     },
-//     {
-//         id: 5,
-//         image: '/static/images/Frame.png',
-//         title: 'Healthcare & Pharmay',
-//         desc: 'Vix ut ignota deserunt partien ad, pros tale falli periculis ad, idque deseruisse constituam.',
-//     },
-// ];

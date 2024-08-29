@@ -89,7 +89,6 @@ const Header = () => {
 
                 <div className="px-20 space-y-6 text-left">
                     {[
-                        { name: 'Home', href: '/' },
                         { name: 'About us', href: '/about-us' },
                         { name: 'Services', href: '/service' },
                         { name: 'Industries', href: '/industries' },
@@ -97,6 +96,7 @@ const Header = () => {
                         { name: 'Location', href: '/location' },
                         { name: 'Blogs', href: '/blog' },
                         { name: 'Contact us', href: '/contact-us' },
+                        { name: 'Careers ', href: '/' },
                     ].map(link => (
                         <Link key={link.name} href={link.href}>
                             <li
@@ -158,13 +158,8 @@ const Header = () => {
                     <div className=" h-10 hidden xl:flex min-h-[5px] w-0.5 bg-[#CECECE] dark:bg-white/10"></div>
                     <ul className="hidden md:gap-8 xl:gap-11 lg:flex">
                         {[
-                            { name: 'Home', href: '/' },
                             { name: 'About us', href: '/about-us' },
                             { name: 'Services', href: '/service' },
-                            // { name: 'Industries', href: '/industries' },
-                            { name: 'Articles', href: '/article' },
-                            { name: 'Blogs', href: '/blog' },
-                            // { name: 'Contact us', href: '/contact-us' },
                         ].map(link => (
                             <Link key={link.name} href={link.href}>
                                 <li
@@ -220,38 +215,29 @@ const Header = () => {
                                 )}
                             </div>
                         </div>
-                        <div
-                            className={`cursor-pointer text-[16px] font-semibold capitalize group flex items-center flex-row justify-center gap-1 relative z-10 ${active === "Industries"
-                                ? 'text-black font-semibold'
-                                : 'text-[#6C6C6C] font-normal'
-                                }`}
-                        >
-                            <Link href="/contact-us">
-                                <p className="flex items-center gap-2">
-                                    Contact
-                                    <FaChevronDown className={`ml-auto min-h-4 min-w-[1rem] group-hover:mb-0 duration-300 group-hover:rotate-180 transition-all `} />
-                                </p>
+                        {[
+                            
+                            { name: 'Articles', href: '/article' },
+                            { name: 'Blogs', href: '/blog' },
+                            { name: 'Contact us', href: '/contact-us' },
+                            { name: 'Careers ', href: '/' },
+                            { name: 'Location', href: '/location' },
+
+                        ].map(link => (
+                            <Link key={link.name} href={link.href}>
+                                <li
+                                    onClick={() => handleLinkClick(link.name)}
+                                    className={`cursor-pointer text-[16px] font-semibold capitalize ${active === link.name
+                                        ? 'text-black font-semibold'
+                                        : 'text-[#6C6C6C] font-normal'
+                                        }`}
+                                >
+                                    <span className="inline-block footer">
+                                        {link.name}
+                                    </span>
+                                </li>
                             </Link>
-                            {/* dropdown */}
-                            <div className="absolute overflow-y-auto z-10 min-w-[13rem] group-hover:scale-100 scale-0 custom_scrollbar transition-all origin-top  bg-white text-left ease-in-out duration-300 top-9 -left-5 rounded-lg shadow-2xl text-textColor space-y-2">
-                                {/* left side */}
-                                <ul className="max-h-full overflow-y-auto font-semibold tracking-wide capitalize">
-                                    <Link href='/location'>
-                                        <li
-                                            className={`cursor-pointer text-[16px] px-5 py-2 hover:bg-primary_color hover:text-white flex items-center justify-between font-semibold capitalize ${active === "Contact"
-                                                ? 'text-black font-semibold'
-                                                : 'text-[#6C6C6C] font-normal'
-                                                }`}
-                                        >
-                                            <span className="whitespace-nowrap">
-                                                Location
-                                            </span>
-                                            <FaChevronRight className="" />
-                                        </li>
-                                    </Link>
-                                </ul>
-                            </div>
-                        </div>
+                        ))}
                     </ul>
 
                     <div className="hidden gap-3 text-center lg:flex">

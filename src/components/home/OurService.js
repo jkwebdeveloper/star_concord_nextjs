@@ -6,7 +6,7 @@ import PageLoader from '../ui/pageloader';
 
 
 const OurService = () => {
-    
+
     const [service, setService] = useState([]);
     const [loading, setLoading] = useState(false);
 
@@ -37,106 +37,36 @@ const OurService = () => {
                 Our Global Solutions
             </p>
             {loading ? (
-                <PageLoader/>
+                <PageLoader />
             ) : (
-                <div className="flex flex-col items-start space-y-5 md:flex-row md:space-y-0">
-                    {service?.ourServices?.[0] && (
-                        <div className="md:w-[30%] w-full space-y-5">
-                            <div  className="bg-[#F7F9FB] relative w-full h-fit min-h-[517px] rounded-lg p-5 flex flex-col justify-end">
-                                <Image
-                                    src={`https://starconcord.onrender.com/uploads${service.ourServices[0].serviceIconImage}`}
-                                    alt={service.ourServices[0].serviceName}
-                                    loading="lazy"
-                                    width={250}
-                                    height={200}
-                                    className="absolute object-cover top-5 right-5"
-                                />
-                                <p className="text-2xl w-1/2 text-left ml-2 font-bold text-[#1C3E58]">
-                                    {service.ourServices[0].serviceName}
-                                </p>
-                            </div>
-                        </div>
-                    )}
-                    <div className="grid items-start md:w-[70%] w-full mx-auto justify-center grid-cols-1 gap-9 md:px-10 lg:grid-cols-2">
+                <div className="grid items-start gap-5 pb-5 md:grid-cols-2 lg:grid-cols-5">
+                    {service?.ourServices?.map((item) => {
+                        return (
+                            <>
+                                <div className="bg-[#F7F9FB] rounded-lg p-5 pb-5 flex flex-col min-h-[350px]" key={item._id}>
+                                    <div className="flex">
+                                        <Image
+                                            src={`https://starconcord.onrender.com/uploads${item.serviceIconImage}`}
+                                            // src="/static/images/Conveyor Belt 1 (2).png"
+                                            alt="unsplash"
+                                            loading="lazy"
+                                            width={130}
+                                            height={130}
+                                            className="object-cover"
+                                        />
+                                    </div>
+                                    <div className="flex-grow space-y-4"></div>
+                                    <div className="flex-col items-center justify-center w-full gap-3 mt-auto space-y-2">
+                                        <p className="text-2xl font-bold pb-2 text-[#104B59]">
+                                            {item?.serviceName}
+                                        </p>
 
-                        {service?.ourServices?.[1] && (
-                            <div  className="bg-[#F7F9FB] min-h-[220px] rounded-lg pb-5 flex flex-col">
-                                <div className='flex justify-end'>
+                                    </div>
+                                </div>
+                            </>
+                        )
+                    })}
 
-                                    <Image
-                                        src={`https://starconcord.onrender.com/uploads${service.ourServices[1].serviceIconImage}`}
-                                        alt={service.ourServices[1].serviceName}
-                                        loading="lazy"
-                                        width={200}
-                                        height={200}
-                                        className="object-cover"
-                                    />
-                                </div>
-                                <div className="flex justify-start">
-                                    <p className="text-2xl ml-4 font-bold text-[#1C3E58]">
-                                        {service.ourServices[1].serviceName}
-                                    </p>
-                                </div>
-                            </div>
-                        )}
-                        {service?.ourServices?.[2] && (
-                            <div  className="bg-[#F7F9FB] min-h-[220px] rounded-lg pb-5 flex flex-col">
-                                <div className="flex justify-end">
-                                    <Image
-                                        src={`https://starconcord.onrender.com/uploads${service.ourServices[2].serviceIconImage}`}
-                                        alt={service.ourServices[2].serviceName}
-                                        loading="lazy"
-                                        width={200}
-                                        height={200}
-                                        className="object-cover"
-                                    />
-                                </div>
-                                <div className="flex justify-start">
-                                    <p className="text-2xl ml-4 font-bold text-[#1C3E58]">
-                                        {service.ourServices[2].serviceName}
-                                    </p>
-                                </div>
-                            </div>
-                        )}
-                        {service?.ourServices?.[3] && (
-                            <div  className="bg-[#F7F9FB] min-h-[220px] rounded-lg pb-4 flex flex-col">
-                                <div className="flex justify-end">
-                                    <Image
-                                        src={`https://starconcord.onrender.com/uploads${service.ourServices[3].serviceIconImage}`}
-                                        alt={service.ourServices[3].serviceName}
-                                        loading="lazy"
-                                        width={150}
-                                        height={150}
-                                        className="object-cover"
-                                    />
-                                </div>
-                                <div className="flex justify-start text-left">
-                                    <p className="text-2xl ml-4 text-left font-bold text-[#1C3E58]">
-                                        {service.ourServices[3].serviceName}
-                                    </p>
-                                </div>
-                            </div>
-                        )}
-                        {service?.ourServices?.[4] && (
-                            <div  className="bg-[#F7F9FB] min-h-[220px] rounded-lg pb-5 flex flex-col">
-                                <div className="flex justify-end">
-                                    <Image
-                                        src={`https://starconcord.onrender.com/uploads${service.ourServices[4].serviceIconImage}`}
-                                        alt={service.ourServices[4].serviceName}
-                                        loading="lazy"
-                                        width={180}
-                                        height={150}
-                                        className="object-cover"
-                                    />
-                                </div>
-                                <div className="flex justify-start">
-                                    <p className="text-2xl font-bold ml-4 text-[#1C3E58]">
-                                        {service.ourServices[4].serviceName}
-                                    </p>
-                                </div>
-                            </div>
-                        )}
-                    </div>
                 </div>
             )}
         </div>
