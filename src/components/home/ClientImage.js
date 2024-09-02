@@ -72,8 +72,8 @@ const ClientImage = () => {
                         src={`https://starconcord.onrender.com/uploads${images.bannerTwo}`}
                         alt="banner"
                         loading="lazy"
-                        width={1400}
-                        height={300}
+                        width={1900}
+                        height={900}
                         // fill
                         // sizes='(max-width : 1200px) 100vw'
                         className="object-cover rounded-xl"
