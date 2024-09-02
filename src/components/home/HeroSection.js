@@ -41,7 +41,7 @@ const HeroSection = () => {
       ) : (
         banners.bannerOne && (
           <>
-            <Image
+            {/* <Image
               // src={'/static/images/home-banner.jpg'}
               src={`https://starconcord.onrender.com/uploads${banners.bannerOne}`}
               alt=""
@@ -51,7 +51,18 @@ const HeroSection = () => {
               width={1000}
               height={1000}
               className="w-full h-full rounded-xl "
-            />
+            /> */}
+            <div className="relative w-full mx-auto overflow-hidden lg:min-h-screen h-80 rounded-xl">
+              <Image
+                src={`https://starconcord.onrender.com/uploads${banners.bannerOne}`}
+                alt=""
+                loading="lazy"
+                layout="fill"
+                objectFit="cover"
+                quality={100}
+                className="z-0 object-cover transition-all duration-300 hover:scale-110"
+              />
+            </div>
             <div className="absolute left-0 flex items-center justify-center w-full h-full md:top-0 -top-6">
               <div className="text-center md:space-y-7">
                 <div

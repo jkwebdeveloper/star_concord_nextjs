@@ -10,7 +10,7 @@ const LocationSection = () => {
 
     const handleGetLocation = () => {
         setLoading(true)
-        axios('https://starconcord.onrender.com/api/homePage', {
+        axios('https://starconcord.onrender.com/api/aboutUsPage', {
             headers: {
                 'Content-Type': 'application/json',
             },

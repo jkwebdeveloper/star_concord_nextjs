@@ -6,6 +6,9 @@ import Image from 'next/image';
 import { FaRegCircleCheck } from 'react-icons/fa6';
 import axios from 'axios';
 import PageLoader from '@/components/ui/pageloader';
+import LocationSection from '@/components/home/Location';
+import PacificSection from '@/components/home/Pacific';
+import TextSection from '@/components/home/TextSection';
 
 const AboutUs = () => {
     const [selectedTab, setSelectedTab] = useState('mission');
@@ -397,6 +400,10 @@ const AboutUs = () => {
                             ))}
                         </div>
                     </div>
+
+                    <LocationSection/>
+                    <PacificSection/>
+                    <TextSection/>
                 </>
             )}
         </div>

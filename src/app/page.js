@@ -12,12 +12,12 @@ export default function Home() {
                 <OurIndustries />
                 <ServiceImage />
                 <ContactUs />
-                <Location />
-                <Pacific />
+                {/* <Location />
+                <Pacific /> */}
             </div>
-            <div className="">
+            {/* <div className="">
                 <TextSection />
-            </div>
+            </div> */}
         </div>
     );
 }

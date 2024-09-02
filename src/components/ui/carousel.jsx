@@ -171,14 +171,14 @@ const CarouselPrevious = React.forwardRef(
         variant={variant}
         size={size}
         className={cn(
-          "md:left-[48%] left-[38%] mt-7 relative border border-[#D4DEEF] text-primary_color active:scale-90 transition hover:bg-primary_color hover:text-white  h-8 w-8 rounded-full",
+          " mt-7 relative border border-[#D4DEEF] text-primary_color active:scale-90 transition hover:bg-primary_color hover:text-white  h-8 w-8 rounded-full",
           className
         )}
         disabled={!canScrollPrev}
         onClick={scrollPrev}
         {...props}
       >
-        <ArrowLeft className="h-4 w-4" />
+        <ArrowLeft className="w-4 h-4" />
         <span className="sr-only">Previous slide</span>
       </Button>
     );
@@ -196,14 +196,14 @@ const CarouselNext = React.forwardRef(
         variant={variant}
         size={size}
         className={cn(
-          "relative md:left-[50%] left-[40%] border border-[#D4DEEF] text-primary_color active:scale-90 transition hover:bg-primary_color hover:text-white h-8 w-8 rounded-full",
+          "relative  left-[3%] border border-[#D4DEEF] text-primary_color active:scale-90 transition hover:bg-primary_color hover:text-white h-8 w-8 rounded-full",
           className
         )}
         disabled={!canScrollNext}
         onClick={scrollNext}
         {...props}
       >
-        <ArrowRight className="h-4 w-4" />
+        <ArrowRight className="w-4 h-4" />
         <span className="sr-only">Next slide</span>
       </Button>
     );

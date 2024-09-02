@@ -26,7 +26,7 @@ module.exports = {
         borderColor: ['hover'], // Extend border color on hover
       },
       colors: {
-        primary_color: "#0C4DA2",
+        primary_color: "#1C4990",
         "primary-hover": "#BF27D7",
         green_color: "#29AD17",
       },

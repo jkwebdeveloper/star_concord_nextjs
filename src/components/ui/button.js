@@ -23,9 +23,9 @@ const buttonVariants = cva(
         danger:
           "text-white bg-[#D2042D] hover:bg-red-600 active:scale-90 transition hover:text-white ",
         primary:
-          "focus:outline-none rounded capitalize bg-[#0C4DA2] hover:bg-[#0068C4] text-white font-medium  active:scale-90 transition text-sm",
+          "focus:outline-none rounded capitalize bg-[#1C4990] hover:bg-[#0068C4] text-white font-medium  active:scale-90 transition text-sm",
         disable:
-          "focus:outline-none capitalize bg-[#0C4DA21A] hover:bg-[#0068C4] text-white font-medium  active:scale-90 transition text-sm",
+          "focus:outline-none capitalize bg-[#1C4990] opacity-50 hover:bg-[#0068C4] text-white font-medium  active:scale-90 transition text-sm",
       },
       size: {
         default: "h-10 px-4 py-2",

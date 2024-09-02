@@ -75,8 +75,9 @@ const Header = () => {
                             src={'/static/images/logo_final.png'}
                             alt="logo"
                             loading="lazy"
-                            width={120}
-                            height={120}
+                            width={100}
+                            height={100}
+                            className='object-cover'
                         />
                     </Link>
                     <div>
@@ -243,7 +244,7 @@ const Header = () => {
                     <div className="hidden gap-3 text-center lg:flex">
                         <Button
                             variant="disable"
-                            className="font-bold hover:text-white text-primary_color"
+                            className="font-bold"
                         >
                             Login
                         </Button>

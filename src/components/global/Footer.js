@@ -116,10 +116,10 @@ const Footer = () => {
                                 )}
 
                             </div>
-                            <hr className="w-full h-0.5 border-t-0 bg-[#c5c5c5] dark:bg-white/10" />
+                            {/* <hr className="w-full h-0.5 border-t-0 bg-[#c5c5c5] dark:bg-white/10" /> */}
                         </div>
                         <div></div>
-                        <div className="flex items-center gap-10">
+                        {/* <div className="flex items-center gap-10">
                             <Image
                                 src={'/static/images/image 2.png'}
                                 alt="unsplash"
@@ -144,7 +144,7 @@ const Footer = () => {
                                 height={100}
                                 className="object-cover"
                             />
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
