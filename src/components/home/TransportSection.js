@@ -63,7 +63,6 @@ const TransportSection = () => {
                             alt="banner"
                             loading="lazy"
                             width={800}
-
                             layout="responsive"
                             height={800}
                             objectFit="cover"

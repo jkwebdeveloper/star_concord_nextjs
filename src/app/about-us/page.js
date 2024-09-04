@@ -160,7 +160,7 @@ const AboutUs = () => {
                         </div>
                         <div className="w-full text-[#1B1B1B] space-y-6">
                             <p className="text-xl font-bold xl:text-5xl md:text-2xl">
-                                Offering Complete Range of Global Logistics Solutions
+                                {aboutUs?.secContentTitle}
                             </p>
                             <div className="space-y-4 text-sm text-justify md:text-base md:text-left" dangerouslySetInnerHTML={{ __html: aboutUs?.secContent }}>
                             </div>

@@ -66,21 +66,20 @@ const ClientImage = () => {
                 <PageLoader />
             ) : (
                 <>
-                {/* <div className='w-full relative h-[80vh] xl:h-[75vh]'> */}
+                    <div className='relative w-full mx-auto overflow-hidden lg:min-h-screen h-80 rounded-xl'>
 
-                    <Image
-                        src={`https://starconcord.onrender.com/uploads${images.bannerTwo}`}
-                        alt="banner"
-                        loading="lazy"
-                        width={1900}
-                        height={900}
-                        // fill
-                        // sizes='(max-width : 1200px) 100vw'
-                        className="object-cover rounded-xl"
-                    />
-                {/* </div> */}
-                    <div className="absolute top-0 flex items-center justify-start w-[90%] h-full text-left md:w-1/2">
-                        <div className="mx-5 space-y-4 lg:space-y-10 lg:mx-28">
+                        <Image
+                            src={`https://starconcord.onrender.com/uploads${images.bannerTwo}`}
+                            alt=""
+                            loading="lazy"
+                            fill
+                            objectFit="cover"
+                            quality={100}
+                            className="rounded-xl"
+                        />
+                    </div>
+                    <div className="absolute top-0 flex items-center justify-start w-[90%] h-full text-left md:w-[53%]">
+                        <div className="mx-5 space-y-4 lg:space-y-10 lg:mx-20">
                             <Carousel
                                 opts={{
                                     align: 'start',
@@ -95,6 +94,18 @@ const ClientImage = () => {
                                                 className="w-full space-y-2 md:space-y-8"
                                                 key={item?._id}
                                             >
+                                                <image
+                                                    src={'/static/images/testig.png'}
+                                                    // src={`https://starconcord.onrender.com/uploads${item.image}`}
+                                                    alt="banner"
+                                                    loading="lazy"
+                                                    layout="responsive"
+                                                    // objectFit="cover"
+                                                    width={50}
+                                                    height={50}
+                                                    className=""
+
+                                                />
                                                 <div className="text-sm font-semibold text-justify text-white md:text-xl lg:text-2xl" dangerouslySetInnerHTML={{ __html: item?.content }}>
 
                                                 </div>
@@ -110,7 +121,8 @@ const ClientImage = () => {
                                                         // objectFit="cover"
                                                         width={100}
                                                         height={100}
-                                                        className="rounded-full max-w-16"
+                                                        className="rounded-xl max-w-16"
+
                                                     />
                                                     <div className="flex-row text-white">
                                                         <p className="text-sm font-bold md:text-lg">

@@ -11,7 +11,7 @@ const CommonBanner = ({ title, image, page }) => {
                 src={image}
                 alt={title}
                 loading="lazy"
-                width={450}
+                width={1200}
                 height={350}
                 className="object-cover object-center w-full h-full rounded-2xl"
             />

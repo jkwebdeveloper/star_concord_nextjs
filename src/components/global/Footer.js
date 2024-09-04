@@ -55,10 +55,10 @@ const Footer = () => {
                         <div className="space-y-4">
                             <ImLocation2 className="text-2xl text-white lg:text-5xl" />
                             <p className="w-full text-xl font-bold capitalize lg:text-4xl lg:w-1/2">
-                                Find Our Office at your location
+                                Find Our Office 
                             </p>
                             <Button className="border-[1px] active:scale-90 transition border-primary bg-background shadow-sm hover:bg-black hover:text-white">
-                                Find Booking Office
+                            Star Concord Global Presence
                             </Button>
                         </div>
                         <div className="grid items-start justify-center grid-cols-1 gap-5 lg:gap-0 lg:grid-cols-2">
@@ -151,7 +151,7 @@ const Footer = () => {
             <div className="container px-10 py-4 mx-auto text-white">
                 <div className="flex flex-col items-center justify-between space-y-4 lg:flex-row">
                     <p className="text-sm text-primary_color">
-                        © 2024, Star Concord PTE LTD, All Rights Reserved
+                        © 2024, Star Concord India Pvt Ltd, All Rights Reserved
                     </p>
                     <div className="flex items-center gap-5">
                         <FaTwitter className="text-[#6C6C6C] cursor-pointer  hover:rounded-full p-3  text-5xl hover:bg-primary_color hover:text-white" />

@@ -77,7 +77,7 @@ const GetInTouchSection = () => {
                         A Passionate Commitment to Making a Difference
                     </p>
                     <p className="text-[#6C6C6C] text-sm">
-                        Our team of experts is ready to work with you, to find the best freight forwarding solutions for your needs. Get in touch with us today.
+                        Our team of experts is ever ready to assist you by offering the best freight forwarding solutions for your needs. Get in touch with us today.
                     </p>
                     <div className="space-y-2">
                         <div className="flex items-center gap-3">
