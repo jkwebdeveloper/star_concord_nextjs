@@ -57,7 +57,7 @@ const AboutUs = () => {
                             <div className="space-y-10">
                                 <div className="space-y-4">
                                     <p className="text-lg font-semibold">
-                                        About company
+                                        WHO WE ARE
                                     </p>
                                 </div>
                                 <p className='text-4xl font-bold'>{aboutUs?.aboutContentTitle}</p>
@@ -101,9 +101,9 @@ const AboutUs = () => {
                                     {selectedTab === 'mission' && (
                                         <div className="space-y-8">
                                             <div className='space-y-3' dangerouslySetInnerHTML={{ __html: aboutUs?.ourMission }}></div>
-                                            <Button variant="primary">
+                                            {/* <Button variant="primary">
                                                 Explore more
-                                            </Button>
+                                            </Button> */}
                                         </div>
                                     )}
                                     {selectedTab === 'vision' && (
@@ -127,9 +127,9 @@ const AboutUs = () => {
                                                 </li>
                                             </ul> */}
                                             <div className='space-y-3' dangerouslySetInnerHTML={{ __html: aboutUs?.ourVision }}></div>
-                                            <Button variant="primary">
+                                            {/* <Button variant="primary">
                                                 Explore more
-                                            </Button>
+                                            </Button> */}
                                         </div>
                                     )}
                                 </div>
@@ -178,7 +178,7 @@ const AboutUs = () => {
                             className="object-cover"
                         />
                         <div className="space-y-8">
-                            <p className="text-[#1B1B1B] font-semibold">Why Us</p>
+                            <p className="text-[#1B1B1B] font-semibold">{aboutUs?.whyusTitle}</p>
                             <p className="text-xl font-bold lg:text-4xl">
                                 {aboutUs?.secContentTitle}
                             </p>
@@ -401,9 +401,9 @@ const AboutUs = () => {
                         </div>
                     </div>
 
-                    <LocationSection/>
-                    <PacificSection/>
-                    <TextSection/>
+                    <LocationSection />
+                    <PacificSection />
+                    <TextSection />
                 </>
             )}
         </div>
