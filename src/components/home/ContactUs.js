@@ -74,7 +74,7 @@ const GetInTouchSection = () => {
             <div className="grid items-center gap-5 lg:grid-cols-2 xl:gap-40 md:gap-20">
                 <div className="space-y-5 lg:space-y-8">
                     <p className="text-base font-bold lg:text-2xl">
-                        A Passionate Commitment to Making a Difference
+                        Get in touch with us
                     </p>
                     <p className="text-[#6C6C6C] text-sm">
                         Our team of experts is ever ready to assist you by offering the best freight forwarding solutions for your needs. Get in touch with us today.
