@@ -4,6 +4,7 @@ import { Button } from '../ui/button';
 import Image from 'next/image';
 import axios from 'axios';
 import PageLoader from '../ui/pageloader';
+import Link from 'next/link';
 // import AOS from "aos";
 // import "aos/dist/aos.css";
 
@@ -51,11 +52,11 @@ const TransportSection = () => {
                         <div className="text-[#1B1B1B] text-base " dangerouslySetInnerHTML={{ __html: transport?.topContent }}>
 
                         </div>
-                        <div className="">
+                        <Link href="/service-detail/66976cceff68443e1c005c53">
                             <Button variant="primary" className="">
                                 More Details
                             </Button>
-                        </div>
+                        </Link>
                     </div>
                     <div>
                         <Image

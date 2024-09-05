@@ -101,31 +101,10 @@ const AboutUs = () => {
                                     {selectedTab === 'mission' && (
                                         <div className="space-y-8">
                                             <div className='space-y-3' dangerouslySetInnerHTML={{ __html: aboutUs?.ourMission }}></div>
-                                            {/* <Button variant="primary">
-                                                Explore more
-                                            </Button> */}
                                         </div>
                                     )}
                                     {selectedTab === 'vision' && (
                                         <div className="space-y-8">
-                                            {/* <p className="text-[#1B1B1B]">
-                                                Lorem ipsum, dolor sit amet consectetur
-                                                adipisicing elit. Minima perspiciatis
-                                                nostrum officiis autem dolorum suscipit
-                                                accusamus ipsam nihil ullam
-                                                reprehenderit! Accusantium, ipsam?
-                                            </p>
-                                            <ul className="pl-5 font-semibold text-[#1B1B1B] space-y-2 list-disc">
-                                                <li>
-                                                    Superior transportation and
-                                                    logistics services
-                                                </li>
-                                                <li>Guarantee on-time delivery</li>
-                                                <li>
-                                                    The most cost-effective delivery for
-                                                    clients
-                                                </li>
-                                            </ul> */}
                                             <div className='space-y-3' dangerouslySetInnerHTML={{ __html: aboutUs?.ourVision }}></div>
                                             {/* <Button variant="primary">
                                                 Explore more
@@ -147,25 +126,31 @@ const AboutUs = () => {
                         </div>
                     </div>
 
-                    <div className="grid items-start justify-center gap-5 px-3 lg:px-10 lg:grid-cols-2 xl:gap-40 md:gap-20">
-                        <div className="">
-                            <Image
-                                src={`https://starconcord.onrender.com/uploads${aboutUs?.secBanner}`}
-                                alt="unsplash"
-                                loading="lazy"
-                                width={600}
-                                height={900}
-                                className="object-cover rounded-xl"
-                            />
-                        </div>
-                        <div className="w-full text-[#1B1B1B] space-y-6">
-                            <p className="text-xl font-bold xl:text-5xl md:text-2xl">
-                                {aboutUs?.secContentTitle}
-                            </p>
-                            <div className="space-y-4 text-sm text-justify md:text-base md:text-left" dangerouslySetInnerHTML={{ __html: aboutUs?.secContent }}>
+
+                    {aboutUs?.secBanner && aboutUs?.secContentTitle && aboutUs?.secContent ? (
+                        <div className="grid items-start justify-center gap-5 px-3 lg:px-10 lg:grid-cols-2 xl:gap-40 md:gap-20">
+                            <div className="">
+                                <Image
+                                    src={`https://starconcord.onrender.com/uploads${aboutUs?.secBanner}`}
+                                    alt="unsplash"
+                                    loading="lazy"
+                                    width={600}
+                                    height={900}
+                                    className="object-cover rounded-xl"
+                                />
+                            </div>
+                            <div className="w-full text-[#1B1B1B] space-y-6">
+                                <p className="text-xl font-bold xl:text-5xl md:text-2xl">
+                                    {aboutUs?.secContentTitle}
+                                </p>
+                                <div
+                                    className="space-y-4 text-sm text-justify md:text-base md:text-left"
+                                    dangerouslySetInnerHTML={{ __html: aboutUs?.secContent }}
+                                />
                             </div>
                         </div>
-                    </div>
+                    ) : null}
+
 
                     {/* Why us */}
                     <div className="grid items-start justify-center gap-5 px-3 lg:px-10 lg:grid-cols-2 xl:gap-40 md:gap-20">
@@ -178,9 +163,10 @@ const AboutUs = () => {
                             className="object-cover"
                         />
                         <div className="space-y-8">
-                            <p className="text-[#1B1B1B] font-semibold">{aboutUs?.whyusTitle}</p>
+                            {/* <p> WHY CHOOSE STAR CONCORD?</p> */}
+                            <p className="text-[#1B1B1B] font-semibold">WHY CHOOSE STAR CONCORD?</p>
                             <p className="text-xl font-bold lg:text-4xl">
-                                {aboutUs?.secContentTitle}
+                                {aboutUs?.whyusTitle}
                             </p>
                             <hr className="w-1/5 h-0.5 border-t-0 bg-primary_color dark:bg-white/10" />
                             <div className="text-[#1B1B1B]"
@@ -212,9 +198,9 @@ const AboutUs = () => {
                                     }`}
                                 onClick={() => setmembershipTab('fmc')}
                             >
-                                Accreditation with FMC (USA)
+                                CAI – Consolidators Association of India
                             </button>
-                            <button
+                            {/* <button
                                 className={`text-lg font-semibold ${membershipTab === 'mto'
                                     ? 'text-black text-left border-b-2 border-primary_color'
                                     : 'border-b-2 text-left text-[#6C6C6C] border-[#C4C4C4]'
@@ -231,7 +217,7 @@ const AboutUs = () => {
                                 onClick={() => setmembershipTab('iata')}
                             >
                                 Accreditation with IATA
-                            </button>
+                            </button> */}
                         </div>
                         <div className="space-y-4">
                             <div className="grid items-start w-full gap-5 text-left lg:grid-cols-2 xl:gap-40 md:gap-20">
