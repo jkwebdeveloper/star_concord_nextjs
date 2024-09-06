@@ -11,6 +11,8 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from '@/components/ui/carousel';
+import Link from 'next/link';
+import { FaArrowRightLong } from 'react-icons/fa6';
 
 const OurService = () => {
 
@@ -91,25 +93,27 @@ const OurService = () => {
                                         key={item?._id}
                                     >
                                         <>
-                                            <div className="bg-[#F7F9FB] rounded-lg p-5 pb-5 flex flex-col min-h-[350px]" key={item._id}>
-                                                <div className="flex">
-                                                    <Image
-                                                        src={`https://starconcord.onrender.com/uploads${item?.serviceIconImage}`}
-                                                        // src="/static/images/Conveyor Belt 1 (2).png"
-                                                        alt="unsplash"
-                                                        loading="lazy"
-                                                        width={160}
-                                                        height={160}
-                                                        className="object-cover"
-                                                    />
+                                            <Link href={`/service-detail/${item._id}`} state={{ id: item._id }} key={item?._id}>
+                                                <div className="bg-[#F7F9FB] rounded-lg p-5 pb-5 flex flex-col min-h-[350px]" key={item._id}>
+                                                    <div className="flex">
+                                                        <Image
+                                                            src={`https://starconcord.onrender.com/uploads${item?.serviceIconImage}`}
+                                                            // src="/static/images/Conveyor Belt 1 (2).png"
+                                                            alt="unsplash"
+                                                            loading="lazy"
+                                                            width={160}
+                                                            height={160}
+                                                            className="object-cover"
+                                                        />
+                                                    </div>
+                                                    <div className="flex-grow space-y-4"></div>
+                                                    <div className="flex-col items-center justify-center w-full gap-3 mt-auto space-y-2">
+                                                        <p className="text-2xl font-bold pb-2 text-[#104B59]">
+                                                            {item?.serviceName}
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                                <div className="flex-grow space-y-4"></div>
-                                                <div className="flex-col items-center justify-center w-full gap-3 mt-auto space-y-2">
-                                                    <p className="text-2xl font-bold pb-2 text-[#104B59]">
-                                                        {item?.serviceName}
-                                                    </p>
-                                                </div>
-                                            </div>
+                                            </Link>
                                         </>
                                     </CarouselItem>
                                 ))
