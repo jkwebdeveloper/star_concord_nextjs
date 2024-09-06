@@ -1,13 +1,47 @@
-import CommonBanner from '@/components/global/CommonBanner'
-import React from 'react'
+"use client";
+import CommonBanner from '@/components/global/CommonBanner';
+import React, { useEffect, useState } from 'react';
 import {
     Accordion,
     AccordionContent,
     AccordionItem,
     AccordionTrigger,
-} from '@/components/ui/accordion';
+} from '@/components/ui/accordionCareer';
+import {
+    Table,
+    TableBody,
+    TableCell,
+    TableRow,
+} from "@/components/ui/table";
+import { Button } from '@/components/ui/button';
+import axios from 'axios';
+import PageLoader from '@/components/ui/pageloader';
 
 const Careerpage = () => {
+    const [careers, setCareers] = useState([]);
+    const [loading, setLoading] = useState(false);
+
+    const handleGetCareers = () => {
+        setLoading(true);
+        axios("https://starconcord.onrender.com/api/careerList", {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "GET",
+        })
+            .then((res) => {
+                setCareers(res.data.data);
+                setLoading(false);
+            })
+            .catch((err) => {
+                setLoading(false);
+            });
+    };
+
+    useEffect(() => {
+        handleGetCareers();
+    }, []);
+
     return (
         <div className="container w-full mx-auto lg:space-y-20 space-y-7">
             <CommonBanner
@@ -15,16 +49,61 @@ const Careerpage = () => {
                 title="Careers"
                 page="Careers"
             />
-            <div className='container px-3 space-y-10 lg:px-10'>
-                <div className='space-y-4'>
-                    <p className='text-base md:text-lg'>At Swift, Human Capital is recognized as our most important asset. We believe in investing in our employees, by offering careers that well match their skillsets, training them & challenging them all the way. We are proud to have nurtured a leadership mind-set in the organization focused on merit, consistent performance and rewarding exceptional competence.</p>
-                    <p className='text-base md:text-lg'>Employees are encouraged to progress their careers, display their managerial & leadership skills based on demonstration of strong execution, desire to accept additional & cross functional responsibilities & continuous learning.</p>
-                    <p className='text-base md:text-lg'>We welcome you to be part of the Swift Family & encourage you to embark on your chosen professional career journey with us. Find out more about the Current Opportunities in the various functions here:</p>
+            {loading ? (
+                <PageLoader />
+            ) : (
+                <div className='container px-3 space-y-10 lg:px-10'>
+                    <div className='space-y-4'>
+                        <p className='text-base md:text-lg'>At Swift, Human Capital is recognized as our most important asset...</p>
+                    </div>
+                    <Accordion type="single" collapsible className="w-full space-y-3">
+                        {careers.map((career, index) => (
+                            <AccordionItem key={index} value={`item-${index}`} className="p-3 space-y-4 text-black border border-gray-400">
+                                <AccordionTrigger className="flex items-center justify-between text-3xl font-bold cursor-pointer">
+                                    {/* <div className="flex items-center justify-between cursor-pointer"> */}
+                                        <p className="text-base font-semibold text-left uppercase text-primary_color">
+                                            {career.title}
+                                        </p>
+                                        <p className="text-base font-semibold text-right uppercase text-primary_color">
+                                            {career.locations.join(" | ")}
+                                        </p>
+                                    {/* </div> */}
+                                </AccordionTrigger>
+                                <AccordionContent>
+                                    <div className="space-y-4 text-left transition duration-500">
+                                        <div className="space-y-3 text-left">
+                                            <p className='font-semibold uppercase'>JOB DESCRIPTION</p>
+                                            <Table>
+                                                <TableBody>
+                                                    <TableRow>
+                                                        <TableCell className="font-medium">Reports to:</TableCell>
+                                                        <TableCell className="text-left">{career.reports_to}</TableCell>
+                                                    </TableRow>
+                                                    <TableRow>
+                                                        <TableCell className="font-medium">Experience:</TableCell>
+                                                        <TableCell className="text-left">{career.experience}</TableCell>
+                                                    </TableRow>
+                                                    <TableRow>
+                                                        <TableCell className="font-medium">Domain / Division:</TableCell>
+                                                        <TableCell className="text-left">{career.domain}</TableCell>
+                                                    </TableRow>
+                                                </TableBody>
+                                            </Table>
+                                            <p className='font-semibold uppercase'>REQUIREMENTS</p>
+                                            <div dangerouslySetInnerHTML={{ __html: career.requirements }} />
+                                            <Button variant="primary" className="flex items-center gap-2">
+                                                Apply Now
+                                            </Button>
+                                        </div>
+                                    </div>
+                                </AccordionContent>
+                            </AccordionItem>
+                        ))}
+                    </Accordion>
                 </div>
-                <div className=''></div>
-            </div>
+            )}
         </div>
-    )
-}
+    );
+};
 
-export default Careerpage
+export default Careerpage;
