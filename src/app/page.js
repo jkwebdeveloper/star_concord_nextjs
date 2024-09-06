@@ -8,10 +8,10 @@ export default function Home() {
             <div className="container px-3 pb-10 mx-auto space-y-6 xl:space-y-14 lg:px-10">
                 <TransportSection />
                 <OurService />
-                <ClientImage />
                 <OurIndustries />
                 <ServiceImage />
                 <ContactUs />
+                <ClientImage />
                 {/* <Location />
                 <Pacific /> */}
             </div>

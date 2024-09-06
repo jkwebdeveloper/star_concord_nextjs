@@ -41,7 +41,7 @@ const OurIndustriesSection = () => {
     return (
         <div className="container w-full mx-auto space-y-10">
             <p className="text-xl font-bold text-center lg:text-5xl">
-                Our Industries
+                Industries We Serve
             </p>
             {loading ? (
                 <PageLoader />

@@ -115,7 +115,7 @@ const ServicePage = () => {
                         </div>
                     </div>
 
-                    <div className="px-3 pb-20 space-y-7 lg:px-10">
+                    {/* <div className="px-3 pb-20 space-y-7 lg:px-10">
                         <p className="text-4xl font-semibold">Other Services</p>
                         <div className="grid items-start justify-center gap-5 pb-5 md:grid-cols-2 lg:grid-cols-4">
                             {service.map((item) => {
@@ -153,7 +153,7 @@ const ServicePage = () => {
                             })}
 
                         </div>
-                    </div>
+                    </div> */}
                 </>
             )}
         </div>

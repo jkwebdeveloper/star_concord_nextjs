@@ -41,7 +41,7 @@ const OurService = () => {
     return (
         <div className="container w-full mx-auto space-y-6 text-center">
             <p className="text-xl font-bold lg:text-5xl">
-                Our Global Solutions
+                Other Value-Added Services
             </p>
             {loading ? (
                 <PageLoader />

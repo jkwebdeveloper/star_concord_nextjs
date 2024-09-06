@@ -138,7 +138,7 @@ const ServiceDetail = () => {
                 <div className="inline-block h-auto w-0.5 self-stretch bg-[#dfdfdf] dark:bg-white/10"></div>
                 <div className="md:w-[70%] w-[90%] mx-auto space-y-5 h-fit min-h-[350px]">
                     {loading ? (
-                        <PageLoader/>
+                        <PageLoader />
                     ) : Object.keys(serviceDetails).length > 0 ? (
                         <>
                             {serviceDetails ? (
@@ -162,7 +162,7 @@ const ServiceDetail = () => {
                                         {serviceDetails.showWcdContent && (
                                             <div className="space-y-10">
                                                 <p className="text-2xl font-bold">
-                                                    What we can do for you:
+                                                    Why is STAR CONCORD’s LCL Consolidation Solutions the best for you?
                                                 </p>
                                                 {serviceDetails.wcdContent?.map((item) => (
                                                     <div key={item?._id} className="flex items-start gap-3">
@@ -186,9 +186,11 @@ const ServiceDetail = () => {
                                                         </div>
                                                     </div>
                                                 ))}
-                                                <Button variant="primary">
-                                                    Contact Us
-                                                </Button>
+                                                <Link href="/contact-us" >
+                                                    <Button variant="primary" className='mt-10'>
+                                                        Contact Us
+                                                    </Button>
+                                                </Link>
                                             </div>
                                         )}
                                         {serviceDetails.showBSContent && (

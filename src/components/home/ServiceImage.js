@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Button } from '../ui/button';
 import axios from 'axios';
 import PageLoader from '../ui/pageloader';
+import Link from 'next/link';
 
 const ServiceImage = () => {
     const [serviceData, setServiceData] = useState({});
@@ -32,7 +33,7 @@ const ServiceImage = () => {
     return (
         <div className="container relative w-full p-2 mx-auto space-y-2 text-center lg:space-y-4">
             {loading ? (
-                <PageLoader/>
+                <PageLoader />
             ) : (
                 <>
                     <Image
@@ -46,14 +47,16 @@ const ServiceImage = () => {
                     <div className="absolute top-0 flex items-center justify-start w-full h-full text-left">
                         <div className="mx-5 space-y-2 lg:space-y-6 lg:mx-28">
                             <div className="text-base font-bold text-justify text-white md:text-2xl lg:text-5xl" dangerouslySetInnerHTML={{ __html: serviceData?.bannerThreeText }}>
-                               
+
                             </div>
                             <div className="text-sm text-white md:base" dangerouslySetInnerHTML={{ __html: serviceData?.bannerThreeSubText }}>
-                                
+
                             </div>
-                            <Button variant="primary" className="">
-                                Contact Us
-                            </Button>
+                            <Link href="/contact-us">
+                                <Button variant="primary" className="mt-5">
+                                    Contact Us
+                                </Button>
+                            </Link>
                         </div>
                     </div>
                 </>

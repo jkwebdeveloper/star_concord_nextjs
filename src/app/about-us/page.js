@@ -126,6 +126,9 @@ const AboutUs = () => {
                         </div>
                     </div>
 
+                    <LocationSection />
+                    <PacificSection />
+                    <TextSection />
 
                     {aboutUs?.secBanner && aboutUs?.secContentTitle && aboutUs?.secContent ? (
                         <div className="grid items-start justify-center gap-5 px-3 lg:px-10 lg:grid-cols-2 xl:gap-40 md:gap-20">
@@ -247,14 +250,26 @@ const AboutUs = () => {
                                         </div>
                                         <div className="">
                                             <Image
-                                                src={`https://starconcord.onrender.com/uploads${aboutUs?.fmcImage}`}
+                                                // src={`https://starconcord.onrender.com/uploads${aboutUs?.fmcImage}`}
+                                                src={"/static/images/unnamed.png"}
                                                 alt="unsplash"
                                                 loading="lazy"
-                                                width={600}
-                                                height={600}
+                                                width={500}
+                                                height={500}
                                                 className="object-cover rounded-xl"
                                             />
                                         </div>
+                                        {/* <div className='relative w-full mx-auto overflow-hidden min-h-80 rounded-xl'>
+                                            <Image
+                                                src={"/static/images/unnamed.png"}
+                                                alt=""
+                                                loading="lazy"
+                                                fill
+                                                objectFit="cover"
+                                                quality={100}
+                                                className="rounded-xl"
+                                            />
+                                        </div> */}
                                     </>
                                 )}
                                 {membershipTab === 'mto' && (
@@ -338,7 +353,7 @@ const AboutUs = () => {
                     <div className="pb-10 space-y-10">
                         <div className="grid items-start justify-center gap-5 px-3 lg:px-10 lg:grid-cols-2">
                             <div className="space-y-3">
-                                <p className="text-4xl font-bold">Our USPS</p>
+                                <p className="text-4xl font-bold">Our USPs</p>
                                 <div className="text-[#6C6C6C]" dangerouslySetInnerHTML={{ __html: aboutUs?.uspsDescription }}>
                                 </div>
                             </div>
@@ -387,9 +402,7 @@ const AboutUs = () => {
                         </div>
                     </div>
 
-                    <LocationSection />
-                    <PacificSection />
-                    <TextSection />
+
                 </>
             )}
         </div>

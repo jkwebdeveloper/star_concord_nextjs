@@ -94,10 +94,10 @@ const Header = () => {
                         { name: 'Services', href: '/service' },
                         { name: 'Industries', href: '/industries' },
                         { name: 'Articles', href: '/article' },
-                        { name: 'Location', href: '/location' },
+                        { name: 'Locations', href: '/location' },
                         { name: 'Blogs', href: '/blog' },
                         { name: 'Contact us', href: '/contact-us' },
-                        { name: 'Careers ', href: '/' },
+                        { name: 'Careers ', href: '/career' },
                     ].map(link => (
                         <Link key={link.name} href={link.href}>
                             <li
@@ -221,8 +221,8 @@ const Header = () => {
                             { name: 'Articles', href: '/article' },
                             { name: 'Blogs', href: '/blog' },
                             { name: 'Contact us', href: '/contact-us' },
-                            { name: 'Careers ', href: '/' },
-                            { name: 'Location', href: '/location' },
+                            { name: 'Careers ', href: '/career' },
+                            { name: 'Locations', href: '/location' },
 
                         ].map(link => (
                             <Link key={link.name} href={link.href}>
