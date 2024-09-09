@@ -161,9 +161,9 @@ const ServiceDetail = () => {
 
                                         {serviceDetails.showWcdContent && (
                                             <div className="space-y-10">
-                                                <p className="text-2xl font-bold">
+                                                {/* <p className="text-2xl font-bold">
                                                     Why is STAR CONCORD’s LCL Consolidation Solutions the best for you?
-                                                </p>
+                                                </p> */}
                                                 {serviceDetails.wcdContent?.map((item) => (
                                                     <div key={item?._id} className="flex items-start gap-3">
                                                         <Image
