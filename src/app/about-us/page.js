@@ -47,7 +47,7 @@ const AboutUs = () => {
             ) : (
                 <>
                     <CommonBanner
-                        image="/static/images/common.jpg"
+                        image="/static/images/banner12.jpg"
                         title="About us"
                         page="About us"
                     />

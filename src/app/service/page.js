@@ -63,7 +63,7 @@ const ServicePage = () => {
             ) : (
                 <>
                     <CommonBanner
-                        image="/static/images/common.jpg"
+                        image="/static/images/banner12.jpg"
                         title="Services"
                         page="Services"
                     />

@@ -16,8 +16,9 @@ import {
 import { Button } from '@/components/ui/button';
 import axios from 'axios';
 import PageLoader from '@/components/ui/pageloader';
+import Link from 'next/link';
 
-const Careerpage = () => {
+const Careerpage = ({ title }) => {
     const [careers, setCareers] = useState([]);
     const [loading, setLoading] = useState(false);
 
@@ -45,14 +46,14 @@ const Careerpage = () => {
     return (
         <div className="container w-full mx-auto lg:space-y-20 space-y-7">
             <CommonBanner
-                image="/static/images/common.jpg"
+                image="/static/images/banner12.jpg"
                 title="Careers"
                 page="Careers"
             />
             {loading ? (
                 <PageLoader />
             ) : (
-                <div className='container px-3 space-y-10 lg:px-10'>
+                <div className='container px-3 pb-10 space-y-10 lg:px-10'>
                     <div className='space-y-4'>
                         <p className='text-base md:text-lg'>At Swift, Human Capital is recognized as our most important asset...</p>
                     </div>
@@ -61,12 +62,12 @@ const Careerpage = () => {
                             <AccordionItem key={index} value={`item-${index}`} className="p-3 space-y-4 text-black border border-gray-400">
                                 <AccordionTrigger className="flex items-center justify-between text-3xl font-bold cursor-pointer">
                                     {/* <div className="flex items-center justify-between cursor-pointer"> */}
-                                        <p className="text-base font-semibold text-left uppercase text-primary_color">
-                                            {career.title}
-                                        </p>
-                                        <p className="text-base font-semibold text-right uppercase text-primary_color">
-                                            {career.locations.join(" | ")}
-                                        </p>
+                                    <p className="text-sm font-semibold text-left uppercase md:text-base text-primary_color">
+                                        {career.title}
+                                    </p>
+                                    <p className="text-sm text-right uppercase font-semibol d md:text-base text-primary_color">
+                                        {career.locations.join(" | ")}
+                                    </p>
                                     {/* </div> */}
                                 </AccordionTrigger>
                                 <AccordionContent>
@@ -90,10 +91,12 @@ const Careerpage = () => {
                                                 </TableBody>
                                             </Table>
                                             <p className='font-semibold uppercase'>REQUIREMENTS</p>
-                                            <div dangerouslySetInnerHTML={{ __html: career.requirements }} />
-                                            <Button variant="primary" className="flex items-center gap-2">
-                                                Apply Now
-                                            </Button>
+                                            <div className='space-y-4' dangerouslySetInnerHTML={{ __html: career.requirements }} />
+                                            <Link href={`/career-apply-now/${career._id}`} state={{ id: career._id }} key={career._id}>
+                                                <Button variant="primary" className="flex items-center gap-2">
+                                                    Apply Now
+                                                </Button>
+                                            </Link>
                                         </div>
                                     </div>
                                 </AccordionContent>

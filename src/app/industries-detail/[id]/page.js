@@ -83,7 +83,7 @@ const IndustriesDetail = () => {
             <div className="relative md:h-80 h-60">
                 <Image
                     // src={dynamicImage ? BaseUrl.concat(dynamicImage) : image}
-                    src="/static/images/common.jpg"
+                    src="/static/images/banner12.jpg"
                     loading="lazy"
                     alt='banner'
                     width={450}

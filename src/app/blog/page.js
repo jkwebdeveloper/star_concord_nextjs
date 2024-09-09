@@ -35,7 +35,7 @@ const BlogPage = () => {
   return (
     <div className="container w-full mx-auto lg:space-y-20 space-y-7">
       <CommonBanner
-        image="/static/images/common.jpg"
+        image="/static/images/banner12.jpg"
         title="Blog"
         page="Blog"
       />

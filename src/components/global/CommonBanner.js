@@ -11,9 +11,10 @@ const CommonBanner = ({ title, image, page }) => {
                 src={image}
                 alt={title}
                 loading="lazy"
-                width={1200}
-                height={350}
-                className="object-cover object-center w-full h-full rounded-2xl"
+                layout="fill"
+                objectFit="cover"
+                quality={100}
+                className="rounded-2xl"
             />
             <div className="absolute text-center -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
                 <h1 className="text-2xl font-bold text-center text-black capitalize md:text-4xl">

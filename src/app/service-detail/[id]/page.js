@@ -84,7 +84,7 @@ const ServiceDetail = () => {
         <div className="container w-full pb-10 mx-auto lg:space-y-20 space-y-7">
             <div className="relative md:h-80 h-60">
                 <Image
-                    src="/static/images/common.jpg"
+                    src="/static/images/banner12.jpg"
                     loading="lazy"
                     alt='banner'
                     width={450}

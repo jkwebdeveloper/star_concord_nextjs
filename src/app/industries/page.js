@@ -40,7 +40,7 @@ const IndustriesSection = () => {
             ) : (
                 <>
                     <CommonBanner
-                        image="/static/images/common.jpg"
+                        image="/static/images/banner12.jpg"
                         title="Industries"
                         page="Industries"
                     />
