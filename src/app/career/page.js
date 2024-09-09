@@ -65,7 +65,7 @@ const Careerpage = ({ title }) => {
                                     <p className="text-sm font-semibold text-left uppercase md:text-base text-primary_color">
                                         {career.title}
                                     </p>
-                                    <p className="text-sm text-right uppercase font-semibol d md:text-base text-primary_color">
+                                    <p className="text-sm text-right font-semibol d md:text-base text-primary_color">
                                         {career.locations.join(" | ")}
                                     </p>
                                     {/* </div> */}

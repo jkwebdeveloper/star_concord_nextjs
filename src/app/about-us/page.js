@@ -12,7 +12,7 @@ import TextSection from '@/components/home/TextSection';
 
 const AboutUs = () => {
     const [selectedTab, setSelectedTab] = useState('mission');
-    const [membershipTab, setmembershipTab] = useState('fmc');
+    const [membershipTab, setmembershipTab] = useState('');
     const [aboutUs, setAboutUs] = useState([]);
     const [loading, setLoading] = useState(false);
 
@@ -25,6 +25,8 @@ const AboutUs = () => {
             method: "GET",
         })
             .then((res) => {
+                console.log(res.data, "response");
+                setmembershipTab(res.data.data?.certificateList?.[0]?.title || '');
                 setAboutUs(res.data.data);
                 setLoading(false);
             })
@@ -100,7 +102,7 @@ const AboutUs = () => {
                                 <div className="space-y-6">
                                     {selectedTab === 'mission' && (
                                         <div className="space-y-8">
-                                            <div className='space-y-3' dangerouslySetInnerHTML={{ __html: aboutUs?.ourMission }}></div>
+                                            <div className='ml-5 space-y-3 list-disc list-inside' dangerouslySetInnerHTML={{ __html: aboutUs?.ourMission }}></div>
                                         </div>
                                     )}
                                     {selectedTab === 'vision' && (
@@ -189,162 +191,60 @@ const AboutUs = () => {
                     </div>
 
                     {/* Accreditations */}
-                    <div className="px-3 space-y-8 lg:px-10">
-                        <p className="text-xl font-bold lg:text-5xl">
-                            Accreditations / Alliances / Memberships
-                        </p>
-                        <div className="flex items-start w-full gap-5 text-left lg:gap-20">
-                            <button
-                                className={`text-lg font-semibold ${membershipTab === 'fmc'
-                                    ? 'text-black border-b-2 text-left border-primary_color'
-                                    : 'border-b-2 text-left text-[#6C6C6C] border-[#C4C4C4]'
-                                    }`}
-                                onClick={() => setmembershipTab('fmc')}
-                            >
-                                CAI – Consolidators Association of India
-                            </button>
-                            {/* <button
-                                className={`text-lg font-semibold ${membershipTab === 'mto'
-                                    ? 'text-black text-left border-b-2 border-primary_color'
-                                    : 'border-b-2 text-left text-[#6C6C6C] border-[#C4C4C4]'
-                                    }`}
-                                onClick={() => setmembershipTab('mto')}
-                            >
-                                MTO
-                            </button>
-                            <button
-                                className={`text-lg font-semibold ${membershipTab === 'iata'
-                                    ? 'text-black text-left border-b-2 border-primary_color'
-                                    : 'border-b-2 text-left text-[#6C6C6C] border-[#C4C4C4]'
-                                    }`}
-                                onClick={() => setmembershipTab('iata')}
-                            >
-                                Accreditation with IATA
-                            </button> */}
-                        </div>
-                        <div className="space-y-4">
-                            <div className="grid items-start w-full gap-5 text-left lg:grid-cols-2 xl:gap-40 md:gap-20">
-                                {membershipTab === 'fmc' && (
-                                    <>
-                                        <div className="space-y-8">
-                                            {/* <p className="text-[#1B1B1B]">
-                                                We guarantee strict compliance to all
-                                                procedures before, during and after
-                                                journey.
-                                            </p>
-                                            <ul className="pl-5 font-semibold text-[#1B1B1B] space-y-2 list-disc">
-                                                <li>
-                                                    Standard operating procedures for
-                                                    vehicle maintenance
-                                                </li>
-                                                <li>Journey management plan</li>
-                                                <li>
-                                                    Standard operating procedures for
-                                                    loading
-                                                </li>
-                                            </ul> */}
-                                            <div className="text-[#1B1B1B] space-y-4" dangerouslySetInnerHTML={{ __html: aboutUs?.fmcDescription }}></div>
-                                            <Button variant="primary" className="mb-3">
-                                                View details
-                                            </Button>
-                                        </div>
-                                        <div className="">
-                                            <Image
-                                                // src={`https://starconcord.onrender.com/uploads${aboutUs?.fmcImage}`}
-                                                src={"/static/images/unnamed.png"}
-                                                alt="unsplash"
-                                                loading="lazy"
-                                                width={500}
-                                                height={500}
-                                                className="object-cover rounded-xl"
-                                            />
-                                        </div>
-                                        {/* <div className='relative w-full mx-auto overflow-hidden min-h-80 rounded-xl'>
-                                            <Image
-                                                src={"/static/images/unnamed.png"}
-                                                alt=""
-                                                loading="lazy"
-                                                fill
-                                                objectFit="cover"
-                                                quality={100}
-                                                className="rounded-xl"
-                                            />
-                                        </div> */}
-                                    </>
-                                )}
-                                {membershipTab === 'mto' && (
-                                    <>
-                                        <div className="space-y-8">
-                                            <div className="text-[#1B1B1B] space-y-4" dangerouslySetInnerHTML={{ __html: aboutUs?.mtoDescription }}></div>
-                                            {/* <p className="text-[#1B1B1B]">
-                                                Lorem ipsum dolor sit amet consectetur
-                                                adipisicing elit. Soluta adipisci omnis
-                                                amet, quam eum deserunt at maxime
-                                                aspernatur voluptas officiis?
-                                            </p>
-                                            <ul className="pl-5 font-semibold text-[#1B1B1B] space-y-2 list-disc">
-                                                <li>
-                                                    Standard operating procedures for
-                                                    vehicle maintenance
-                                                </li>
-                                                <li>Journey management plan</li>
-                                                <li>
-                                                    Standard operating procedures for
-                                                    loading
-                                                </li>
-                                            </ul> */}
-                                            <Button variant="primary">
-                                                View details
-                                            </Button>
-                                        </div>
-                                        <div className="">
-                                            <Image
-                                                src={`https://starconcord.onrender.com/uploads${aboutUs?.mtoImage}`}
-                                                alt="unsplash"
-                                                loading="lazy"
-                                                width={990}
-                                                height={10}
-                                                className="object-cover rounded-xl"
-                                            />
-                                        </div>
-                                    </>
-                                )}
-                                {membershipTab === 'iata' && (
-                                    <>
-                                        <div className="space-y-8">
-                                            <div className="text-[#1B1B1B] space-y-4" dangerouslySetInnerHTML={{ __html: aboutUs?.iataDescription }}></div>
-                                            {/* <p className="text-[#1B1B1B]">
-                                                We guarantee strict compliance to all
-                                                procedures before, during and after
-                                                journey.
-                                            </p>
-                                            <ul className="pl-5 font-semibold text-[#1B1B1B] space-y-2 list-disc">
-                                                <li>
-                                                    Standard operating procedures for
-                                                    vehicle maintenance
-                                                </li>
-                                                <li>Journey management plan</li>
-                                                <li>
-                                                    Standard operating procedures for
-                                                    loading
-                                                </li>
-                                            </ul> */}
-                                            <Button variant="primary">
-                                                View details
-                                            </Button>
-                                        </div>
-                                        <div className="">
-                                            <Image
-                                                src={`https://starconcord.onrender.com/uploads${aboutUs?.iataImage}`}
-                                                alt="unsplash"
-                                                loading="lazy"
-                                                width={600}
-                                                height={600}
-                                                className="object-cover rounded-xl"
-                                            />
-                                        </div>
-                                    </>
-                                )}
+                    <div className="container w-full mx-auto lg:space-y-20 space-y-7">
+                        <div className="px-3 space-y-8 lg:px-10">
+                            <p className="text-xl font-bold lg:text-5xl">
+                                Accreditations / Alliances / Memberships
+                            </p>
+
+                            {/* Tabs */}
+                            <div className="flex gap-3">
+                                {aboutUs.certificateList?.map((item) => (
+                                    <button
+                                        key={item._id}
+                                        className={`text-lg font-semibold ${membershipTab === item.title
+                                            ? 'text-black border-b-2 border-primary_color'
+                                            : 'text-[#6C6C6C] border-b-2 border-[#C4C4C4]'
+                                            }`}
+                                        onClick={() => setmembershipTab(item.title)}
+                                    >
+                                        {item.title}
+                                    </button>
+                                ))}
+                            </div>
+
+                            {/* Content and Images */}
+                            <div className="space-y-4">
+                                <div className="grid items-start w-full gap-5 text-left lg:grid-cols-2 xl:gap-40 md:gap-20">
+                                    {/* Left side content */}
+                                    <div className='w-full'>
+                                        {aboutUs.certificateList?.map((item) =>
+                                            membershipTab === item.title ? (
+                                                <div key={item._id}>
+                                                    <div className="text-lg" dangerouslySetInnerHTML={{ __html: item.content }}></div>
+                                                </div>
+                                            ) : null
+                                        )}
+                                    </div>
+
+                                    {/* Right side image */}
+                                    <div>
+                                        {aboutUs.certificateList?.map((item) =>
+                                            membershipTab === item.title ? (
+                                                <div key={item._id}>
+                                                    <Image
+                                                        src={`https://starconcord.onrender.com/uploads${item.image}`}
+                                                        alt={item.title}
+                                                        loading="lazy"
+                                                        width={500}
+                                                        height={500}
+                                                        className="object-cover rounded-xl"
+                                                    />
+                                                </div>
+                                            ) : null
+                                        )}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
