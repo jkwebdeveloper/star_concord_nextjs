@@ -10,9 +10,11 @@ import {
     AccordionTrigger,
 } from '@/components/ui/accordion';
 import axios from 'axios';
+import { PageLoader } from '@/components';
 
 const Locationpage = () => {
     const [locationData, setLocationData] = useState([]);
+    const [location, setLocation] = useState({})
     const [loading, setLoading] = useState(false);
 
     const handleGetLocation = () => {
@@ -36,6 +38,27 @@ const Locationpage = () => {
         handleGetLocation();
     }, []);
 
+    const handleGetLocationImages = () => {
+        setLoading(true)
+        axios('https://starconcord.onrender.com/api/aboutUsPage', {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            method: 'GET',
+        })
+            .then((res) => {
+                setLocation(res.data.data)
+                setLoading(false)
+            })
+            .catch((err) => {
+                setLoading(false)
+            })
+    }
+
+    useEffect(() => {
+        handleGetLocationImages()
+    }, [])
+
     return (
         <div className="container w-full pb-20 mx-auto lg:space-y-20 space-y-7">
             <CommonBanner
@@ -44,22 +67,23 @@ const Locationpage = () => {
                 page="Location"
             />
             <div className="container px-3 space-y-10 lg:px-10">
-                <div>
-                    <Image
-                        src="/static/images/SECTION 1.png"
-                        loading="lazy"
-                        width={500}
-                        height={250}
-                        quality={100}
-                        layout="responsive"
-                        alt="Top Right Image"
-                        className="object-cover w-full"
-                    />
-                </div>
                 {loading ? (
-                    <div className="flex justify-center w-64 mx-auto mt-28">
-                        <p>Loading...</p>
-                    </div>
+                    <PageLoader />
+                ) : (
+                    <>
+                        <Image
+                            src={`https://starconcord.onrender.com/uploads${location?.locationBanner}`}
+                            alt="banner"
+                            loading="lazy"
+                            quality={100}
+                            width={1000}
+                            height={900}
+                            className="object-cover w-full"
+                        />
+                    </>
+                )}
+                {loading ? (
+                    <PageLoader />
                 ) : (
                     <Accordion type="single" collapsible className="w-full">
                         {locationData.map((countryData, countryIndex) => (
@@ -93,6 +117,24 @@ const Locationpage = () => {
                                                         </p>
                                                         <p className="text-xl font-bold">
                                                             {location.email}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div className="grid items-start lg:grid-cols-2">
+                                                    <div className="flex-col space-y-2 lg:flex-row">
+                                                        <p className="text-[#6C6C6C] text-lg font-medium">
+                                                            Fax number:
+                                                        </p>
+                                                        <p className="text-xl font-bold">
+                                                            {location.fxNumber}
+                                                        </p>
+                                                    </div>
+                                                    <div className="flex-col space-y-2 lg:flex-row">
+                                                        <p className="text-[#6C6C6C] text-lg font-medium">
+                                                            Port name:
+                                                        </p>
+                                                        <p className="text-xl font-bold">
+                                                            {location.portName}
                                                         </p>
                                                     </div>
                                                 </div>

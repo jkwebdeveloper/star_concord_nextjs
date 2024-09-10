@@ -236,8 +236,9 @@ const AboutUs = () => {
                                                         src={`https://starconcord.onrender.com/uploads${item.image}`}
                                                         alt={item.title}
                                                         loading="lazy"
-                                                        width={500}
+                                                        width={900}
                                                         height={500}
+                                                        quality={100}
                                                         className="object-cover rounded-xl"
                                                     />
                                                 </div>

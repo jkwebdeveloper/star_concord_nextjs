@@ -55,11 +55,13 @@ const Footer = () => {
                         <div className="space-y-4">
                             <ImLocation2 className="text-2xl text-white lg:text-5xl" />
                             <p className="w-full text-xl font-bold capitalize lg:text-4xl lg:w-1/2">
-                                Find Our Office 
+                                Find Our Office
                             </p>
-                            <Button className="border-[1px] active:scale-90 transition border-primary bg-background shadow-sm hover:bg-black hover:text-white">
-                            Star Concord Global Presence
-                            </Button>
+                            <Link href="/location">
+                                <Button className="border-[1px] mt-4 active:scale-90 transition border-primary bg-background shadow-sm hover:bg-black hover:text-white">
+                                    Star Concord Global Presence
+                                </Button>
+                            </Link>
                         </div>
                         <div className="grid items-start justify-center grid-cols-1 gap-5 lg:gap-0 lg:grid-cols-2">
                             <div className="space-y-6">

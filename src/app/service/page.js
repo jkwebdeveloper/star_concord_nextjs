@@ -88,8 +88,8 @@ const ServicePage = () => {
                                                         src={`https://starconcord.onrender.com/uploads${item.serviceIconImage}`}
                                                         alt="unsplash"
                                                         loading="lazy"
-                                                        width={130}
-                                                        height={130}
+                                                        width={160}
+                                                        height={160}
                                                         className="object-cover"
                                                     />
                                                 </div>

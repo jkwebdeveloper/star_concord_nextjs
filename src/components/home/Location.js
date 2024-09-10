@@ -45,7 +45,7 @@ const LocationSection = () => {
                         alt="banner"
                         loading="lazy"
                         quality={100}
-                        width={1000}
+                        width={1200}
                         height={900}
                         className="object-cover w-full"
                     />

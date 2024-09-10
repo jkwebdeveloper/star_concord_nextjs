@@ -50,7 +50,7 @@ const BlogDetailsPage = () => {
   return (
     <div className="container w-full pb-10 mx-auto lg:space-y-20 space-y-7">
       {loading ? (
-        <PageLoader/>
+        <PageLoader />
       ) : (
         <>
           <div className="relative md:h-80 h-60">
@@ -59,9 +59,10 @@ const BlogDetailsPage = () => {
               src="/static/images/banner12.jpg"
               alt='banner'
               loading="lazy"
-              width={450}
-              height={350}
-              className="object-cover object-center w-full h-full rounded-2xl"
+              layout="fill"
+              objectFit="cover"
+              quality={100}
+              className="rounded-2xl"
             />
             <div className="absolute w-full space-y-2 text-center -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
               <div className="flex items-center justify-center gap-2">
@@ -173,29 +174,4 @@ const BlogDetailsPage = () => {
 }
 
 export default BlogDetailsPage
-// const BlogData = [
-//   {
-//     id: 1,
-//     image: '/static/images/blog1.png',
-//     date: '16, Aug 2021',
-//     title: 'Container freight cost',
-//     decs:
-//       'Are you struggling with cost and forecasting challenges? and you need solutions?',
-//   },
-//   {
-//     id: 2,
-//     image: '/static/images/blog2.png',
-//     date: '16, Aug 2021',
-//     title: 'Manage supply chain',
-//     decs:
-//       'Supply Chain Management is an important and dispensable part of most businesses',
-//   },
-//   {
-//     id: 3,
-//     image: '/static/images/blog3.png',
-//     date: '16, Aug 2021',
-//     title: 'Your Logistics Issues ',
-//     decs:
-//       'The global supply chains that so many retailers rely on is disrupted in the long time.',
-//   },
-// ]
+
