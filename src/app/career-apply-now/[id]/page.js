@@ -21,9 +21,10 @@ const ApplyNowpage = () => {
     const [loading, setLoading] = useState(false);
     const [resume, setResume] = useState(null);
     const { careerApplySchema } = ValidationSchema();
+    const [location, setLocation] = useState({ data: [] })
 
     const pathname = usePathname();
-  const [lastSegment, setLastSegment] = useState('');
+    const [lastSegment, setLastSegment] = useState('');
 
 
     const [jobTitle, setJobTitle] = useState('');
@@ -34,10 +35,10 @@ const ApplyNowpage = () => {
     //     }
     // }, [router.isReady, router.query.id, setValue]);
 
-    const locations = [
-        "Ahmedabad", "Bangkok", "Bengaluru", "Chennai", "Coimbatore",
-        "Dubai", "Gandhidham", "Houston", "Hyderabad"
-    ];
+    // const locations = [
+    //     "Ahmedabad", "Bangkok", "Bengaluru", "Chennai", "Coimbatore",
+    //     "Dubai", "Gandhidham", "Houston", "Hyderabad"
+    // ];
 
     const {
         register,
@@ -67,7 +68,7 @@ const ApplyNowpage = () => {
         const lastValue = pathSegments.filter(Boolean).pop(); // Remove empty strings and get the last part
         setLastSegment(lastValue);
         setValue("jobId", lastValue) // Set the last segment in state
-      }, [pathname, setValue]);
+    }, [pathname, setValue]);
 
     const handlePost = (values) => {
         console.log(values);
@@ -105,6 +106,27 @@ const ApplyNowpage = () => {
             });
     };
 
+    const handleGetLocation = () => {
+        setLoading(true);
+        axios("https://starconcord.onrender.com/api/jobLocations", {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "GET",
+        })
+            .then((res) => {
+                setLocation(res.data);
+                setLoading(false);
+            })
+            .catch((err) => {
+                setLoading(false);
+            });
+    };
+
+    useEffect(() => {
+        handleGetLocation();
+    }, []);
+
     return (
         <div className="container w-full pb-10 mx-auto lg:space-y-20 space-y-7">
             <CommonBanner
@@ -113,9 +135,9 @@ const ApplyNowpage = () => {
                 page="Careers"
             />
             <div className='w-full space-y-4 lg:w-3/4'>
-                <p className="text-sm font-semibold text-left uppercase md:text-base text-primary_color">
+                {/* <p className="text-sm font-semibold text-left uppercase md:text-base text-primary_color">
                     {jobTitle ? jobTitle : "Job Title"}
-                </p>
+                </p> */}
                 <p>Please fill up the form below to send us a message or you can contact us directly at our address or via E-mail.</p>
                 <form className='space-y-4' onSubmit={handleSubmit(handlePost)}>
                     {/* First and Last Name */}
@@ -130,12 +152,12 @@ const ApplyNowpage = () => {
                             />
                             {errors.firstname && <p className="text-red-600">{errors.firstname.message}</p>}
                         </div>
-                            <input
-                                type="hidden"
-                                name="jobId"
-                                className="input_field"
-                                {...register("jobId")}
-                            />
+                        <input
+                            type="hidden"
+                            name="jobId"
+                            className="input_field"
+                            {...register("jobId")}
+                        />
 
                         <div className="w-full space-y-1 text-left lg:w-1/2">
                             <Label htmlFor="last_name" text="Last Name" />
@@ -183,9 +205,15 @@ const ApplyNowpage = () => {
                                     <SelectValue placeholder="Select Location" />
                                 </SelectTrigger>
                                 <SelectContent>
-                                    {locations.map((loc, idx) => (
-                                        <SelectItem key={idx} value={loc}>{loc}</SelectItem>
-                                    ))}
+                                    {location.data && location.data.length > 0 ? ( // Check if data exists and is not empty
+                                        location.data.map((loc, idx) => (
+                                            <SelectItem key={idx} value={loc}>
+                                                {loc}
+                                            </SelectItem>
+                                        ))
+                                    ) : (
+                                        <p>No locations available</p> // Fallback if no data
+                                    )}
                                 </SelectContent>
                             </Select>
                             {errors.location && <p className="text-red-600">{errors.location.message}</p>}
