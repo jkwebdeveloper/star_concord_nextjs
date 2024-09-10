@@ -96,7 +96,7 @@ const ApplyNowpage = () => {
                 setLoading(false);
                 setResume(null);
                 toast.success(res.data.message);
-                // reset();  // Reset form after successful submission
+                reset();  // Reset form after successful submission
             })
             .catch((err) => {
                 console.log(err);
