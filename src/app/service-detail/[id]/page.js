@@ -155,7 +155,7 @@ const ServiceDetail = () => {
                                     />
                                     <div className="space-y-10">
                                         <div className="space-y-4">
-                                            <div className="text-[#1B1B1B] md:text-left text-justify" dangerouslySetInnerHTML={{
+                                            <div className="text-[#1B1B1B] md:text-left text-justify hcontent" dangerouslySetInnerHTML={{
                                                 __html: serviceDetails?.serviceTopContent,
                                             }} />
                                         </div>
@@ -165,28 +165,30 @@ const ServiceDetail = () => {
                                                 {/* <p className="text-2xl font-bold">
                                                     Why is STAR CONCORD’s LCL Consolidation Solutions the best for you?
                                                 </p> */}
-                                                {serviceDetails.wcdContent?.map((item) => (
-                                                    <div key={item?._id} className="flex items-start gap-3">
-                                                        <Image
-                                                            src={`https://starconcord.onrender.com/uploads/${item?.image}`}
-                                                            loading="lazy"
-                                                            width={40}
-                                                            height={40}
-                                                            alt="Icon"
-                                                            quality={100}
-                                                            layout="fixed"
-                                                            className=""
-                                                        />
-                                                        <div className="flex-col space-y-2">
-                                                            <p className="text-xl font-semibold">
-                                                                {item.title}
-                                                            </p>
-                                                            <p className="text-[#6C6C6C]">
-                                                                {item.description}
-                                                            </p>
+                                                {serviceDetails.wcdContent
+                                                    ?.sort((a, b) => a.sort - b.sort)
+                                                    .map((item) => (
+                                                        <div key={item?._id} className="flex items-start gap-3">
+                                                            <Image
+                                                                src={`https://starconcord.onrender.com/uploads/${item?.image}`}
+                                                                loading="lazy"
+                                                                width={40}
+                                                                height={40}
+                                                                alt="Icon"
+                                                                quality={100}
+                                                                layout="fixed"
+                                                                className=""
+                                                            />
+                                                            <div className="flex-col space-y-2">
+                                                                <p className="text-xl font-semibold">
+                                                                    {item.title}
+                                                                </p>
+                                                                <p className="text-[#6C6C6C]">
+                                                                    {item.description}
+                                                                </p>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                ))}
+                                                    ))}
                                                 <Link href="/contact-us" >
                                                     <Button variant="primary" className='mt-10'>
                                                         Contact Us
@@ -199,7 +201,7 @@ const ServiceDetail = () => {
                                                 <p className="text-2xl font-bold">
                                                     Buyer and Seller Consoles
                                                 </p>
-                                                <div className="text-[#6C6C6C]" dangerouslySetInnerHTML={{
+                                                <div className="text-[#6C6C6C] hcontent" dangerouslySetInnerHTML={{
                                                     __html: serviceDetails?.beforeImgContent,
                                                 }} />
                                                 <div className="grid grid-cols-2 gap-4">

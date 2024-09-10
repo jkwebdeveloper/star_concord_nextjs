@@ -35,7 +35,7 @@ const TextSection = () => {
                 {loading ? (
                     <PageLoader/>
                 ) : (
-                    <div className="text-[#1B1B1B] space-y-3 md:text-left text-justify" dangerouslySetInnerHTML={{ __html: paraData?.bottomContent }}>
+                    <div className="text-[#1B1B1B] space-y-3 md:text-left text-justify hcontent" dangerouslySetInnerHTML={{ __html: paraData?.bottomContent }}>
 
                     </div>
                 )}

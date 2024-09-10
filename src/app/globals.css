@@ -55,6 +55,7 @@ body::-webkit-scrollbar-thumb {
 .input_field {
     @apply border focus:border-[#1C4990] disabled:bg-neutral-100 w-full text-[0.8rem] outline-none md:p-2 p-1 rounded-[4px];
 }
+
 .input_field.icon {
     @apply ps-7;
 }
@@ -83,6 +84,7 @@ body::-webkit-scrollbar-thumb {
     width: 100%;
     left: 0;
 }
+
 .title:after,
 .heading:after {
     background: #1C4990;
@@ -107,6 +109,7 @@ body::-webkit-scrollbar-thumb {
     width: 100%;
     left: 0;
 }
+
 /* Swiper Slider */
 body .swiper {
     padding-bottom: 3rem !important;
@@ -175,6 +178,17 @@ body .swiper {
     }
 }
 
-.invalid + label {
+.invalid+label {
     color: red;
+}
+
+.hcontent ul {
+    list-style-type: disc;
+    padding-left: 20px;    
+}
+.hcontent li::marker {
+    color: #1C4990;
+  }
+.hcontent li {
+    margin-bottom: 8px;
 }

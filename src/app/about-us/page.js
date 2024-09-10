@@ -102,12 +102,12 @@ const AboutUs = () => {
                                 <div className="space-y-6">
                                     {selectedTab === 'mission' && (
                                         <div className="space-y-8">
-                                            <div className='ml-5 space-y-3 list-disc list-inside' dangerouslySetInnerHTML={{ __html: aboutUs?.ourMission }}></div>
+                                            <div className='space-y-3 hcontent ' dangerouslySetInnerHTML={{ __html: aboutUs?.ourMission }}></div>
                                         </div>
                                     )}
                                     {selectedTab === 'vision' && (
                                         <div className="space-y-8">
-                                            <div className='space-y-3' dangerouslySetInnerHTML={{ __html: aboutUs?.ourVision }}></div>
+                                            <div className='space-y-3 hcontent' dangerouslySetInnerHTML={{ __html: aboutUs?.ourVision }}></div>
                                             {/* <Button variant="primary">
                                                 Explore more
                                             </Button> */}
@@ -149,7 +149,7 @@ const AboutUs = () => {
                                     {aboutUs?.secContentTitle}
                                 </p>
                                 <div
-                                    className="space-y-4 text-sm text-justify md:text-base md:text-left"
+                                    className="space-y-4 text-sm text-justify hcontent md:text-base md:text-left"
                                     dangerouslySetInnerHTML={{ __html: aboutUs?.secContent }}
                                 />
                             </div>
@@ -174,7 +174,7 @@ const AboutUs = () => {
                                 {aboutUs?.whyusTitle}
                             </p>
                             <hr className="w-1/5 h-0.5 border-t-0 bg-primary_color dark:bg-white/10" />
-                            <div className="text-[#1B1B1B]"
+                            <div className="text-[#1B1B1B] hcontent"
                                 dangerouslySetInnerHTML={{ __html: aboutUs.whyusContent }}></div>
                             <div className='grid grid-cols-1 gap-5 md:grid-cols-2'>
                                 {aboutUs?.whyusPoints?.map((item1) => (
@@ -221,7 +221,7 @@ const AboutUs = () => {
                                         {aboutUs.certificateList?.map((item) =>
                                             membershipTab === item.title ? (
                                                 <div key={item._id}>
-                                                    <div className="text-lg" dangerouslySetInnerHTML={{ __html: item.content }}></div>
+                                                    <div className="text-lg hcontent" dangerouslySetInnerHTML={{ __html: item.content }}></div>
                                                 </div>
                                             ) : null
                                         )}
@@ -255,7 +255,7 @@ const AboutUs = () => {
                         <div className="grid items-start justify-center gap-5 px-3 lg:px-10 lg:grid-cols-2">
                             <div className="space-y-3">
                                 <p className="text-4xl font-bold">Our USPs</p>
-                                <div className="text-[#6C6C6C]" dangerouslySetInnerHTML={{ __html: aboutUs?.uspsDescription }}>
+                                <div className="text-[#6C6C6C] hcontent" dangerouslySetInnerHTML={{ __html: aboutUs?.uspsDescription }}>
                                 </div>
                             </div>
                             <div className="grid items-start gap-5 lg:grid-cols-2">
@@ -273,7 +273,7 @@ const AboutUs = () => {
                                             {uspsItem.uspsName}
                                         </p>
                                         <div
-                                            className="text-[#1B1B1B]"
+                                            className="text-[#1B1B1B] hcontent"
                                             dangerouslySetInnerHTML={{ __html: uspsItem.uspsContent }}
                                         />
                                     </div>
@@ -295,7 +295,7 @@ const AboutUs = () => {
                                         {uspsItem.uspsName}
                                     </p>
                                     <div
-                                        className="text-[#1B1B1B]"
+                                        className="text-[#1B1B1B] hcontent"
                                         dangerouslySetInnerHTML={{ __html: uspsItem.uspsContent }}
                                     />
                                 </div>

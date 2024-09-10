@@ -106,7 +106,7 @@ const ClientImage = () => {
                                                     className=""
 
                                                 />
-                                                <div className="text-sm font-semibold text-justify text-white md:text-xl lg:text-2xl" dangerouslySetInnerHTML={{ __html: item?.content }}>
+                                                <div className="text-sm font-semibold text-justify text-white md:text-xl lg:text-2xl hcontent" dangerouslySetInnerHTML={{ __html: item?.content }}>
 
                                                 </div>
                                                 <hr className="w-1/3 h-0.5 border-t-0 bg-[#C4C4C4] opacity-40 dark:bg-white/10" />

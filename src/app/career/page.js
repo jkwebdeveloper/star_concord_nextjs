@@ -81,6 +81,10 @@ const Careerpage = ({ title }) => {
                                             <Table>
                                                 <TableBody>
                                                     <TableRow>
+                                                        <TableCell className="font-medium">Position:</TableCell>
+                                                        <TableCell className="text-left">{career.position}</TableCell>
+                                                    </TableRow>
+                                                    <TableRow>
                                                         <TableCell className="font-medium">Reports to:</TableCell>
                                                         <TableCell className="text-left">{career.reports_to}</TableCell>
                                                     </TableRow>
@@ -95,9 +99,14 @@ const Careerpage = ({ title }) => {
                                                 </TableBody>
                                             </Table>
                                             <p className='font-semibold uppercase'>REQUIREMENTS</p>
-                                            <div className='space-y-4' dangerouslySetInnerHTML={{ __html: career.requirements }} />
+                                            <div className='space-y-4 hcontent' dangerouslySetInnerHTML={{ __html: career.requirements }} 
+                                            style={{
+                                                ul: { listStyleType: 'disc', paddingLeft: '20px' },
+                                                li: { marginBottom: '8px' }
+                                            }}
+                                            />
                                             <Link href={`/career-apply-now/${career._id}`} state={{ id: career._id }} key={career._id}>
-                                                <Button variant="primary" className="flex items-center gap-2">
+                                                <Button variant="primary" className="flex items-center gap-2 mt-4">
                                                     Apply Now
                                                 </Button>
                                             </Link>
