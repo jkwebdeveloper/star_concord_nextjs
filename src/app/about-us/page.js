@@ -63,7 +63,7 @@ const AboutUs = () => {
                                     </p>
                                 </div>
                                 <p className='text-4xl font-bold'>{aboutUs?.aboutContentTitle}</p>
-                                <div className='text-lg' dangerouslySetInnerHTML={{ __html: aboutUs?.aboutContent }}></div>
+                                <div className='tag' dangerouslySetInnerHTML={{ __html: aboutUs?.aboutContent }}></div>
                                 {aboutUs.ceoName && (
                                     <div className='flex items-center gap-3 md:gap-16'>
                                         <p className="font-semibold">CEO {aboutUs?.ceoName}</p>

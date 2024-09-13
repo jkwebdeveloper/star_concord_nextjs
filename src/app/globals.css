@@ -184,11 +184,31 @@ body .swiper {
 
 .hcontent ul {
     list-style-type: disc;
-    padding-left: 20px;    
+    padding-left: 20px;
 }
+
 .hcontent li::marker {
     color: #1C4990;
-  }
+}
+
 .hcontent li {
     margin-bottom: 8px;
+}
+
+.tag h1 {
+    font-size: 48px;
+    font-weight: 800;
+}
+
+.tag h2 {
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.tag h3 {
+    font-size: 36px;
+}
+
+.tag h4 {
+    font-size: 24px;
 }
