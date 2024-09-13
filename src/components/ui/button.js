@@ -23,6 +23,8 @@ const buttonVariants = cva(
         danger:
           "text-white bg-[#D2042D] hover:bg-red-600 active:scale-90 transition hover:text-white ",
         primary:
+          "focus:outline-none rounded capitalize bg-[#85C525] hover:bg-[#7CB821] text-white font-medium  active:scale-90 transition text-sm",
+        primary_button:
           "focus:outline-none rounded capitalize bg-[#1C4990] hover:bg-[#0068C4] text-white font-medium  active:scale-90 transition text-sm",
         disable:
           "focus:outline-none capitalize bg-[#1C4990] opacity-50 hover:bg-[#0068C4] text-white font-medium  active:scale-90 transition text-sm",

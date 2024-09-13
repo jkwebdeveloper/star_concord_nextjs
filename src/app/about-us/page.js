@@ -228,7 +228,7 @@ const AboutUs = () => {
                                     </div>
 
                                     {/* Right side image */}
-                                    <div>
+                                    <div className='flex justify-center'>
                                         {aboutUs.certificateList?.map((item) =>
                                             membershipTab === item.title ? (
                                                 <div key={item._id}>
@@ -236,10 +236,10 @@ const AboutUs = () => {
                                                         src={`https://starconcord.onrender.com/uploads${item.image}`}
                                                         alt={item.title}
                                                         loading="lazy"
-                                                        width={900}
-                                                        height={500}
+                                                        width={200}
+                                                        height={200}
                                                         quality={100}
-                                                        className="object-cover rounded-xl"
+                                                        className="object-cover drop-shadow-md"
                                                     />
                                                 </div>
                                             ) : null

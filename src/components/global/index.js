@@ -248,7 +248,7 @@ const Header = () => {
                         >
                             Login
                         </Button>
-                        <Button variant="primary" className="font-semibold">
+                        <Button variant="primary_button" className="font-semibold">
                             Signup
                         </Button>
                     </div>
