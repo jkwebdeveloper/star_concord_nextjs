@@ -109,7 +109,7 @@ const IndustriesDetail = () => {
                 <div className="h-fit min-h-[350px] md:w-[40%] lg:w-[25%] w-[90%] mx-auto space-y-5">
                     <div className="space-y-4">
                         <p className="text-xl font-semibold">
-                            Other Industries{' '}
+                            Industries
                         </p>
                         <hr className="w-full h-0.5 border-t-0 bg-[#dfdfdf] dark:bg-white/10" />
 
@@ -155,7 +155,7 @@ const IndustriesDetail = () => {
                                         className="object-cover min-w-full rounded-2xl"
                                     />
                                     <div className="space-y-7">
-                                        <div className="text-[#1B1B1B] space-y-4 md:text-left text-justify"
+                                        <div className="text-[#1B1B1B] space-y-4 md:text-left hcontent tag text-justify"
                                             dangerouslySetInnerHTML={{
                                                 __html: industriesDetails?.bannerContent,
                                             }}

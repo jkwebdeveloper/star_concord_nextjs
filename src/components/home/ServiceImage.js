@@ -49,7 +49,7 @@ const ServiceImage = () => {
                             <div className="text-base font-bold text-justify text-white md:text-2xl lg:text-5xl" dangerouslySetInnerHTML={{ __html: serviceData?.bannerThreeText }}>
 
                             </div>
-                            <div className="text-sm text-white md:base hcontent" dangerouslySetInnerHTML={{ __html: serviceData?.bannerThreeSubText }}>
+                            <div className="text-sm text-white md:base hcontent tag" dangerouslySetInnerHTML={{ __html: serviceData?.bannerThreeSubText }}>
 
                             </div>
                             <Link href="/contact-us">

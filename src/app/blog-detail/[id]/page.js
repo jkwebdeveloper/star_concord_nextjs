@@ -88,7 +88,7 @@ const BlogDetailsPage = () => {
           <div className="px-5 pb-20 space-y-20 lg:px-20">
             <div className="space-y-10">
               <div
-                className="text-[#6C6C6C]"
+                className="text-[#6C6C6C] hcontent tag"
                 dangerouslySetInnerHTML={{
                   __html: blogDetails?.beforeBIContent,
                 }}
@@ -105,7 +105,7 @@ const BlogDetailsPage = () => {
                 />
               )}
               <div
-                className="text-[#6C6C6C]"
+                className="text-[#6C6C6C] hcontent tag"
                 dangerouslySetInnerHTML={{
                   __html: blogDetails?.afterBIContent,
                 }}
@@ -113,7 +113,7 @@ const BlogDetailsPage = () => {
             </div>
             <div className="space-y-10">
               <div
-                className=""
+                className="hcontent tag"
                 dangerouslySetInnerHTML={{
                   __html: blogDetails?.beforeImgContent,
                 }}
@@ -134,7 +134,7 @@ const BlogDetailsPage = () => {
                 )}
                 <div className="space-y-5">
                   <div
-                    className="text-[#6C6C6C]"
+                    className="text-[#6C6C6C] hcontent tag"
                     dangerouslySetInnerHTML={{
                       __html: blogDetails?.afterImgContent,
                     }}

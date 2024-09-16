@@ -36,8 +36,8 @@ const BlogPage = () => {
     <div className="container w-full mx-auto lg:space-y-20 space-y-7">
       <CommonBanner
         image="/static/images/banner12.jpg"
-        title="Blog"
-        page="Blog"
+        title="Blogs"
+        page="Blogs"
       />
       <div className="px-10 pb-20 space-y-10">
         {loading ? (

@@ -100,7 +100,7 @@ const ArticleDetailspage = () => {
                                 </div>
                             )}
                             <div
-                                className="text-[#6C6C6C] space-y-4"
+                                className="text-[#6C6C6C] space-y-4 hcontent tag"
                                 dangerouslySetInnerHTML={{
                                     __html: articlesDetails?.content,
                                 }}

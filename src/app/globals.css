@@ -201,14 +201,16 @@ body .swiper {
 }
 
 .tag h2 {
-    font-size: 48px;
-    font-weight: 700;
+    font-size: 36px;
+    font-weight: 600;
 }
 
 .tag h3 {
-    font-size: 36px;
+    font-size: 24px;
+    font-weight: 600;
 }
 
 .tag h4 {
-    font-size: 24px;
+    font-size: 20px;
+    font-weight: 600;
 }

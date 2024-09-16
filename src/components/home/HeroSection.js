@@ -66,11 +66,11 @@ const HeroSection = () => {
             <div className="absolute left-0 flex items-center justify-center w-full h-full md:top-0 -top-6">
               <div className="text-center md:space-y-7">
                 <div
-                  className="md:w-1/2 w-[90%] leading-5 mx-auto text-base font-bold text-center text-white lg:text-5xl"
+                  className="md:w-1/2 w-[90%] leading-5 mx-auto text-base font-bold text-center hcontent tag text-white lg:text-5xl"
                   dangerouslySetInnerHTML={{ __html: banners?.bannerOneText }}
                 ></div>
                 <div
-                  className="md:w-1/2 mx-auto mt-2 text-[10px]  text-center text-white lg:mt-4 lg:w-auto lg:text-sm"
+                  className="md:w-1/2 mx-auto mt-2 text-[10px]  text-center text-white lg:mt-4 hcontent tag lg:w-auto lg:text-sm"
                   dangerouslySetInnerHTML={{ __html: banners?.bannerOneSubText }}
                 ></div>
               </div>

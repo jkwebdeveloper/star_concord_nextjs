@@ -63,8 +63,8 @@ const Locationpage = () => {
         <div className="container w-full pb-20 mx-auto lg:space-y-20 space-y-7">
             <CommonBanner
                 image="/static/images/banner12.jpg"
-                title="Location"
-                page="Location"
+                title="Locations"
+                page="Locations"
             />
             <div className="container px-3 space-y-10 lg:px-10">
                 {loading ? (
@@ -113,30 +113,34 @@ const Locationpage = () => {
                                                     </div>
                                                     <div className="flex-col space-y-2 lg:flex-row">
                                                         <p className="text-[#6C6C6C] text-lg font-medium">
-                                                            Email:
-                                                        </p>
-                                                        <p className="text-xl font-bold">
-                                                            {location.email}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div className="grid items-start lg:grid-cols-2">
-                                                    <div className="flex-col space-y-2 lg:flex-row">
-                                                        <p className="text-[#6C6C6C] text-lg font-medium">
                                                             Fax number:
                                                         </p>
                                                         <p className="text-xl font-bold">
                                                             {location.fxNumber}
                                                         </p>
                                                     </div>
-                                                    <div className="flex-col space-y-2 lg:flex-row">
-                                                        <p className="text-[#6C6C6C] text-lg font-medium">
-                                                            Port name:
-                                                        </p>
-                                                        <p className="text-xl font-bold">
-                                                            {location.portName}
-                                                        </p>
-                                                    </div>
+                                                </div>
+                                                <div className="grid items-start lg:grid-cols-2">
+                                                    {location.email && (
+                                                        <div className="flex-col space-y-2 lg:flex-row">
+                                                            <p className="text-[#6C6C6C] text-lg font-medium">
+                                                                Email:
+                                                            </p>
+                                                            <p className="text-xl font-bold">
+                                                                {location.email}
+                                                            </p>
+                                                        </div>
+                                                    )}
+                                                    {location.portName && (
+                                                        <div className="flex-col space-y-2 lg:flex-row">
+                                                            <p className="text-[#6C6C6C] text-lg font-medium">
+                                                                Port name:
+                                                            </p>
+                                                            <p className="text-xl font-bold">
+                                                                {location.portName}
+                                                            </p>
+                                                        </div>
+                                                    )}
                                                 </div>
                                                 <div className="space-y-2">
                                                     <p className="text-[#6C6C6C] text-lg font-medium">

@@ -109,7 +109,7 @@ const ServiceDetail = () => {
                 <div className="h-fit min-h-[350px] md:w-[40%] lg:w-[25%] w-[90%] mx-auto space-y-5">
                     <div className="space-y-4">
                         <p className="text-xl font-semibold">
-                            Other Services{' '}
+                            Services
                         </p>
                         <hr className="w-full h-0.5 border-t-0 bg-[#dfdfdf] dark:bg-white/10" />
                         <div className="space-y-5">
@@ -155,7 +155,7 @@ const ServiceDetail = () => {
                                     />
                                     <div className="space-y-10">
                                         <div className="space-y-4">
-                                            <div className="text-[#1B1B1B] md:text-left text-justify hcontent" dangerouslySetInnerHTML={{
+                                            <div className="text-[#1B1B1B] md:text-left text-justify hcontent tag" dangerouslySetInnerHTML={{
                                                 __html: serviceDetails?.serviceTopContent,
                                             }} />
                                         </div>
@@ -201,7 +201,7 @@ const ServiceDetail = () => {
                                                 <p className="text-2xl font-bold">
                                                     Buyer and Seller Consoles
                                                 </p>
-                                                <div className="text-[#6C6C6C] hcontent" dangerouslySetInnerHTML={{
+                                                <div className="text-[#6C6C6C] hcontent tag" dangerouslySetInnerHTML={{
                                                     __html: serviceDetails?.beforeImgContent,
                                                 }} />
                                                 <div className="grid grid-cols-2 gap-4">

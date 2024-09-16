@@ -99,11 +99,7 @@ const Careerpage = ({ title }) => {
                                                 </TableBody>
                                             </Table>
                                             <p className='font-semibold uppercase'>REQUIREMENTS</p>
-                                            <div className='space-y-4 hcontent' dangerouslySetInnerHTML={{ __html: career.requirements }} 
-                                            style={{
-                                                ul: { listStyleType: 'disc', paddingLeft: '20px' },
-                                                li: { marginBottom: '8px' }
-                                            }}
+                                            <div className='space-y-4 hcontent tag' dangerouslySetInnerHTML={{ __html: career.requirements }} 
                                             />
                                             <Link href={`/career-apply-now/${career._id}`} state={{ id: career._id }} key={career._id}>
                                                 <Button variant="primary" className="flex items-center gap-2 mt-4">

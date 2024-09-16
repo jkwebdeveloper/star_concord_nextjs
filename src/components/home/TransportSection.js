@@ -49,7 +49,7 @@ const TransportSection = () => {
                             {transport?.topTitle}
                         </h1>
                         <hr className="w-1/5 h-0.5 border-t-0 bg-primary_color dark:bg-white/10" />
-                        <div className="text-[#1B1B1B] text-base " dangerouslySetInnerHTML={{ __html: transport?.topContent }}>
+                        <div className="text-[#1B1B1B] text-base hcontent tag" dangerouslySetInnerHTML={{ __html: transport?.topContent }}>
 
                         </div>
                         <Link href="/service-detail/66976cceff68443e1c005c53">
