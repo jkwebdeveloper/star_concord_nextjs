@@ -46,7 +46,7 @@ const Careerpage = ({ title }) => {
     return (
         <div className="container w-full mx-auto lg:space-y-20 space-y-7">
             <CommonBanner
-                image="/static/images/banner12.jpg"
+                image="/static/images/page title img.jpg"
                 title="Careers"
                 page="Careers"
             />

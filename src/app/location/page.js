@@ -63,7 +63,7 @@ const Locationpage = () => {
     return (
         <div className="container w-full pb-20 mx-auto lg:space-y-20 space-y-7">
             <CommonBanner
-                image="/static/images/banner12.jpg"
+                image="/static/images/page title img.jpg"
                 title="Locations"
                 page="Locations"
             />

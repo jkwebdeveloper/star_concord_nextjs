@@ -55,7 +55,7 @@ const ArticleDetailspage = () => {
                     <div className="relative md:h-80 h-60">
                         <Image
                             // src={dynamicImage ? BaseUrl.concat(dynamicImage) : image}
-                            src="/static/images/banner12.jpg"
+                            src="/static/images/page title img.jpg"
                             alt='banner'
                             loading="lazy"
                             layout="fill"
