@@ -55,7 +55,7 @@ const Careerpage = ({ title }) => {
             ) : (
                 <div className='container px-3 pb-10 space-y-10 lg:px-10'>
                     <div className='space-y-4'>
-                        <p className='text-base font-semibold md:text-lg'>JOIN THE STAR CONCORD INDIA TEAM</p>
+                        <h2 className='font-semibold '>JOIN THE STAR CONCORD INDIA TEAM</h2>
                         <p className='text-base md:text-lg'>Look forward to accelerating your career with STAR CONCORD? Join our dynamic, goal-oriented team of professionals and give your career a boost!
                             At STAR CONCORD, we recognize & appreciate our talented employees as the most valuable asset. As a growing market leader in the LCL Consolidation segment, we are ever-ready to attract & retain brilliant minds while nurturing & empowering them through training sessions, workshops, skill-development sessions for their holistic growth. </p>
                         <p className='text-base md:text-lg'>We are inspired by our mission to create an organisation that is most knowledgeable, experienced, professional & efficient, which can deliver impactful, innovative, efficient & reliable services to our clients.

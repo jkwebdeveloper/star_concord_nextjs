@@ -43,7 +43,7 @@ const AboutUs = () => {
     const remainingUsps = aboutUs?.uspsList?.slice(2);
 
     return (
-        <div className="container w-full mx-auto lg:space-y-20 space-y-7">
+        <div className="container w-full px-5 mx-auto lg:space-y-20 space-y-7 lg:px-10">
             {loading ? (
                 <PageLoader />
             ) : (
@@ -191,7 +191,7 @@ const AboutUs = () => {
                     </div>
 
                     {/* Accreditations */}
-                    <div className="container w-full mx-auto lg:space-y-20 space-y-7">
+                    <div className="container w-full px-5 mx-auto lg:space-y-20 space-y-7 lg:px-10">
                         <div className="px-3 space-y-8 lg:px-10">
                             <p className="text-xl font-bold lg:text-5xl">
                                 Accreditations / Alliances / Memberships
@@ -251,7 +251,7 @@ const AboutUs = () => {
                     </div>
 
                     {/* Our USPS */}
-                    <div className="pb-10 space-y-10">
+                    <div className="px-5 pb-10 space-y-10 lg:px-10">
                         <div className="grid items-start justify-center gap-5 px-3 lg:px-10 lg:grid-cols-2">
                             <div className="space-y-3">
                                 <p className="text-4xl font-bold">Our USPs</p>

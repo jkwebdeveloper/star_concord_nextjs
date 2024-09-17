@@ -11,24 +11,24 @@ export const contactValidation = {
             .string()
             // .min(4, "Name must be at least 4 characters")
             // .trim()
-            .required("Name is must be required"),
-        email: yup.string().email().required("Email field is required !"),
-        phone: yup.string().trim().required("Phone number is must be required"),
-        message: yup.string().trim().required("Message is must be required"),
+            .required("Name is required..."),
+        email: yup.string().email().required("Email address is required..."),
+        phone: yup.string().trim().required("Phone is required..."),
+        message: yup.string().trim().required("Message is required..."),
     }),
 };
 
 const ValidationSchema = () => {
     const careerApplySchema = yup.object().shape({
-        firstname: yup.string().required("This field is required !"),
-        lastname: yup.string().required("This field is required !"),
-        email: yup.string().email().required("This field is required !"),
-        mobile: yup.string().required("Phone number is must be required"),
-        location: yup.string().required("This field is required !"),
-        jobId: yup.string().required("This field is required !"),
+        firstname: yup.string().required("Name is required..."),
+        lastname: yup.string().required("LastName is required..."),
+        email: yup.string().email().required("Email address is required..."),
+        mobile: yup.string().required("Phone is required..."),
+        location: yup.string().required("location is required..."),
+        jobId: yup.string().required("job is required..."),
         resume: yup
             .mixed()
-            .required("resume is required")
+            .required("resume is required...")
             .test("fileSize", "File should be less than 2 MB!!!", (value) => {
                 return value && value[0].size <= 2_000_000;
             })

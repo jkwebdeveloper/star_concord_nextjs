@@ -39,7 +39,7 @@ const BlogPage = () => {
         title="Blogs"
         page="Blogs"
       />
-      <div className="px-10 pb-20 space-y-10">
+      <div className="px-0 pb-20 space-y-10 lg:px-10">
         {loading ? (
           <PageLoader/>
         ) : blogs.length > 0 ? (

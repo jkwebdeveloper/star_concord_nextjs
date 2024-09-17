@@ -85,7 +85,7 @@ const BlogDetailsPage = () => {
               </div>
             </div>
           </div>
-          <div className="px-5 pb-20 space-y-20 lg:px-20">
+          <div className="px-0 pb-20 space-y-20 lg:px-20">
             <div className="space-y-10">
               <div
                 className="text-[#6C6C6C] hcontent tag"

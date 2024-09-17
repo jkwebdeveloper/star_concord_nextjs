@@ -17,6 +17,7 @@ const Header = () => {
     const [active, setActive] = useState('Home');
     const [openSidebar, setOpenSidebar] = useState(false);
     const [industries, setIndustries] = useState({ industry: [] });
+    const [services, setServices] = useState({ service: [] });
     const [loading, setLoading] = useState(false);
 
     const handleGetIndustries = () => {
@@ -42,8 +43,31 @@ const Header = () => {
         handleGetIndustries();
     }, []);
 
+    const handleGetService = () => {
+        setLoading(true);
+        axios("https://starconcord.onrender.com/api/serviceList", {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "GET",
+        })
+            .then((res) => {
+                console.log('API Response:', res.data.data);
+                setServices(res.data.data || []);
+                setLoading(false);
+            })
+            .catch((err) => {
+                setLoading(false);
+            });
+    };
+
+    useEffect(() => {
+        handleGetService();
+    }, []);
+
     const handleLinkClick = link => {
         setActive(link);
+        setOpenSidebar(false);
     };
 
     useEffect(() => {
@@ -92,17 +116,74 @@ const Header = () => {
                     {[
                         { name: 'About us', href: '/about-us' },
                         { name: 'Services', href: '/service' },
-                        { name: 'Industries', href: '/industries' },
-                        { name: 'Articles', href: '/article' },
-                        { name: 'Locations', href: '/location' },
-                        { name: 'Blogs', href: '/blog' },
-                        { name: 'Contact us', href: '/contact-us' },
-                        { name: 'Careers ', href: '/career' },
                     ].map(link => (
                         <Link key={link.name} href={link.href}>
                             <li
                                 onClick={() => handleLinkClick(link.name)}
-                                className={`cursor-pointer text-[16px] space-y-5 font-semibold capitalize ${active === link.name
+                                className={`cursor-pointer text-[16px] font-semibold capitalize ${active === link.name
+                                    ? 'text-black font-semibold'
+                                    : 'text-[#6C6C6C] font-normal'
+                                    }`}
+                            >
+                                <span className="inline-block footer">
+                                    {link.name}
+                                </span>
+                            </li>
+                        </Link>
+                    ))}
+                    {/* <div
+                        className={`cursor-pointer text-[16px] font-semibold capitalize group flex flex-row gap-1 relative z-10 ${active === "Industries"
+                            ? 'text-black font-semibold'
+                            : 'text-[#6C6C6C] font-normal'
+                            }`}
+                    >
+                        <Link href="/industries">
+                            <p className="flex items-center gap-2 pb-1 ml-5 -mt-5">
+                                Industries
+                                <FaChevronDown className={`ml-auto min-h-4 min-w-[1rem] group-hover:mb-0 duration-300 group-hover:rotate-180 transition-all `} />
+                            </p>
+                        </Link> */}
+                    {/* dropdown */}
+                    {/* <div className="absolute overflow-y-auto z-10 min-w-[20rem] group-hover:scale-100 scale-0 custom_scrollbar transition-all origin-top  bg-white text-left ease-in-out duration-300 top-9 -left-5 rounded-lg shadow-2xl text-textColor space-y-2">
+                            {loading ? (
+                                <PageLoader />
+                            ) : (
+                                <ul className="max-h-full overflow-y-auto font-semibold tracking-wide capitalize">
+                                    {industries?.industry.length > 0 &&
+                                        industries?.industry.map((item) => (
+                                            <Link href={`/industries-detail/${item._id}`} state={{ id: item._id }} key={item._id}>
+                                                <li
+                                                    className={`cursor-pointer text-[16px] px-5 py-2 hover:bg-primary_color hover:text-white flex items-center justify-between font-semibold capitalize ${active === "Contact"
+                                                        ? 'text-black font-semibold'
+                                                        : 'text-[#6C6C6C] font-normal'
+                                                        }`}
+                                                    key={item?._id}
+                                                >
+                                                    <span className="whitespace-nowrap">
+                                                        {item?.industryName}
+                                                    </span>
+                                                    <FaChevronRight className="" />
+                                                </li>
+                                            </Link>
+                                        ))}
+                                </ul>
+                            )}
+                        </div> */}
+                    {/* </div> */}
+                    {[
+
+                        { name: 'Industries', href: '/industries' },
+                        { name: 'Articles', href: '/article' },
+                        { name: 'Blogs', href: '/blog' },
+                        { name: 'Contact us', href: '/contact-us' },
+                        { name: 'Careers ', href: '/career' },
+                        { name: 'Locations', href: '/location' },
+
+                    ].map(link => (
+                        <Link key={link.name} href={link.href}>
+                            <li
+                                onClick={() => handleLinkClick(link.name)}
+                                className={`cursor-pointer text-[16px] font-semibold capitalize ${active === link.name
                                     ? 'text-black font-semibold'
                                     : 'text-[#6C6C6C] font-normal'
                                     }`}
@@ -116,12 +197,12 @@ const Header = () => {
                     <hr />
                     <div className="flex items-center gap-3 text-center">
                         <Button
-                            variant="disable"
+                            variant="primary"
                             className="hover:text-primary_color"
                         >
                             Login
                         </Button>
-                        <Button variant="primary" className="">
+                        <Button variant="primary_button" className="">
                             Signup
                         </Button>
                     </div>
@@ -160,7 +241,7 @@ const Header = () => {
                     <ul className="hidden md:gap-8 xl:gap-11 lg:flex">
                         {[
                             { name: 'About us', href: '/about-us' },
-                            { name: 'Services', href: '/service' },
+                            // { name: 'Services', href: '/service' },
                         ].map(link => (
                             <Link key={link.name} href={link.href}>
                                 <li
@@ -176,6 +257,75 @@ const Header = () => {
                                 </li>
                             </Link>
                         ))}
+
+                        {/* service dropdown  */}
+                        <div
+                            className={`cursor-pointer text-[16px] font-semibold capitalize group flex items-center flex-row justify-center gap-1 relative z-10 ${active === "Industries"
+                                ? 'text-black font-semibold'
+                                : 'text-[#6C6C6C] font-normal'
+                                }`}
+                        >
+                            <Link href="/service">
+                                <p className="flex items-center gap-2">
+                                    Services
+                                    <FaChevronDown className={`ml-auto min-h-4 min-w-[1rem] group-hover:mb-0 duration-300 group-hover:rotate-180 transition-all `} />
+                                </p>
+                            </Link>
+                            {/* dropdown */}
+                            <div className="absolute overflow-y-auto z-10 min-w-[20rem] group-hover:scale-100 scale-0 custom_scrollbar transition-all origin-top  bg-white text-left ease-in-out duration-300 top-9 -left-5 rounded-lg shadow-2xl text-textColor space-y-2">
+                                {/* left side */}
+                                {loading ? (
+                                    <PageLoader />
+                                ) : (
+                                    <ul className="max-h-full overflow-y-auto font-semibold tracking-wide capitalize">
+                                        {/* {services?.length > 0 &&
+                                            services?.map((item) => (
+                                                <Link href={`/service-detail/${item._id}`} state={{ id: item._id }} key={item._id}>
+                                                    <li
+                                                        className={`cursor-pointer text-[16px] px-5 py-2 hover:bg-primary_color hover:text-white flex items-center justify-between font-semibold capitalize ${active === "Contact"
+                                                            ? 'text-black font-semibold'
+                                                            : 'text-[#6C6C6C] font-normal'
+                                                            }`}
+                                                        key={item?._id}
+                                                    >
+                                                        <span className="whitespace-nowrap">
+                                                            {item?.serviceName}
+                                                        </span>
+                                                        <FaChevronRight className="" />
+                                                    </li>
+                                                </Link>
+                                            ))} */}
+                                        {services.length > 0 ? (
+                                            services.map((item) => (
+                                                <div
+                                                    key={item._id}
+                                                    className="space-y-4"
+                                                >
+                                                    <Link href={`/service-detail/${item._id}`} state={{ id: item._id }} key={item._id}>
+                                                        <li
+                                                            className={`cursor-pointer text-[16px] px-5 py-2 hover:bg-primary_color hover:text-white flex items-center justify-between font-semibold capitalize ${active === "Contact"
+                                                                ? 'text-black font-semibold'
+                                                                : 'text-[#6C6C6C] font-normal'
+                                                                }`}
+                                                            key={item?._id}
+                                                        >
+                                                            <span className="whitespace-nowrap">
+                                                                {item?.serviceName}
+                                                            </span>
+                                                            <FaChevronRight className="" />
+                                                        </li>
+                                                    </Link>
+                                                </div>
+                                            ))
+                                        ) : (
+                                            <p>No industries available</p>
+                                        )}
+                                    </ul>
+                                )}
+                            </div>
+                        </div>
+
+                        {/* industries dropdown  */}
                         <div
                             className={`cursor-pointer text-[16px] font-semibold capitalize group flex items-center flex-row justify-center gap-1 relative z-10 ${active === "Industries"
                                 ? 'text-black font-semibold'
@@ -217,7 +367,7 @@ const Header = () => {
                             </div>
                         </div>
                         {[
-                            
+
                             { name: 'Articles', href: '/article' },
                             { name: 'Blogs', href: '/blog' },
                             { name: 'Contact us', href: '/contact-us' },
@@ -243,7 +393,7 @@ const Header = () => {
 
                     <div className="hidden gap-3 text-center lg:flex">
                         <Button
-                            variant="disable"
+                            variant="primary"
                             className="font-bold"
                         >
                             Login
@@ -264,12 +414,3 @@ const Header = () => {
 };
 
 export default Header;
-const menuItems = [
-    { label: 'Home', href: '/' },
-    { label: 'About us', href: '/about-us' },
-    { label: 'Services', href: '/services' },
-    { label: 'Industries', href: '/industries' },
-    { label: 'Articles', href: '/articles' },
-    { label: 'Blogs', href: '/blogs' },
-    { label: 'Contact us', href: '/contact-us' },
-];

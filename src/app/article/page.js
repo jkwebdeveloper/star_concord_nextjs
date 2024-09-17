@@ -39,7 +39,7 @@ const Article = () => {
         title="Articles"
         page="Articles"
       />
-      <div className="px-10 pb-20 space-y-10">
+      <div className="px-0 pb-20 space-y-10 lg:px-10">
         {loading ? (
           <PageLoader className="flex items-center justify-center" />
         ) : articles.length > 0 ? (

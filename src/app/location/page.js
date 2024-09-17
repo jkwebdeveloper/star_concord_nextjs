@@ -11,6 +11,7 @@ import {
 } from '@/components/ui/accordion';
 import axios from 'axios';
 import { PageLoader } from '@/components';
+import Link from 'next/link';
 
 const Locationpage = () => {
     const [locationData, setLocationData] = useState([]);
@@ -107,9 +108,11 @@ const Locationpage = () => {
                                                         <p className="text-[#6C6C6C] text-lg font-medium">
                                                             Phone number:
                                                         </p>
-                                                        <p className="text-xl font-bold">
-                                                            {location.phone}
-                                                        </p>
+                                                        <Link href={`tel:${location.phone}`}>
+                                                            <p className="text-xl font-bold">
+                                                                {location.phone}
+                                                            </p>
+                                                        </Link>
                                                     </div>
                                                     <div className="flex-col space-y-2 lg:flex-row">
                                                         <p className="text-[#6C6C6C] text-lg font-medium">
@@ -122,14 +125,18 @@ const Locationpage = () => {
                                                 </div>
                                                 <div className="grid items-start lg:grid-cols-2">
                                                     {location.email && (
-                                                        <div className="flex-col space-y-2 lg:flex-row">
-                                                            <p className="text-[#6C6C6C] text-lg font-medium">
-                                                                Email:
-                                                            </p>
-                                                            <p className="text-xl font-bold">
-                                                                {location.email}
-                                                            </p>
-                                                        </div>
+                                                        <>
+                                                            <div className="flex-col space-y-2 lg:flex-row">
+                                                                <p className="text-[#6C6C6C] text-lg font-medium">
+                                                                    Email:
+                                                                </p>
+                                                                <Link href={`mailto:${location.email}`}>
+                                                                    <p className="text-xl font-bold">
+                                                                        {location.email}
+                                                                    </p>
+                                                                </Link>
+                                                            </div>
+                                                        </>
                                                     )}
                                                     {location.portName && (
                                                         <div className="flex-col space-y-2 lg:flex-row">
