@@ -239,7 +239,7 @@ const AboutUs = () => {
                                                         width={200}
                                                         height={200}
                                                         quality={100}
-                                                        className="object-cover drop-shadow-md"
+                                                        className="object-cover p-2 drop-shadow-md"
                                                     />
                                                 </div>
                                             ) : null
